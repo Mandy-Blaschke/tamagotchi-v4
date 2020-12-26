@@ -12,6 +12,14 @@ import { DogDisplayComponent } from './gameplay/display/dog-display/dog-display.
 import { DogButtonRowComponent } from './gameplay/display/dog-button-row/dog-button-row.component';
 import { AgeComponent } from './age/age.component';
 import { GraveComponent } from './grave/grave.component';
+import { DogComponent } from './gameplay/display/dog-display/dog/dog.component';
+import { DrinkingComponent } from './gameplay/display/dog-display/drinking/drinking.component';
+import { EatingComponent } from './gameplay/display/dog-display/eating/eating.component';
+import { FrolicComponent } from './gameplay/display/dog-display/frolic/frolic.component';
+import { FootballComponent } from './gameplay/display/dog-display/football/football.component';
+import { TennisballComponent } from './gameplay/display/dog-display/tennisball/tennisball.component';
+import { WalkingComponent } from './gameplay/display/dog-display/walking/walking.component';
+import { BroomComponent } from './gameplay/display/dog-display/broom/broom.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +33,15 @@ import { GraveComponent } from './grave/grave.component';
     DogDisplayComponent,
     DogButtonRowComponent,
     AgeComponent,
-    GraveComponent
+    GraveComponent,
+    DogComponent,
+    DrinkingComponent,
+    EatingComponent,
+    FrolicComponent,
+    FootballComponent,
+    TennisballComponent,
+    WalkingComponent,
+    BroomComponent
   ],
   imports: [
     BrowserModule
