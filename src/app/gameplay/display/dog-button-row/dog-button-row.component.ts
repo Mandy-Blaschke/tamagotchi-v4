@@ -22,11 +22,6 @@ export class DogButtonRowComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  toggleFoods(): void {
-    this.statesService.states.showGames = false;
-    this.statesService.states.showFoods = this.statesService.states.showFoods === false;
-  }
-
   cleaningPee(): void {
     this.statesService.states.showFoods = false;
     this.statesService.states.showGames = false;
@@ -39,7 +34,14 @@ export class DogButtonRowComponent implements OnInit {
     wipePiles(this.simulation.pet);
   }
 
+  toggleFoods(): void {
+    this.simulation.pet.sleeping = false;
+    this.statesService.states.showGames = false;
+    this.statesService.states.showFoods = this.statesService.states.showFoods === false;
+  }
+
   toggleGames(): void {
+    this.simulation.pet.sleeping = false;
     this.statesService.states.showFoods = false;
     this.statesService.states.showGames = this.statesService.states.showGames === false;
   }

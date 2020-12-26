@@ -10,14 +10,14 @@ export interface Pet {
   thirst: number;
   sleeping: boolean;
   fatigueLvl: number;
+  trustLvl: number;
+  illnessLvl: number;
   peeLvl: number;
   pooLvl: number;
   droppedPee: number;
   droppedPoo: number;
   timeInterval: number;
   lastSimulate: number;
-  trustLvl: number;
-  illnessLvl: number;
   type: PetType;
   age: number;
 }
@@ -30,6 +30,8 @@ export function createPet(type: PetType): Pet {
     hunger: 10,
     thirst: 20,
     fatigueLvl: 0,
+    trustLvl: 60,
+    illnessLvl: 0,
     sleeping: false,
     peeLvl: 0,
     pooLvl: 0,
@@ -37,8 +39,6 @@ export function createPet(type: PetType): Pet {
     droppedPoo: 0,
     timeInterval: 3600000,
     lastSimulate: new Date().getTime(),
-    trustLvl: 60,
-    illnessLvl: 0,
     type,
     age: 0,
   };
@@ -119,7 +119,12 @@ export function petsPlaying(pet, game: Game): void {
   pet.hunger += game.hungerEffect;
   pet.thirst += game.thirstEffect;
   pet.fatigueLvl += game.fatigueEffect;
-  pet.trustLvl += game.trustEffect;
+
+  if (pet.trustLvl < 60 && game.name === 'Kuscheln') {
+    pet.trustLvl -= 10;
+  } else {
+    pet.trustLvl += game.trustEffect;
+  }
 
 
   if (pet.fatigueLvl > 70) {

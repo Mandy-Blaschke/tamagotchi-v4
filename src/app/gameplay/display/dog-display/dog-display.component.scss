@@ -1,73 +1,167 @@
 @use "src/app/utils/images/dog-images";
+@use "src/app/utils/images/other-images";
 @use "src/app/common-styles";
 
-.head {
 
-  .ear-left {
-    @include common-styles.background;
-    top: 0;
-    left: 182px;
-    width: 80px;
-    height: 120px;
-    z-index: 6;
-    background-image: dog-images.$dog-ear-left;
-  }
+.dog {
+  position: relative;
+  top: 10px;
 
-  .ear-right {
-    @include common-styles.background;
-    top: 0;
-    right: 220px;
-    width: 80px;
-    height: 120px;
-    z-index: 6;
-    background-image: dog-images.$dog-ear-right;
-  }
 
-  .buddy-kopf-normal {
+  .head {
     @include common-styles.background;
     width: 140px;
     height: 140px;
-    background-image: dog-images.$dog-face-normal;
     top: 0;
     left: 225px;
     z-index: 5;
+
+    &.normal {
+      background-image: dog-images.$dog-face-normal;
+      animation: normal-move infinite ease 9s;
+    }
+
+    &.exited {
+      background-image: dog-images.$dog-face-exited;
+      transform: rotate(5deg);
+    }
+
+    &.exited-tongue {
+      background-image: dog-images.$dog-face-tongue;
+    }
+
+    &.hungry-thirsty {
+      background-image: dog-images.$dog-face-hungry-thirsty;
+    }
+
+    &.sad {
+      background-image: dog-images.$dog-face-sad;
+    }
+
+    &.tired {
+      background-image: dog-images.$dog-face-tired;
+    }
+
+    &.sleeping {
+      background-image: dog-images.$dog-face-sleeping;
+    }
+
+    .ear-left {
+      @include common-styles.background;
+      top: 0;
+      left: -45px;
+      width: 80px;
+      height: 120px;
+      z-index: 6;
+      background-image: dog-images.$dog-ear-left;
+    }
+
+    .ear-right {
+      @include common-styles.background;
+      top: 0;
+      right: -45px;
+      width: 80px;
+      height: 120px;
+      z-index: 6;
+      background-image: dog-images.$dog-ear-right;
+    }
+  }
+
+  .buddy-koerper {
+    @include common-styles.background;
+    top: 80px;
+    left: 170px;
+    width: 250px;
+    height: 250px;
+    z-index: 2;
+    background-image: dog-images.$dog-body;
+  }
+
+  .tail {
+    @include common-styles.background;
+    background-image: dog-images.$dog-tail-normal;
+    width: 140px;
+    height: 140px;
+    top: 84px;
+    bottom: 105px;
+    right: 105px;
+    z-index: 1;
+    animation: moving-tail ease-out infinite 1800ms;
+
+    &.waggle-exited {
+      animation: waggle-exited infinite ease-in-out 150ms;
+    }
+
+    &.dropped {
+      @include common-styles.background;
+      background-image: dog-images.$dog-tail-lying;
+      width: 140px;
+      height: 140px;
+      top: 165px;
+      z-index: 1;
+      animation: none;
+    }
   }
 }
 
-.buddy-koerper {
+.pee {
   @include common-styles.background;
-  top: 80px;
-  left: 170px;
-  width: 250px;
-  height: 250px;
-  z-index: 2;
-  background-image: dog-images.$dog-body;
+  background-image: other-images.$pee;
+  width: 150px;
+  right: 55px;
+  height: 50px;
+  bottom: 110px;
+  animation: none;
 }
 
-.tail {
+.poo {
   @include common-styles.background;
-  width: 40%;
-  height: 40%;
-  bottom: 105px;
-  right: 65px;
-  background-image: dog-images.$dog-tail-normal;
-  animation: moving-tail ease-out infinite 1800ms;
+  background-image: other-images.$poo;
+  width: 150px;
+  left: 5px;
+  height: 50px;
+  bottom: 90px;
+  animation: none;
+}
 
-  &.waggle-exited {
-    animation: waggle-exited infinite ease-in-out 150ms;
+.flies {
+  @include common-styles.background;
+  background-image: other-images.$fly;
+  width: 30px;
+  height: 30px;
+  animation: fly linear infinite 2s;
+
+  &.fly1 {
+    bottom: 160px;
   }
 
-  &.dropped {
-    width: 40%;
-    height: 40%;
-    bottom: -20px;
-    right: 60px;
-    background-image: dog-images.$dog-tail-lying;
-    animation: none;
+  &.fly2 {
+    bottom: 180px;
+    left: 100px;
+    animation-delay: 500ms;
+  }
+
+  &.fly3 {
+    bottom: 145px;
+    left: 70px;
+    animation-delay: 200ms;
   }
 }
 
-
+@keyframes fly {
+  25% {
+    transform: translateX(15px) translateY(-10px);
+  }
+  50% {
+    transform: translateX(30px) translateY(0px);
+  }
+  75% {
+    transform: translateX(15px) translateY(10px);
+  }
+  100% {
+    transform: translateX(0px) translateY(0px);
+  }
+}
 
 @keyframes waggle-exited {
   50% {
@@ -78,22 +172,22 @@
 
 @keyframes normal-move {
   0% {
-    transform-origin:  center;
+    transform-origin: center;
   }
   25% {
-    transform-origin:  center;
+    transform-origin: center;
     transform: rotate(2.5deg);
   }
   50% {
-    transform-origin:  center;
+    transform-origin: center;
     transform: rotate(0deg);
   }
   75% {
-    transform-origin:  center;
+    transform-origin: center;
     transform: rotate(-2.5deg);
   }
   100% {
-    transform-origin:  center;
+    transform-origin: center;
   }
 }
 

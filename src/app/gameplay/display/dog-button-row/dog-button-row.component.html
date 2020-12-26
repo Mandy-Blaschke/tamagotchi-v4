@@ -1,12 +1,12 @@
 <div class="box">
 
-  <div class="row" *ngIf="simulation.pet.droppedPee > 0 || simulation.pet.droppedPoo > 0">
+  <div class="row">
 
-    <app-button (click)="cleaningPee()">
+    <app-button (click)="cleaningPee()" *ngIf="simulation.pet.droppedPee > 0">
       💧 <br> Pipi <br> aufwischen
     </app-button>
 
-    <app-button  (click)="cleaningPoo()">
+    <app-button  (click)="cleaningPoo()" *ngIf="simulation.pet.droppedPoo > 0">
       🧹 <br> Häufchen <br> wegputzen
     </app-button>
 
