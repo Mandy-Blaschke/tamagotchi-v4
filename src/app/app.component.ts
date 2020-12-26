@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {StatesService} from './utils/states.service';
+import {SimulationService} from './utils/simulation.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'tam-v4';
+
+  constructor(public statesService: StatesService, public simulation: SimulationService) {
+  }
 }

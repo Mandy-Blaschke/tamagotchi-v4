@@ -1,0 +1,105 @@
+@use "src/app/utils/images/dog-images";
+@use "src/app/common-styles";
+
+.head {
+
+  .ear-left {
+    @include common-styles.background;
+    top: 0;
+    left: 182px;
+    width: 80px;
+    height: 120px;
+    z-index: 6;
+    background-image: dog-images.$dog-ear-left;
+  }
+
+  .ear-right {
+    @include common-styles.background;
+    top: 0;
+    right: 220px;
+    width: 80px;
+    height: 120px;
+    z-index: 6;
+    background-image: dog-images.$dog-ear-right;
+  }
+
+  .buddy-kopf-normal {
+    @include common-styles.background;
+    width: 140px;
+    height: 140px;
+    background-image: dog-images.$dog-face-normal;
+    top: 0;
+    left: 225px;
+    z-index: 5;
+  }
+}
+
+.buddy-koerper {
+  @include common-styles.background;
+  top: 80px;
+  left: 170px;
+  width: 250px;
+  height: 250px;
+  z-index: 2;
+  background-image: dog-images.$dog-body;
+}
+
+.tail {
+  @include common-styles.background;
+  width: 40%;
+  height: 40%;
+  bottom: 105px;
+  right: 65px;
+  background-image: dog-images.$dog-tail-normal;
+  animation: moving-tail ease-out infinite 1800ms;
+
+  &.waggle-exited {
+    animation: waggle-exited infinite ease-in-out 150ms;
+  }
+
+  &.dropped {
+    width: 40%;
+    height: 40%;
+    bottom: -20px;
+    right: 60px;
+    background-image: dog-images.$dog-tail-lying;
+    animation: none;
+  }
+}
+
+
+
+@keyframes waggle-exited {
+  50% {
+    transform-origin: bottom left;
+    transform: rotate(25deg);
+  }
+}
+
+@keyframes normal-move {
+  0% {
+    transform-origin:  center;
+  }
+  25% {
+    transform-origin:  center;
+    transform: rotate(2.5deg);
+  }
+  50% {
+    transform-origin:  center;
+    transform: rotate(0deg);
+  }
+  75% {
+    transform-origin:  center;
+    transform: rotate(-2.5deg);
+  }
+  100% {
+    transform-origin:  center;
+  }
+}
+
+@keyframes moving-tail {
+  50% {
+    transform: rotate(3deg);
+    transform-origin: bottom left;
+  }
+}

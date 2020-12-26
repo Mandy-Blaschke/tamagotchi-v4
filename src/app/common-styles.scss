@@ -1,0 +1,51 @@
+@mixin box-row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+@mixin box-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@mixin row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+@mixin background {
+  position: absolute;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+$white: whitesmoke;
+
+$display-light-green: lightgreen;
+$display-dark-green: #5f9d5f;
+
+$light-gray: #696969;
+$dark-gray: #3c3c3c;
+
+$light-red: red;
+$dark-red: #8c0000;
+
+$light-orange: #ff8325;
+$dark-orange: #8b4513;
+
+$light-blue: cornflowerblue;
+$dark-blue: #3d5c92;
+
+$light-violet: #ff1bab;
+$dark-violet: mediumvioletred;
+
+$light-purple: #9502fc;
+$dark-purple: #4e1279;
+
+$light-green: #2ebc00;
+$dark-green: #225d0f;
+

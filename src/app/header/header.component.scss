@@ -1,0 +1,6 @@
+@use "src/app/common-styles";
+
+.box {
+  @include common-styles.box-row;
+  justify-content: space-between;
+}

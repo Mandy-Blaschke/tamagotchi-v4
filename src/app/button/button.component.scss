@@ -1,0 +1,41 @@
+button {
+  outline: none;
+  user-select: none;
+  box-sizing: border-box;
+  width: 150px;
+  min-height: 40px;
+  margin: 15px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 5px 2px 5px gray;
+  background: linear-gradient(whitesmoke 55%, #c3c3c3);
+
+  &:active {
+    box-shadow: inset 3px 1px 2px gray;
+    border: none;
+  }
+
+  &:hover {
+    color: #356600;
+  }
+
+  @media (max-width: 600px) {
+    width: 140px;
+  }
+}
+
+:host {
+  &.activated {
+    button {
+      background-image: linear-gradient(#cbdb73 55%, #96a44a);
+    }
+  }
+
+  button {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+

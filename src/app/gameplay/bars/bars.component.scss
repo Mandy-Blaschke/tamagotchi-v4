@@ -1,0 +1,88 @@
+@use "src/app/common-styles";
+
+.box {
+  @include common-styles.box-row;
+
+  .bar-box_row {
+
+    .bar {
+      box-sizing: border-box;
+      width: 300px;
+      height: 30px;
+      margin: 15px;
+      position: relative;
+      background: linear-gradient(common-styles.$dark-gray, common-styles.$light-gray);
+      border: 3px solid;
+      border-radius: 8px;
+
+      .beam {
+        height: 100%;
+        width: 50%;
+        border-radius: 6px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 2;
+        transition: width 300ms ease-in-out;
+      }
+
+      .icon {
+        position: absolute;
+        top: 0;
+        left: 5px;
+        z-index: 5;
+        color: common-styles.$white;
+      }
+    }
+
+    .life {
+      border-color: common-styles.$dark-red;
+
+      .beam {
+        background: linear-gradient(45deg, common-styles.$dark-red, common-styles.$light-red);
+      }
+    }
+
+    .hunger {
+      border-color: common-styles.$dark-orange;
+
+      .beam {
+        background: linear-gradient(45deg, common-styles.$dark-orange, common-styles.$light-orange);
+      }
+    }
+
+    .thirst {
+      border-color: common-styles.$dark-blue;
+
+      .beam {
+        background: linear-gradient(45deg, common-styles.$dark-blue, common-styles.$light-blue);
+      }
+    }
+
+    .fun {
+      border-color: common-styles.$dark-violet;
+
+      .beam {
+        background: linear-gradient(45deg, common-styles.$dark-violet, common-styles.$light-violet);
+      }
+    }
+
+    .trust {
+      border-color: common-styles.$dark-purple;
+
+      .beam {
+        background: linear-gradient(45deg, common-styles.$dark-purple  35%, common-styles.$light-purple);
+      }
+    }
+
+
+
+    .illness {
+      border-color: common-styles.$dark-green;
+
+      .beam {
+        background: linear-gradient(45deg, common-styles.$dark-green  35%, common-styles.$light-green);
+      }
+    }
+  }
+}

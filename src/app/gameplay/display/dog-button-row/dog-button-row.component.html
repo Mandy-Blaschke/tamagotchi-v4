@@ -1,0 +1,77 @@
+<div class="box">
+
+  <div class="row" *ngIf="simulation.pet.droppedPee > 0 || simulation.pet.droppedPoo > 0">
+
+    <app-button (click)="cleaningPee()">
+      💧 <br> Pipi <br> aufwischen
+    </app-button>
+
+    <app-button  (click)="cleaningPoo()">
+      🧹 <br> Häufchen <br> wegputzen
+    </app-button>
+
+  </div>
+
+
+  <div class="row">
+
+    <app-button (click)="toggleFoods()" [class.activated]="statesService.states.showFoods">
+      🍴 <br> Füttern
+    </app-button>
+
+
+    <app-button (click)="toggleGames()" [class.activated]="statesService.states.showGames">
+      🐶 <br> Beschäftigen
+    </app-button>
+
+    <app-button (click)="toggleSleeping()">
+
+      <span *ngIf="!simulation.pet.sleeping">
+      💤 <br> Schlafen legen
+      </span>
+
+      <span *ngIf="simulation.pet.sleeping">
+      ⏰ <br> Aufwecken
+      </span>
+
+    </app-button>
+
+  </div>
+
+  <div class="feeding row" *ngIf="statesService.states.showFoods">
+
+    <app-button (click)="water()">
+      🥛 <br> Wasser
+    </app-button>
+
+    <div *ngFor="let item of dogFoods">
+
+      <app-button (click)="feeding(item)">
+        {{item.symbol}}
+        <br>
+        {{item.name}}
+      </app-button>
+
+    </div>
+
+  </div>
+
+  <div class="playing row" *ngIf="statesService.states.showGames">
+
+    <div *ngFor="let item of dogGames">
+
+      <app-button (click)="playing(item)">
+        {{item.symbol}}
+        <br>
+        {{item.name}}
+      </app-button>
+
+    </div>
+
+    <app-button (click)="walking()">
+      🐕 <br> Gassi gehen
+    </app-button>
+
+  </div>
+
+</div>

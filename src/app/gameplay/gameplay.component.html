@@ -1,0 +1,13 @@
+<div class="box">
+
+  <p>{{simulation.pet | json}}</p>
+
+  <app-age></app-age>
+
+  <app-bars></app-bars>
+
+  <app-display></app-display>
+
+  <app-dog-button-row *ngIf="simulation.pet.type === 'dog'"></app-dog-button-row>
+
+</div>

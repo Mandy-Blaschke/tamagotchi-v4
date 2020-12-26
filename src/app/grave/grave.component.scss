@@ -1,0 +1,9 @@
+@use "src/app/common-styles";
+
+.box {
+  @include common-styles.box-column;
+
+  img {
+    margin: 25px;
+  }
+}

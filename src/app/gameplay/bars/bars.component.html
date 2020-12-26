@@ -1,0 +1,45 @@
+<div class="box">
+
+  <div class="bar-box_row">
+
+    <div class="life bar">
+      <span class="icon">❤️ Leben</span>
+      <div class="beam" [style.width]="simulation.pet.life/simulation.pet.max * 100 + '%'"></div>
+    </div>
+
+    <div class="fun bar">
+      <span class="icon">🥳  Laune</span>
+      <div class="beam" [style.width]="simulation.pet.fun/simulation.pet.max * 100 + '%'"></div>
+    </div>
+
+    <div class="trust bar">
+      <span class="icon">🥰  Vertrauen</span>
+      <div class="beam" [style.width]="simulation.pet.trustLvl/simulation.pet.max * 100 + '%'"></div>
+    </div>
+
+  </div>
+
+  <div class="bar-box_row">
+
+    <div class="hunger bar">
+      <span class="icon">🥫  Hunger</span>
+      <div class="beam" [style.width]="simulation.pet.hunger/simulation.pet.max * 100 + '%'"></div>
+    </div>
+
+    <div class="thirst bar">
+      <span class="icon">🥛   Durst</span>
+      <div class="beam" [style.width]="simulation.pet.thirst/simulation.pet.max * 100 + '%'"></div>
+    </div>
+
+    <div class="illness bar">
+      <span class="icon">🤧 Krankheit</span>
+      <div class="beam" [style.width]="simulation.pet.illnessLvl/simulation.pet.max * 100 + '%'"></div>
+    </div>
+
+  </div>
+
+</div>
+
+<!--
+
+-->

@@ -1,0 +1,11 @@
+<div class="box">
+  <app-button (click)="toggleSound()">
+    <span *ngIf="statesService.states.sound">🔇 <br> Ton aus</span>
+    <span *ngIf="!statesService.states.sound">🔊 <br> Ton an</span>
+  </app-button>
+
+  <app-button (click)="simulation.toggleSpeed()" *ngIf="statesService.states.started">
+    <span>⏩ <br> Vorspulen</span>
+  </app-button>
+
+</div>

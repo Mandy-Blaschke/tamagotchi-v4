@@ -1,0 +1,10 @@
+@use "src/app/common-styles";
+
+.box {
+  @include common-styles.box-column;
+  width: 637px;
+
+  .row {
+    @include common-styles.row;
+  }
+}

@@ -1,0 +1,21 @@
+@use "src/app/common-styles";
+
+.box {
+  @include common-styles.box-column;
+  margin: 25px;
+
+  img {
+    animation: moving ease-in infinite 1.5s;
+    animation-delay: 1.5s;
+    margin: 15px;
+  }
+}
+
+@keyframes moving {
+  25% {
+    transform: translateY(-5px) rotateZ(5deg);
+  }
+  75% {
+    transform: translateY(-5px) rotateZ(-5deg);
+  }
+}

@@ -1,1 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Nerko+One&display=swap');
+
+body {
+  margin: 0;
+  padding: 15px;
+  background-color: #dbdbdb;
+}
+
+body, button {
+  font-family: 'Nerko One', cursive, 'Bree Serif', serif;
+}
+
+button {
+  outline: none;
+  user-select: none;
+  font-size: 18px;
+}
+
+
