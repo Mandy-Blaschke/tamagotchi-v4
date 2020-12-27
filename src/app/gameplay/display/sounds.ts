@@ -9,17 +9,13 @@ export const spielenHund = new Audio('assets/sounds/spielen.mp3');
 export const trinkenHund = new Audio('assets/sounds/trinken.mp3');
 export const wimmernHund = new Audio('assets/sounds/wimmern.mp3');
 export const parkHund = new Audio('assets/sounds/park.mp3');
-
+export const quietschenHund = new Audio('assets/sounds/quietschen.mp3');
+export const wecker = new Audio('assets/sounds/wecker.mp3');
 export const fegen = new Audio('assets/sounds/fegen.mp3');
 
 
-export const dogSounds: HTMLAudioElement[] = [
+export const allSounds: HTMLAudioElement[] = [
   essenHund, trockenfutterHund, japsenHund, schnarchenHund, spielenHund,
-  trinkenHund, bellen1Hund, halloHund, schwanzwedelnHund, wimmernHund, parkHund
+  trinkenHund, bellen1Hund, halloHund, schwanzwedelnHund, wimmernHund, parkHund, quietschenHund,
+  fegen, wecker
 ];
-
-export const otherSounds: HTMLAudioElement[] = [
-  fegen,
-];
-
-export const allSounds: HTMLAudioElement[] = dogSounds.concat(otherSounds);

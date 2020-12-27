@@ -6,7 +6,7 @@ import {Food, Game} from '../../../utils/interfaces';
 import {dogFoods} from '../../../utils/foods/dog-foods';
 import {dogGames} from '../../../utils/games/dog-games';
 import {SoundService} from '../../../utils/sound.service';
-import {fegen, parkHund, schnarchenHund, schwanzwedelnHund, trinkenHund, wimmernHund} from '../sounds';
+import {fegen, parkHund, schnarchenHund, schwanzwedelnHund, trinkenHund, wecker, wimmernHund} from '../sounds';
 import {sleep} from '../../../utils/utils';
 
 @Component({
@@ -73,18 +73,22 @@ export class DogButtonRowComponent implements OnInit {
   }
 
   async toggleSleeping(): Promise<void> {
+    this.statesService.states.userCanClick = false;
     this.hideFoodsAndGames();
 
     if (!this.simulation.pet.sleeping) {
-      this.statesService.states.userCanClick = false;
       this.simulation.pet.sleeping = true;
       this.soundService.play(schnarchenHund);
       await sleep(3000);
-      this.statesService.states.userCanClick = true;
     } else {
-      // TODO Wecker Sound und Bild
+      this.statesService.ringing = true;
+      this.soundService.play(wecker);
+      await sleep(2000);
+      this.statesService.ringing = false;
       this.simulation.pet.sleeping = false;
     }
+
+    this.statesService.states.userCanClick = true;
   }
 
   async water(): Promise<void> {
@@ -187,6 +191,13 @@ export class DogButtonRowComponent implements OnInit {
       this.statesService.backgroundImageSrc = 'url(/assets/bilder/anderes/tennisball.webp';
       await sleep(5000);
       game.sound.pause();
+    }
+
+    if (game.name === 'Kuscheln') {
+      for (let i = 0; i < 3; i++) {
+        this.soundService.play(game.sound);
+        await sleep(2000);
+      }
     }
 
     this.statesService.states.playing = false;

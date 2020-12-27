@@ -15,14 +15,16 @@
 
   <div class="row">
 
-    <app-button (click)="toggleFoods()" [class.activated]="statesService.states.showFoods">
-      🍴 <br> Füttern
-    </app-button>
+    <ng-container *ngIf="!simulation.pet.sleeping">
+      <app-button (click)="toggleFoods()" [class.activated]="statesService.states.showFoods">
+        🍴 <br> Füttern
+      </app-button>
 
 
-    <app-button (click)="toggleGames()" [class.activated]="statesService.states.showGames">
-      🐶 <br> Beschäftigen
-    </app-button>
+      <app-button (click)="toggleGames()" [class.activated]="statesService.states.showGames">
+        🐶 <br> Beschäftigen
+      </app-button>
+    </ng-container>
 
     <app-button (click)="toggleSleeping()">
 

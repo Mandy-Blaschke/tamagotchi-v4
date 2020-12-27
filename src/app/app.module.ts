@@ -20,6 +20,7 @@ import { FootballComponent } from './gameplay/display/dog-display/football/footb
 import { TennisballComponent } from './gameplay/display/dog-display/tennisball/tennisball.component';
 import { WalkingComponent } from './gameplay/display/dog-display/walking/walking.component';
 import { BroomComponent } from './gameplay/display/dog-display/broom/broom.component';
+import { CuddlingComponent } from './gameplay/display/dog-display/cuddling/cuddling.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { BroomComponent } from './gameplay/display/dog-display/broom/broom.compo
     FootballComponent,
     TennisballComponent,
     WalkingComponent,
-    BroomComponent
+    BroomComponent,
+    CuddlingComponent
   ],
   imports: [
     BrowserModule

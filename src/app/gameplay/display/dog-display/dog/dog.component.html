@@ -1,4 +1,4 @@
-<div class="dog">
+<div class="dog" *ngIf="!statesService.ringing">
 
   <div class="head"
        [class.normal]="createViewClasses() === 'normal'"
@@ -21,6 +21,10 @@
   >
   </div>
 
+</div>
+
+<div class="clock" *ngIf="statesService.ringing">
+  <img src="/assets/bilder/anderes/wecker.webp" alt="wecker" class="clock">
 </div>
 
 <div class="pee" *ngIf="simulation.pet.droppedPee > 0" [style.transform]="'scale('+ (0.8 + 0.2 * simulation.pet.droppedPee) + ')'"></div>

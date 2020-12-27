@@ -119,13 +119,7 @@ export function petsPlaying(pet, game: Game): void {
   pet.hunger += game.hungerEffect;
   pet.thirst += game.thirstEffect;
   pet.fatigueLvl += game.fatigueEffect;
-
-  if (pet.trustLvl < 60 && game.name === 'Kuscheln') {
-    pet.trustLvl -= 10;
-  } else {
-    pet.trustLvl += game.trustEffect;
-  }
-
+  pet.trustLvl += game.trustEffect;
 
   if (pet.fatigueLvl > 70) {
     pet.illnessLvl += 2;
@@ -157,6 +151,9 @@ export function repairValuesInterval(pet: Pet): void {
 
   pet.illnessLvl = Math.min(pet.illnessLvl, pet.max);
   pet.illnessLvl = Math.max(pet.illnessLvl, 0);
+
+  pet.trustLvl = Math.min(pet.trustLvl, pet.max);
+  pet.trustLvl = Math.max(pet.trustLvl, 0);
 
   pet.fun = Math.min(pet.fun, pet.max);
   pet.fun = Math.max(pet.fun, 0);

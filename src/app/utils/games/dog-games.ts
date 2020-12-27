@@ -1,4 +1,4 @@
-import {bellen1Hund, japsenHund, spielenHund} from '../../gameplay/display/sounds';
+import {bellen1Hund, japsenHund, quietschenHund, spielenHund} from '../../gameplay/display/sounds';
 import {Game} from '../interfaces';
 
 export const dogGames: Game[] = [
@@ -33,7 +33,6 @@ export const dogGames: Game[] = [
     sound: japsenHund,
   },
   {
-    // TODO Sound heraus suchen
     name: 'Kuscheln',
     playEffect: 1,
     hungerEffect: 1,
@@ -41,6 +40,6 @@ export const dogGames: Game[] = [
     fatigueEffect: 0,
     symbol: '🤗',
     trustEffect: 5,
-    sound: null,
+    sound: quietschenHund,
   }
 ];

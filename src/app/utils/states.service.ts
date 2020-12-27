@@ -29,6 +29,7 @@ export class StatesService {
 
   playingGame: string;
   frolicNumber: number;
+  ringing = false;
 
   constructor() {
   }

@@ -61,6 +61,18 @@
 >
 </app-tennisball>
 
+<app-cuddling
+  *ngIf="statesService.states.playing
+             && statesService.playingGame === 'Kuscheln'
+             && simulation.pet.life > 0
+             && !statesService.showBox
+             && !statesService.states.eating
+             && !statesService.states.drinking
+             && !statesService.states.wiping
+             && !statesService.states.walking"
+>
+</app-cuddling>
+
 <app-walking
   *ngIf="statesService.states.walking
              && simulation.pet.life > 0

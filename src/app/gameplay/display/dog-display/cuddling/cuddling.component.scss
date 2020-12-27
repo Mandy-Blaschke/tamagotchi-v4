@@ -1,0 +1,159 @@
+@use "src/app/common-styles";
+@use "src/app/utils/images/dog-images";
+@use "src/app/utils/images/other-images";
+
+.dog {
+  position: relative;
+  top: 10px;
+
+
+  .head {
+    @include common-styles.background;
+    width: 140px;
+    height: 140px;
+    top: 0;
+    left: 225px;
+    z-index: 5;
+    background-image: dog-images.$dog-face-normal;
+    animation: normal-move infinite ease 9s;
+
+    .ear-left {
+      @include common-styles.background;
+      top: 0;
+      left: -45px;
+      width: 80px;
+      height: 120px;
+      z-index: 6;
+      background-image: dog-images.$dog-ear-left;
+    }
+
+    .ear-right {
+      @include common-styles.background;
+      top: 0;
+      right: -45px;
+      width: 80px;
+      height: 120px;
+      z-index: 6;
+      background-image: dog-images.$dog-ear-right;
+    }
+  }
+
+  .buddy-koerper {
+    @include common-styles.background;
+    top: 80px;
+    left: 170px;
+    width: 250px;
+    height: 250px;
+    z-index: 2;
+    background-image: dog-images.$dog-body;
+  }
+
+  .tail {
+    @include common-styles.background;
+    background-image: dog-images.$dog-tail-normal;
+    width: 140px;
+    height: 140px;
+    top: 84px;
+    bottom: 105px;
+    right: 105px;
+    z-index: 1;
+    animation: waggle infinite ease-in-out 350ms;
+  }
+}
+
+.heart {
+  @include common-styles.background;
+  background-image: other-images.$heart;
+  width: 35px;
+  height: 35px;
+  animation: hearts infinite linear 3s;
+
+  &.one {
+    left: 130px;
+    top: 90px;
+    transform: rotate(-15deg);
+  }
+
+  &.two {
+    width: 25px;
+    height: 25px;
+    left: 110px;
+    top: 160px;
+    transform: rotate(-10deg);
+    animation-delay: 100ms;
+  }
+
+  &.three {
+    width: 35px;
+    height: 35px;
+    right: 110px;
+    top: 160px;
+    transform: rotate(0deg);
+    animation-delay: 500ms;
+  }
+
+  &.four {
+    width: 25px;
+    height: 25px;
+    right: 80px;
+    top: 80px;
+    transform: rotate(12deg);
+    animation-delay: 250ms;
+  }
+
+  &.five {
+    width: 25px;
+    height: 25px;
+    left: 40px;
+    top: 80px;
+    transform: rotate(12deg);
+    animation-delay: 320ms;
+  }
+
+  &.six {
+    width: 15px;
+    height: 15px;
+    right: 150px;
+    top: 120px;
+    transform: rotate(0deg);
+    animation-delay: 210ms;
+  }
+
+  &.seven {
+    width: 45px;
+    height: 45px;
+    right: 320px;
+    top: 30px;
+    transform: rotate(0deg);
+    animation-delay: 110ms;
+  }
+}
+
+@keyframes waggle {
+  50% {
+    transform-origin: bottom left;
+    transform: rotate(25deg);
+  }
+}
+
+@keyframes hearts {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 50%;
+    transform: rotate(-10deg) translate(-15px, -10px) scale(1.5);
+  }
+  50% {
+    opacity: 100%;
+    transform: rotate(-5deg) translate(-25px, -20px) scale(1.75);
+  }
+  75% {
+    opacity: 50%;
+    transform: rotate(-2.5deg) translate(-30px, -30px) scale(2);
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(-2deg) translate(-45px, -45px) scale(1.5);
+  }
+}
