@@ -21,6 +21,8 @@ import { TennisballComponent } from './gameplay/display/dog-display/tennisball/t
 import { WalkingComponent } from './gameplay/display/dog-display/walking/walking.component';
 import { BroomComponent } from './gameplay/display/dog-display/broom/broom.component';
 import { CuddlingComponent } from './gameplay/display/dog-display/cuddling/cuddling.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,8 @@ import { CuddlingComponent } from './gameplay/display/dog-display/cuddling/cuddl
     CuddlingComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]

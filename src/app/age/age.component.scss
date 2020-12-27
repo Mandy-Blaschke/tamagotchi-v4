@@ -7,6 +7,16 @@
   border: 3px solid common-styles.$yellow-gray-dark;
   border-radius: 8px;
   color: common-styles.$light-gray;
-  margin: 25px 0;
+  margin: 15px 0;
   text-align: center;
+
+  @media (max-width: 690px) {
+    width: 90vw;
+  }
+
+  @media (max-width: 560px) {
+    h2 {
+      font-size: 1.4rem;
+    }
+  }
 }

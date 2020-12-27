@@ -20,9 +20,28 @@ button {
     color: #356600;
   }
 
-  @media (max-width: 600px) {
-    width: 140px;
+  @media (max-width: 480px) {
+    width: 120px;
   }
+
+  @media (max-width: 410px) {
+    margin: 5px;
+  }
+
+  @media (max-width: 480px) {
+    width: 120px;
+  }
+
+  @media (max-width: 355px) {
+    width: 115px;
+  }
+
+  @media (max-width: 345px) {
+    font-size: 0.9rem;
+    width: 100px;
+  }
+
+
 }
 
 :host {

@@ -3,9 +3,8 @@
 .box {
   @include common-styles.box-row;
   justify-content: space-between;
-  width: 100vw;
 
-  @media (max-width: 341px) {
+  @media (max-width: 380px) {
     justify-content: center;
   }
 }
