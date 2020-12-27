@@ -22,3 +22,6 @@ sonst stirbt es
   - weitere Tiere
   - random Auswahl des Tieres
   - Interaktionen entsprechend dem Tier
+
+
+- Ansicht unter: [Mandy Tamagotchi](https://mandys-tamagotchi.web.app/)
