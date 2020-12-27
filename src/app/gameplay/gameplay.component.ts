@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {SimulationService} from '../utils/simulation.service';
-import {StatesService} from '../utils/states.service';
 
 @Component({
   selector: 'app-gameplay',
@@ -9,16 +8,10 @@ import {StatesService} from '../utils/states.service';
 })
 export class GameplayComponent implements OnInit {
 
-  constructor(public simulation: SimulationService, private statesService: StatesService) {
+  constructor(public simulation: SimulationService) {
   }
 
   ngOnInit(): void {
-    this.simulation.load();
-
-    if (this.simulation.pet !== null) {
-      this.statesService.states.started = true;
-      this.statesService.showBox = false;
-    }
   }
 
 }
