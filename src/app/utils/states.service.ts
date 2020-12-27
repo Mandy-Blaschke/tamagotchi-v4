@@ -10,7 +10,7 @@ export class StatesService {
     started: false,
     showFoods: false,
     showGames: false,
-    sound: false,
+    sound: true,
     playing: false,
     eating: false,
     drinking: false,

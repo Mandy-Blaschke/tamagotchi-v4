@@ -1,25 +1,24 @@
 # Tamagotchi
 
-++++++++++++ *WIP* ++++++++++++
-
 - Erstellung im Rahmen meines Selbststudiums
+- erste PWA
+- Speicherung des Spielstandes im LocalStorage
+- sämtliche Bilder selbst erstellt mit Affinity Photo
 
 
-- virtuelles Haustier, um das man sich kümmern muss
+- virtuelles Haustier, um das man sich kümmern muss, 
+sonst stirbt es 
 
 
 - Interaktionsmöglichkeiten:
   - Spielen
   - Füttern
   - Tränken
-  - Gasse gehen
+  - Gassi gehen
   - Schlafen legen / Aufwecken
-
-
-- Speicherung im LocalStorage
 
 
 - Funktionen, die noch kommen:
   - weitere Tiere
   - random Auswahl des Tieres
-  - Interaktionen entsprechend des Tieres
+  - Interaktionen entsprechend dem Tier

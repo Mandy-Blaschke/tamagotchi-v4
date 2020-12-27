@@ -141,15 +141,15 @@
     opacity: 0;
   }
   25% {
-    opacity: 50%;
+    opacity: 0.5;
     transform: rotate(-10deg) translate(-15px, -10px) scale(1.5);
   }
   50% {
-    opacity: 100%;
+    opacity: 1;
     transform: rotate(-5deg) translate(-25px, -20px) scale(1.75);
   }
   75% {
-    opacity: 50%;
+    opacity: 0.5;
     transform: rotate(-2.5deg) translate(-30px, -30px) scale(2);
   }
   100% {

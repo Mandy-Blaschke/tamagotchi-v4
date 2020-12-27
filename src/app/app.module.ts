@@ -45,7 +45,7 @@ import { environment } from '../environments/environment';
     TennisballComponent,
     WalkingComponent,
     BroomComponent,
-    CuddlingComponent
+    CuddlingComponent,
   ],
   imports: [
     BrowserModule,
