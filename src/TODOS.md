@@ -1,6 +1,5 @@
 # TODOs
 
-- Füttern/ Spielen Highlighting der Buttons
 - Automatisch schlafen gehen bei best. Müdigkeits-Lvl
   
 - +1 Krankheit/h

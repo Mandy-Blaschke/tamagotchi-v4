@@ -6,5 +6,9 @@
 
   .row {
     @include common-styles.row;
+
+    &.playing, &.feeding {
+      background-color: common-styles.$display-light-green;
+    }
   }
 }
