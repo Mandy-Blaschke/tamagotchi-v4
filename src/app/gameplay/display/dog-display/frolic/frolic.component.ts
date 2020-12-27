@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {StatesService} from '../../../../utils/states.service';
 
 @Component({
   selector: 'app-frolic',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FrolicComponent implements OnInit {
 
-  constructor() { }
+  constructor(public statesService: StatesService) { }
 
   ngOnInit(): void {
   }

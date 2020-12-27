@@ -1,1 +1,7 @@
-<p>frolic works!</p>
+<div class="game" [style.background-image]="statesService.backgroundImageSrc">
+  <div class="pic one" *ngIf="statesService.frolicNumber === 2"></div>
+  <div class="pic two" *ngIf="statesService.frolicNumber === 3"></div>
+  <div class="pic three" *ngIf="statesService.frolicNumber === 1"></div>
+  <div class="pic four" *ngIf="statesService.frolicNumber === 0"></div>
+  <img src="assets/bilder/anderes/baeume.webp" alt="bäume" class="pic trees">
+</div>

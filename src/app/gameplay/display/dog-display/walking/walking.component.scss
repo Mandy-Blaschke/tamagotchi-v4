@@ -1,0 +1,39 @@
+.walking {
+  width: 600px;
+  height: 300px;
+  position: relative;
+
+  .park {
+    background-image: url("~src/assets/bilder/anderes/park.webp");
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    z-index: 1;
+  }
+
+  .trees {
+    background-image: url("~src/assets/bilder/anderes/baeume.webp");
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    z-index: 2;
+  }
+
+  .paw {
+    width: 90px;
+    height: 70px;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    bottom: 20px;
+    left: 40%;
+    z-index: 3;
+  }
+}

@@ -1,0 +1,102 @@
+.game {
+  position: relative;
+  width: 600px;
+  height: 300px;
+
+  .ball {
+    position: absolute;
+    top: 125px;
+    left: 270px;
+    width: 33px;
+    height: 33px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    animation: tennisball linear 3s;
+    z-index: 1;
+  }
+
+  .buddy {
+
+    .body {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      background-image: url("~src/assets/bilder/spielen/buddy-tennisball.webp");
+      animation: body ease 3s;
+      z-index: 5;
+    }
+
+    .tail {
+      position: absolute;
+      top: 91px;
+      left: 320px;
+      width: 40%;
+      height: 40%;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-image: url("~src/assets/bilder/buddy/schwanz-normal.webp");
+      animation: tail ease 3s;
+      z-index: 4;
+    }
+  }
+}
+
+
+@keyframes tennisball {
+  0% {
+    transform: scale(2);
+  }
+  25% {
+    transform: translateY(-100px) scale(1.5);
+  }
+  30% {
+    transform: translateY(-115px) scale(1.25);
+  }
+  50% {
+    transform: translateY(-130px) scale(1);
+  }
+  60% {
+    transform: translateY(-115px) scale(0.75);
+  }
+  75% {
+    transform: translateY(-100px) scale(0.5);
+  }
+  90% {
+    transform: translateY(-50px) scale(0);
+  }
+  100% {
+    display: none;
+  }
+}
+
+@keyframes body {
+  0% {
+    opacity: 0;
+  }
+  90% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
+
+@keyframes tail {
+  0% {
+    opacity: 0;
+  }
+  90% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 100%;
+    transform-origin: bottom left;
+    transform: rotate(0deg);
+  }
+}

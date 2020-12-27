@@ -1,33 +1,84 @@
-<div class="dog">
+<app-dog
+  *ngIf="simulation.pet.life > 0
+                && !statesService.showBox
+                && !statesService.states.drinking
+                && !statesService.states.eating
+                && !statesService.states.playing
+                && !statesService.states.wiping
+                && !statesService.states.walking"
+>
+</app-dog>
 
-  <div class="head"
-       [class.normal]="createViewClasses() === 'normal'"
-       [class.tired]="createViewClasses() === 'tired'"
-       [class.hungry-thirsty]="createViewClasses() === 'hungry-thirsty'"
-       [class.sad]="createViewClasses() === 'sad'"
-       [class.exited]="statesService.states.showGames || statesService.states.showFoods"
-       [class.exited-tongue]="statesService.states.showFoods"
-       [class.sleeping]="simulation.pet.sleeping"
-  >
+<app-drinking
+  *ngIf="statesService.states.drinking"
+>
+</app-drinking>
 
-    <div class="ear-left"></div>
-    <div class="ear-right"></div>
-  </div>
+<app-eating
+  *ngIf="statesService.states.eating
+             && simulation.pet.life > 0
+             && !statesService.showBox
+             && !statesService.states.drinking
+             && !statesService.states.playing
+             && !statesService.states.wiping
+             && !statesService.states.walking"
+>
+</app-eating>
 
-  <div class="buddy-koerper"></div>
-  <div class="tail"
-       [class.waggle-exited]="statesService.states.showGames || statesService.states.showFoods"
-       [class.dropped]="simulation.pet.sleeping"
-  >
-  </div>
+<app-frolic
+  *ngIf="statesService.states.playing
+             && statesService.playingGame === 'Herumtollen'
+             && simulation.pet.life > 0
+             && !statesService.showBox
+             && !statesService.states.drinking
+             && !statesService.states.eating
+             && !statesService.states.wiping
+             && !statesService.states.walking"
+>
+</app-frolic>
 
-</div>
+<app-football
+  *ngIf="statesService.states.playing
+             && statesService.playingGame === 'Ballspielen'
+             && simulation.pet.life > 0
+             && !statesService.showBox
+             && !statesService.states.eating
+             && !statesService.states.drinking
+             && !statesService.states.wiping
+             && !statesService.states.walking"
+>
+</app-football>
 
-<div class="pee" *ngIf="simulation.pet.droppedPee > 0" [style.transform]="'scale('+ (0.8 + 0.2 * simulation.pet.droppedPee) + ')'"></div>
+<app-tennisball
+  *ngIf="statesService.states.playing
+             && statesService.playingGame === 'Apportieren'
+             && simulation.pet.life > 0
+             && !statesService.showBox
+             && !statesService.states.eating
+             && !statesService.states.drinking
+             && !statesService.states.wiping
+             && !statesService.states.walking"
+>
+</app-tennisball>
 
-<div class="flies fly1" *ngIf="simulation.pet.droppedPoo > 0"></div>
-<div class="flies fly2" *ngIf="simulation.pet.droppedPoo > 0"></div>
-<div class="flies fly3" *ngIf="simulation.pet.droppedPoo > 0"></div>
+<app-walking
+  *ngIf="statesService.states.walking
+             && simulation.pet.life > 0
+             && !statesService.showBox
+             && !statesService.states.eating
+             && !statesService.states.drinking
+             && !statesService.states.wiping
+             && !statesService.states.playing"
+>
+</app-walking>
 
-<div class="poo" *ngIf="simulation.pet.droppedPoo > 0" [style.transform]="'scale('+ (0.8 + 0.2 * simulation.pet.droppedPoo) + ')'"></div>
-
+<app-broom
+  *ngIf="statesService.states.wiping
+             && simulation.pet.life > 0
+             && !statesService.showBox
+             && !statesService.states.drinking
+             && !statesService.states.eating
+             && !statesService.states.playing
+             && !statesService.states.walking"
+>
+</app-broom>

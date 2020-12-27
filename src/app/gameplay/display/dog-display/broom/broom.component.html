@@ -1,1 +1,7 @@
-<p>broom works!</p>
+<div class="box">
+  <div class="broom">
+  </div>
+
+  <div class="pee" *ngIf="statesService.wipingPee" [style.background-image]="statesService.backgroundImageSrc"></div>
+  <div class="poo" *ngIf="statesService.wipingPoo" [style.background-image]="statesService.backgroundImageSrc"></div>
+</div>

@@ -13,15 +13,12 @@ export class GameplayComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // TODO
-    /*
     this.simulation.load();
 
     if (this.simulation.pet !== null) {
       this.statesService.states.started = true;
       this.statesService.showBox = false;
     }
-     */
   }
 
 }

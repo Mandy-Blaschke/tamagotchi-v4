@@ -1,0 +1,90 @@
+.game {
+  width: 600px;
+  height: 300px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+
+  .pic {
+    position: absolute;
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    &.trees {
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 2;
+    }
+
+    &.one, &.two {
+      animation: show-buddy ease-in-out 1500ms;
+    }
+
+
+    &.one {
+      background-image: url("~src/assets/bilder/spielen/buddy-aufgeregt.webp");
+      height: 50px;
+      width: 50px;
+      bottom: 60px;
+      left: 45px;
+      transform: translateX(27px);
+    }
+
+    &.two {
+      background-image: url("~src/assets/bilder/spielen/buddy-zunge.webp");
+      height: 70px;
+      width: 105px;
+      bottom: 0;
+      right: 130px;
+      z-index: 2;
+      transform: translateX(45px);
+    }
+
+    &.three {
+      background-image: url("~src/assets/bilder/spielen/buddy-normal.webp");
+      height: 36px;
+      width: 22px;
+      top: 28px;
+      left: 54px;
+      z-index: 2;
+      transform: translateX(-13px);
+      animation: three ease-in-out 1500ms;
+    }
+
+    &.four {
+      background-image: url("~src/assets/bilder/spielen/buddy-normal.webp");
+      height: 32px;
+      width: 17px;
+      top: 7px;
+      left: 219px;
+      z-index: 2;
+      transform: translateX(10px);
+      animation: four ease-in-out 1500ms;
+    }
+
+  }
+}
+
+@keyframes show-buddy {
+  50% {
+    transform: translateX(0) rotateZ(-7deg);
+    transform-origin: bottom left;
+  }
+}
+
+@keyframes three {
+  50% {
+    transform: translateX(-4px) rotateZ(3deg);
+    transform-origin: bottom left;
+  }
+}
+
+@keyframes four {
+  50% {
+    transform: translateX(2px) rotateZ(-7deg);
+    transform-origin: bottom left;
+  }
+}

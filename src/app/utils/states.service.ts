@@ -1,5 +1,4 @@
 import {Injectable} from '@angular/core';
-import {sleep} from './utils';
 
 @Injectable({
   providedIn: 'root'
@@ -29,14 +28,9 @@ export class StatesService {
   wipingPoo = false;
 
   playingGame: string;
+  frolicNumber: number;
 
   constructor() {
-  }
-
-  async toggleUserInteraction(time: number): Promise<void> {
-    this.states.userCanClick = false;
-    await sleep(time);
-    this.states.userCanClick = true;
   }
 }
 
