@@ -2,4 +2,53 @@
 
 .box {
   @include common-styles.box-column;
+
+  app-display {
+
+    @media (max-width: 655px) {
+      transform: scale(0.9);
+    }
+
+    @media (max-width: 581px) {
+      transform: scale(0.85);
+    }
+
+    @media (max-width: 551px) {
+      transform: scale(0.8);
+    }
+
+    @media (max-width: 521px) {
+      transform: scale(0.75);
+    }
+
+    @media (max-width: 491px) {
+      transform: scale(0.7);
+    }
+
+    @media (max-width: 456px) {
+      transform: scale(0.65);
+    }
+
+    @media (max-width: 421px) {
+      transform: scale(0.6);
+    }
+
+    @media (max-width: 401px) {
+      transform: scale(0.55);
+    }
+
+    @media (max-width: 366px) {
+      transform: scale(0.5);
+    }
+
+    @media (max-width: 325px) {
+      transform: scale(0.45);
+    }
+  }
+
+  .row {
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+  }
 }

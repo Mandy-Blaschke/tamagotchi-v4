@@ -2,4 +2,11 @@
 
 .box {
   @include common-styles.box-row;
+  width: 64vw;
+  background-image: linear-gradient(common-styles.$yellow-gray-light 55%, common-styles.$yellow-gray-dark);
+  border: 3px solid common-styles.$yellow-gray-dark;
+  border-radius: 8px;
+  color: common-styles.$light-gray;
+  margin: 25px 0;
+  text-align: center;
 }

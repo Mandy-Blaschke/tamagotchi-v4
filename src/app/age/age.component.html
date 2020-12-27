@@ -1,14 +1,18 @@
 <div class="box">
 
   <div class="age" *ngIf="statesService.states.started">
-    <p>Dein
+    <h2>Dein
       {{getPetName()}}
       ist
       {{formatAge()}}
       <span *ngIf="formatAge() == 1">Tag</span>
       <span *ngIf="formatAge() != 1">Tage</span>
-      &nbsp;alt. </p>
+      alt. </h2>
+
+    <!-- TODO remove
     <p>vergangene Stunden: {{simulation.pet.age}}</p>
+    -->
+
   </div>
 
 
