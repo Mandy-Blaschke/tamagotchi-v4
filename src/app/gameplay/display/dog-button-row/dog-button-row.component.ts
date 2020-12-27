@@ -59,17 +59,19 @@ export class DogButtonRowComponent implements OnInit {
   }
 
   async toggleFoods(): Promise<void> {
-    this.simulation.pet.sleeping = false;
     this.statesService.states.showGames = false;
     this.statesService.states.showFoods = this.statesService.states.showFoods === false;
-    await this.tailWaggling();
+    if (this.statesService.states.showFoods) {
+      await this.tailWaggling();
+    }
   }
 
   async toggleGames(): Promise<void> {
-    this.simulation.pet.sleeping = false;
     this.statesService.states.showFoods = false;
     this.statesService.states.showGames = this.statesService.states.showGames === false;
-    await this.tailWaggling();
+    if (this.statesService.states.showGames) {
+      await this.tailWaggling();
+    }
   }
 
   async toggleSleeping(): Promise<void> {

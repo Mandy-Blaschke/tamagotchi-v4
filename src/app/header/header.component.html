@@ -4,7 +4,10 @@
     <span *ngIf="!statesService.states.sound">🔊 <br> Ton an</span>
   </app-button>
 
-  <app-button (click)="simulation.toggleSpeed()" *ngIf="statesService.states.started">
+  <app-button (click)="simulation.toggleSpeed()"
+              *ngIf="statesService.states.started"
+              [class.activated]="this.simulation.pet.timeInterval === 1000"
+  >
     <span>⏩ <br> Vorspulen</span>
   </app-button>
 
