@@ -10,13 +10,15 @@
   margin: 15px 0;
   text-align: center;
 
-  @media (max-width: 690px) {
-    width: 90vw;
-  }
+  h2 {
+    margin: 5px;
 
-  @media (max-width: 560px) {
-    h2 {
+    @media (max-width: 560px) {
       font-size: 1.4rem;
     }
+  }
+
+  @media (max-width: 850px) {
+    width: 90vw;
   }
 }
