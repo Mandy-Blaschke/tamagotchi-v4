@@ -27,11 +27,19 @@
   <img src="/assets/bilder/anderes/wecker.webp" alt="wecker" class="clock">
 </div>
 
-<div class="pee" *ngIf="simulation.pet.droppedPee > 0" [style.transform]="'scale('+ (0.8 + 0.2 * simulation.pet.droppedPee) + ')'"></div>
+<div class="pee"
+     *ngIf="simulation.pet.droppedPee > 0 && statesService.ringing === false"
+     [style.transform]="'scale('+ (0.8 + 0.2 * simulation.pet.droppedPee) + ')'"
+>
+</div>
 
-<div class="flies fly1" *ngIf="simulation.pet.droppedPoo > 0"></div>
-<div class="flies fly2" *ngIf="simulation.pet.droppedPoo > 0"></div>
-<div class="flies fly3" *ngIf="simulation.pet.droppedPoo > 0"></div>
+<div class="flies fly1" *ngIf="simulation.pet.droppedPoo > 0 && statesService.ringing === false"></div>
+<div class="flies fly2" *ngIf="simulation.pet.droppedPoo > 0 && statesService.ringing === false"></div>
+<div class="flies fly3" *ngIf="simulation.pet.droppedPoo > 0 && statesService.ringing === false"></div>
 
-<div class="poo" *ngIf="simulation.pet.droppedPoo > 0" [style.transform]="'scale('+ (0.8 + 0.2 * simulation.pet.droppedPoo) + ')'"></div>
+<div class="poo"
+     *ngIf="simulation.pet.droppedPoo > 0 && statesService.ringing === false"
+     [style.transform]="'scale('+ (0.8 + 0.2 * simulation.pet.droppedPoo) + ')'"
+>
+</div>
 

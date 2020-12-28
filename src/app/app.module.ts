@@ -23,6 +23,7 @@ import { BroomComponent } from './gameplay/display/dog-display/broom/broom.compo
 import { CuddlingComponent } from './gameplay/display/dog-display/cuddling/cuddling.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { PillsComponent } from './gameplay/display/dog-display/pills/pills.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { environment } from '../environments/environment';
     WalkingComponent,
     BroomComponent,
     CuddlingComponent,
+    PillsComponent,
   ],
   imports: [
     BrowserModule,

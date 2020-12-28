@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import {goForWalk, petsDrinking, petsEating, petsPlaying, wipePee, wipePiles} from '../../../utils/pet';
+import {goForWalk, goToDoctor, petsDrinking, petsEating, petsPlaying, wipePee, wipePiles} from '../../../utils/pet';
 import {StatesService} from '../../../utils/states.service';
 import {SimulationService} from '../../../utils/simulation.service';
 import {Food, Game} from '../../../utils/interfaces';
 import {dogFoods} from '../../../utils/foods/dog-foods';
 import {dogGames} from '../../../utils/games/dog-games';
 import {SoundService} from '../../../utils/sound.service';
-import {fegen, parkHund, schnarchenHund, schwanzwedelnHund, trinkenHund, wecker, wimmernHund} from '../sounds';
+import {essenHund, fegen, parkHund, schnarchenHund, schwanzwedelnHund, trinkenHund, wecker, wimmernHund} from '../sounds';
 import {sleep} from '../../../utils/utils';
 
 @Component({
@@ -28,6 +28,25 @@ export class DogButtonRowComponent implements OnInit {
   hideFoodsAndGames(): void {
     this.statesService.states.showFoods = false;
     this.statesService.states.showGames = false;
+  }
+
+  async doctor(): Promise<void> {
+    this.hideFoodsAndGames();
+    this.statesService.states.userCanClick = false;
+    this.statesService.states.showPills = true;
+    this.simulation.pet.sleeping = false;
+    this.statesService.backgroundImageSrc = 'url(/assets/bilder/pille/pille';
+    await goToDoctor(this.simulation.pet);
+    this.soundService.play(essenHund);
+
+    for (let i = 0; i < 5; i++) {
+      this.statesService.imageNumber = i;
+      await sleep(1000);
+    }
+
+    essenHund.pause();
+    this.statesService.states.showPills = false;
+    this.statesService.states.userCanClick = true;
   }
 
   async cleaningPee(): Promise<void> {

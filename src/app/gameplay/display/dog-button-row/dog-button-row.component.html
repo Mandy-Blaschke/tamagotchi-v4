@@ -6,8 +6,12 @@
       💧 <br> Pipi <br> aufwischen
     </app-button>
 
-    <app-button  (click)="cleaningPoo()" *ngIf="simulation.pet.droppedPoo > 0">
+    <app-button (click)="cleaningPoo()" *ngIf="simulation.pet.droppedPoo > 0">
       🧹 <br> Häufchen <br> wegputzen
+    </app-button>
+
+    <app-button (click)="doctor()" *ngIf="simulation.pet.illnessLvl >= 70 && simulation.pet.trustLvl >= 60">
+      👩‍⚕️ <br> Zum Arzt <br> gehen
     </app-button>
 
   </div>
@@ -42,7 +46,17 @@
 
         <div *ngFor="let item of dogGames">
 
-          <app-button (click)="playing(item)">
+          <app-button (click)="playing(item)"
+                      *ngIf="item.name !== 'Kuscheln'"
+          >
+            {{item.symbol}}
+            <br>
+            {{item.name}}
+          </app-button>
+
+          <app-button (click)="playing(item)"
+                      *ngIf="item.name === 'Kuscheln' && simulation.pet.trustLvl >= 40"
+          >
             {{item.symbol}}
             <br>
             {{item.name}}

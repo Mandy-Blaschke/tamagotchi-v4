@@ -1,0 +1,12 @@
+@use "src/app/utils/images/other-images";
+@use "src/app/common-styles";
+
+.box {
+
+  .pill {
+    width: 600px;
+    height: 300px;
+    @include common-styles.background;
+    background-size: contain;
+  }
+}

@@ -10,6 +10,7 @@ export const dogFoods: Food[] = [
     effectPooLvl: 1,
     effectPeeLvl: 0,
     effectIllness: 0,
+    effectTrust: 0,
     sound: essenHund,
   },
   {
@@ -20,6 +21,7 @@ export const dogFoods: Food[] = [
     effectPooLvl: 10,
     effectPeeLvl: 3,
     effectIllness: 2,
+    effectTrust: 3,
     sound: essenHund,
   },
   {
@@ -30,6 +32,7 @@ export const dogFoods: Food[] = [
     effectPooLvl: 5,
     effectPeeLvl: 0,
     effectIllness: 3,
+    effectTrust: 2,
     sound: trockenfutterHund,
   },
   {
@@ -40,6 +43,7 @@ export const dogFoods: Food[] = [
     effectPooLvl: 4,
     effectPeeLvl: 1,
     effectIllness: -2,
+    effectTrust: 1,
     sound: essenHund,
   },
   {
@@ -50,6 +54,7 @@ export const dogFoods: Food[] = [
     effectPooLvl: -2,
     effectPeeLvl: 1,
     effectIllness: -3,
+    effectTrust: 2,
     sound: essenHund,
   },
   {
@@ -60,6 +65,7 @@ export const dogFoods: Food[] = [
     effectPooLvl: 1,
     effectPeeLvl: 0,
     effectIllness: 2,
+    effectTrust: 5,
     sound: essenHund,
   }
 ];

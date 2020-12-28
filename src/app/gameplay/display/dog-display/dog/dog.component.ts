@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {SimulationService} from '../../../../utils/simulation.service';
 import {StatesService} from '../../../../utils/states.service';
 
@@ -9,14 +9,16 @@ import {StatesService} from '../../../../utils/states.service';
 })
 export class DogComponent implements OnInit {
 
-  constructor(public simulation: SimulationService, public statesService: StatesService) { }
+  constructor(public simulation: SimulationService, public statesService: StatesService) {
+  }
 
   ngOnInit(): void {
   }
 
   createViewClasses(): string {
 
-    if (this.simulation.pet.droppedPee > 0 || this.simulation.pet.droppedPoo > 0 || this.simulation.pet.fun <= 30) {
+    if (this.simulation.pet.droppedPee > 0 || this.simulation.pet.droppedPoo > 0
+      || this.simulation.pet.fun <= 30 || this.simulation.pet.illnessLvl >= 30) {
       return 'sad';
     }
 

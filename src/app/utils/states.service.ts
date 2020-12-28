@@ -17,6 +17,7 @@ export class StatesService {
     walking: false,
     wiping: false,
     userCanClick: true,
+    showPills: false,
   };
 
   showBox = !this.states.started;
@@ -46,4 +47,5 @@ export interface States {
   walking: boolean;
   wiping: boolean;
   userCanClick: boolean;
+  showPills: boolean;
 }

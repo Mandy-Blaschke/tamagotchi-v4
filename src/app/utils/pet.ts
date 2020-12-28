@@ -59,11 +59,18 @@ export function simulateTimeInterval(pet: Pet): void {
   pet.fun -= funDecrease;
   pet.fatigueLvl += fatigueIncrease;
   pet.trustLvl += trustDecrease;
+  pet.illnessLvl += 1;
   pet.peeLvl += peeIncrease;
   pet.pooLvl += pooIncrease;
 
+  if (pet.fatigueLvl > 20) {
+    pet.sleeping = true;
+  } else if (pet.fatigueLvl <= 0) {
+    pet.sleeping = false;
+  }
+
   if (pet.fun <= 40) {
-    pet.illnessLvl += 3;
+    pet.illnessLvl += 1;
   }
 
   if (pet.hunger >= pet.max) {
@@ -82,14 +89,26 @@ export function simulateTimeInterval(pet: Pet): void {
     pet.life -= 6;
   }
 
+  if (Math.random() <= 0.25) {
+    pet.illnessLvl += 40;
+  }
+
   if (pet.peeLvl >= 50 && Math.random() < 0.3) {
     pet.droppedPee++;
-    pet.peeLvl -= 35;
+    pet.peeLvl = 0;
   }
 
   if (pet.pooLvl >= 50 && Math.random() < 0.3) {
     pet.droppedPoo++;
-    pet.pooLvl -= 35;
+    pet.pooLvl = 0;
+  }
+
+  if (pet.droppedPoo > 0) {
+    pet.illnessLvl += 3;
+  }
+
+  if (pet.droppedPee > 0) {
+    pet.illnessLvl += 2;
   }
 
   pet.age++;
@@ -110,6 +129,7 @@ export function petsEating(pet: Pet, food: Food): void {
   pet.illnessLvl += food.effectIllness;
   pet.pooLvl += food.effectPooLvl;
   pet.peeLvl += food.effectPeeLvl;
+  pet.trustLvl += food.effectTrust;
 
   repairValuesInterval(pet);
 }
@@ -120,6 +140,12 @@ export function petsPlaying(pet, game: Game): void {
   pet.thirst += game.thirstEffect;
   pet.fatigueLvl += game.fatigueEffect;
   pet.trustLvl += game.trustEffect;
+
+  if (pet.illnessLvl > 65) {
+    pet.illnessLvl -= game.illnessEffect;
+  } else {
+    pet.illnessLvl += game.illnessEffect;
+  }
 
   if (pet.fatigueLvl > 70) {
     pet.illnessLvl += 2;
@@ -139,6 +165,12 @@ export function wipePee(pet: Pet): void {
 
 export function wipePiles(pet: Pet): void {
   pet.droppedPoo = 0;
+}
+
+export function goToDoctor(pet: Pet): void {
+  pet.illnessLvl = 0;
+  pet.trustLvl -= 60;
+  pet.life = 120;
 }
 
 // noinspection DuplicatedCode

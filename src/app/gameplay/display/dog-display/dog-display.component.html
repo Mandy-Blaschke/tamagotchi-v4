@@ -5,6 +5,7 @@
                 && !statesService.states.eating
                 && !statesService.states.playing
                 && !statesService.states.wiping
+                && !statesService.states.showPills
                 && !statesService.states.walking"
 >
 </app-dog>
@@ -21,6 +22,7 @@
              && !statesService.states.drinking
              && !statesService.states.playing
              && !statesService.states.wiping
+             && !statesService.states.showPills
              && !statesService.states.walking"
 >
 </app-eating>
@@ -33,6 +35,7 @@
              && !statesService.states.drinking
              && !statesService.states.eating
              && !statesService.states.wiping
+             && !statesService.states.showPills
              && !statesService.states.walking"
 >
 </app-frolic>
@@ -45,6 +48,7 @@
              && !statesService.states.eating
              && !statesService.states.drinking
              && !statesService.states.wiping
+             && !statesService.states.showPills
              && !statesService.states.walking"
 >
 </app-football>
@@ -57,6 +61,7 @@
              && !statesService.states.eating
              && !statesService.states.drinking
              && !statesService.states.wiping
+             && !statesService.states.showPills
              && !statesService.states.walking"
 >
 </app-tennisball>
@@ -69,6 +74,7 @@
              && !statesService.states.eating
              && !statesService.states.drinking
              && !statesService.states.wiping
+             && !statesService.states.showPills
              && !statesService.states.walking"
 >
 </app-cuddling>
@@ -80,6 +86,7 @@
              && !statesService.states.eating
              && !statesService.states.drinking
              && !statesService.states.wiping
+             && !statesService.states.showPills
              && !statesService.states.playing"
 >
 </app-walking>
@@ -91,6 +98,19 @@
              && !statesService.states.drinking
              && !statesService.states.eating
              && !statesService.states.playing
+             && !statesService.states.showPills
              && !statesService.states.walking"
 >
 </app-broom>
+
+<app-pills
+  *ngIf="statesService.states.showPills
+             && simulation.pet.life > 0
+             && !statesService.showBox
+             && !statesService.states.drinking
+             && !statesService.states.eating
+             && !statesService.states.playing
+             && !statesService.states.wiping
+             && !statesService.states.walking"
+>
+</app-pills>
