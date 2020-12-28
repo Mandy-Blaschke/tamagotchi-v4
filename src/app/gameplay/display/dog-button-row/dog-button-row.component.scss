@@ -8,7 +8,8 @@
     @include common-styles.row;
 
     &.playing, &.feeding {
-      background-color: common-styles.$display-light-green;
+      background-image: linear-gradient(#cbdb73 55%, #96a44a);
+      border-radius: 8px;
     }
   }
 }

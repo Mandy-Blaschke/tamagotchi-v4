@@ -10,4 +10,32 @@
   margin: 25px 0 50px 0;
   padding: 15px;
   position: relative;
+
+  @media (max-width: 655px) {
+    margin: -10px;
+  }
+
+  @media (max-width: 520px) {
+    margin: -20px;
+  }
+
+  @media (max-width: 456px) {
+    margin: -30px;
+  }
+
+  @media (max-width: 420px) {
+    margin: -40px;
+  }
+
+  @media (max-width: 400px) {
+    margin: -50px;
+  }
+
+  @media (max-width: 365px) {
+    margin: -60px;
+  }
+
+  @media (max-width: 325px) {
+    margin: -65px;
+  }
 }
