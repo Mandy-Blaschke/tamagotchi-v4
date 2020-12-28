@@ -1,3 +1,5 @@
+@use "src/app/common-styles";
+
 button {
   outline: none;
   user-select: none;
@@ -9,7 +11,7 @@ button {
   border: none;
   border-radius: 20px;
   box-shadow: 5px 2px 5px gray;
-  background: linear-gradient(whitesmoke 55%, #c3c3c3);
+  background: linear-gradient(common-styles.$white 55%, common-styles.$gray);
 
   &:active {
     box-shadow: inset 3px 1px 2px gray;
@@ -17,7 +19,7 @@ button {
   }
 
   &:hover {
-    color: #356600;
+    color: common-styles.$hover-text-color;
   }
 
   @media (max-width: 480px) {
@@ -47,7 +49,7 @@ button {
 :host {
   &.activated {
     button {
-      background-image: linear-gradient(#cbdb73 55%, #96a44a);
+      background-image: linear-gradient(common-styles.$yellow-green-light 55%, common-styles.$yellow-green-dark);
     }
   }
 
