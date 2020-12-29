@@ -5,8 +5,6 @@
        [class.tired]="statesService.createViewClasses() === 'tired'"
        [class.hungry-thirsty]="statesService.createViewClasses() === 'hungry-thirsty'"
        [class.sad]="statesService.createViewClasses() === 'sad'"
-       [class.exited]="statesService.states.showGames || statesService.states.showFoods"
-       [class.exited-tongue]="statesService.states.showFoods"
        [class.sleeping]="simulation.pet.sleeping"
   >
   </div>
@@ -19,3 +17,5 @@
   </div>
 
 </div>
+
+<app-clock *ngIf="statesService.ringing"></app-clock>

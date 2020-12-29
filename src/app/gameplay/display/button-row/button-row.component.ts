@@ -226,6 +226,10 @@ export class ButtonRowComponent implements OnInit {
       }
     }
 
+    if (game.name === 'Wollknäuel'){
+      await sleep(500000);
+    }
+
     this.statesService.states.playing = false;
     this.statesService.states.userCanClick = true;
 

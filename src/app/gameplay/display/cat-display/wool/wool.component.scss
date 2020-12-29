@@ -1,0 +1,36 @@
+@use "src/app/common-styles";
+@use "src/app/utils/images/other-images";
+@use "src/app/utils/images/cat-images";
+
+
+.box {
+
+  .tail {
+    @include common-styles.background;
+    background-image: cat-images.$cat-tail-normal;
+    width: 80px;
+    height: 80px;
+    top: 15px;
+    left: 70px;
+    z-index: 1;
+  }
+
+  .cat {
+    @include common-styles.background;
+    background-image: cat-images.$cat-plaing-wool;
+    width: 130px;
+    height: 130px;
+    top: 65px;
+    left: 80px;
+    z-index: 3;
+  }
+
+  .wool {
+    @include common-styles.background;
+    background-image: other-images.$wool;
+    width: 110px;
+    height: 100px;
+    bottom: 35px;
+    left: 50px;
+  }
+}
