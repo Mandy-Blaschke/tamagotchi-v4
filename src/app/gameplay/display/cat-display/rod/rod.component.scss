@@ -1,0 +1,65 @@
+@use "src/app/common-styles";
+@use "src/app/utils/images/other-images";
+
+.box {
+  animation: box ease-in-out 2s infinite;
+
+  .rod {
+    @include common-styles.background;
+    background-image: other-images.$rod;
+    width: 540px;
+    height: 280px;
+  }
+
+  .tendon {
+    @include common-styles.background;
+    background-image: other-images.$tendon;
+    width: 40px;
+    height: 220px;
+    right: 306px;
+    top: 23px;
+    z-index: 2;
+    transform-origin: top center;
+    animation: tendon linear 1800ms infinite;
+
+    .feather {
+      @include common-styles.background;
+      background-image: other-images.$feather;
+      width: 80px;
+      height: 80px;
+      bottom: -64px;
+      left: -22px;
+      z-index: 1;
+      transform-origin: top center;
+      animation: feather linear 1800ms infinite;
+    }
+  }
+}
+
+@keyframes box {
+  50% {
+    transform: rotate3d(1, 1, 1, 2deg);
+    transform-origin: bottom right;
+  }
+}
+
+@keyframes tendon {
+  25% {
+    transform: rotateZ(12deg) scale(0.98);
+  }
+  50% {
+     transform: scale(1);
+   }
+  75% {
+    transform: rotateZ(-13deg) scale(0.95);
+  }
+}
+
+@keyframes feather {
+  25% {
+    transform: rotateZ(25deg);
+  }
+  75% {
+    transform: rotateZ(-15deg);
+  }
+}

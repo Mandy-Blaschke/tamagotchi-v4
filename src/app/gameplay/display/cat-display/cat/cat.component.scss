@@ -38,10 +38,10 @@
 
   .kitty-koerper {
     @include common-styles.background;
-    top: 116px;
-    left: 197px;
-    width: 200px;
-    height: 200px;
+    top: 83px;
+    left: 88px;
+    width: 430px;
+    height: 250px;
     z-index: 2;
     background-image: cat-images.$cat-body;
   }
@@ -51,21 +51,21 @@
     background-image: cat-images.$cat-tail-normal;
     width: 150px;
     height: 150px;
-    top: 54px;
-    left: 110px;
+    top: 45px;
+    left: 130px;
     z-index: 1;
     animation: tail-moving linear infinite 1800ms;
 
     &.dropped {
       @include common-styles.background;
-      background-image: cat-images.$cat-tail-lying;
+      background-image: cat-images.$cat-tail-normal;
       width: 140px;
       height: 140px;
-      top: 125px;
+      top: 155px;
+      left: 130px;
       z-index: 1;
-      left: 113px;
-      transform: rotate(-55deg);
       animation: none;
+      transform: rotate(-55deg);
     }
   }
 }

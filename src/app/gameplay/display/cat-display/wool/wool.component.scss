@@ -18,18 +18,48 @@
     animation: tail-moving linear infinite 1800ms;
   }
 
-  .move-cat {
-    transform-origin: bottom center;
-    animation: move-cat linear infinite 1500ms;
+  .cat {
 
-    .cat {
+    .head {
       @include common-styles.background;
-      background-image: cat-images.$cat-plaing-wool;
-      width: 130px;
-      height: 130px;
-      top: 65px;
-      left: 80px;
+      background-image: cat-images.$cat-face-normal;
+      width: 120px;
+      height: 120px;
+      top: 80px;
+      left: 85px;
       z-index: 3;
+    }
+
+    .body {
+      @include common-styles.background;
+      background-image: cat-images.$cat-body-playing;
+      width: 129px;
+      height: 114px;
+      top: 75px;
+      left: 74px;
+      z-index: 2;
+      transform-origin: bottom center;
+      animation: move-cat linear infinite 1500ms;
+    }
+
+    .foots {
+      @include common-styles.background;
+      background-image: cat-images.$cat-foots-playing;
+      width: 120px;
+      height: 120px;
+      top: 115px;
+      left: 75px;
+      z-index: 2;
+    }
+
+    .tail {
+      @include common-styles.background;
+      background-image: cat-images.$cat-tail-normal;
+      width: 120px;
+      height: 120px;
+      z-index: 1;
+      top: 2px;
+      left: 42px;
     }
   }
 
@@ -42,6 +72,7 @@
     left: 50px;
     animation: wool linear infinite 2s;
     transform: translateX(380px) rotate(180deg);
+    z-index: 5;
   }
 }
 
@@ -82,9 +113,9 @@
 
 @keyframes move-cat {
   25% {
-    transform: rotateZ(1deg);
+    transform: rotateZ(3deg);
   }
   75% {
-    transform: rotateZ(-1deg);
+    transform: rotateZ(-3deg);
   }
 }

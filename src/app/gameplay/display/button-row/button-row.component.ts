@@ -226,8 +226,14 @@ export class ButtonRowComponent implements OnInit {
       }
     }
 
-    if (game.name === 'Wollknäuel'){
-      await sleep(500000);
+    // Todo Time, Sound
+    if (game.name === 'Wollknäuel') {
+      await sleep(5000);
+    }
+
+    // Todo Time, Sound
+    if (game.name === 'Angel') {
+      await sleep(50000000);
     }
 
     this.statesService.states.playing = false;
