@@ -148,22 +148,6 @@
   }
 }
 
-.clock {
-  animation: clock ease-in-out infinite 200ms;
-}
-
-@keyframes clock {
-  25% {
-    transform: rotate(-10deg);
-  }
-  50% {
-    transform: rotate(0deg);
-  }
-  75% {
-    transform: rotate(10deg);
-  }
-}
-
 @keyframes fly {
   25% {
     transform: translateX(15px) translateY(-10px);

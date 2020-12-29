@@ -1,0 +1,149 @@
+<div class="box">
+
+  <div class="row cleaning">
+
+    <ng-container class="dog-cleaning" *ngIf="simulation.pet.type === 'dog'">
+
+      <app-button (click)="cleaningPee()" *ngIf="simulation.pet.droppedPee > 0">
+        💧 <br> Pipi <br> aufwischen
+      </app-button>
+
+      <app-button (click)="cleaningPoo()" *ngIf="simulation.pet.droppedPoo > 0">
+        🧹 <br> Häufchen <br> wegputzen
+      </app-button>
+
+    </ng-container>
+
+    <ng-container class="cat-cleaning" *ngIf="simulation.pet.type === 'cat'">
+
+      <app-button (click)="cleaningPee(); cleaningPoo()"
+                  *ngIf="simulation.pet.droppedPoo >= 60 || simulation.pet.droppedPee >= 60"
+      >
+        🚽 <br> Katzenklo säubern
+      </app-button>
+
+    </ng-container>
+
+    <app-button (click)="doctor()" *ngIf="simulation.pet.illnessLvl >= 70 && simulation.pet.trustLvl >= 60">
+      👩‍⚕️ <br> Zum Arzt <br> gehen
+    </app-button>
+
+  </div>
+
+
+  <div class="row">
+
+    <div class="feeding row" *ngIf="statesService.states.showFoods">
+
+      <app-button (click)="water()">
+        💧 <br> Wasser
+      </app-button>
+
+      <ng-container class="dog-foods" *ngIf="simulation.pet.type === 'dog'">
+        <div *ngFor="let item of dogFoods">
+
+          <app-button (click)="feeding(item)">
+            {{item.symbol}}
+            <br>
+            {{item.name}}
+          </app-button>
+
+        </div>
+      </ng-container>
+
+      <ng-container  class="cat-foods" *ngIf="simulation.pet.type === 'cat'">
+        <div *ngFor="let item of catFoods">
+
+          <app-button (click)="feeding(item)">
+            {{item.symbol}}
+            <br>
+            {{item.name}}
+          </app-button>
+
+        </div>
+      </ng-container>
+
+    </div>
+
+    <ng-container class="not-sleeping" *ngIf="!simulation.pet.sleeping">
+      <app-button (click)="toggleFoods()" [class.activated]="statesService.states.showFoods">
+        🍴 <br> Füttern
+      </app-button>
+
+      <div class="playing row" *ngIf="statesService.states.showGames">
+
+        <ng-container class="dog-games" *ngIf="simulation.pet.type === 'dog'">
+          <div *ngFor="let item of dogGames">
+
+            <app-button (click)="playing(item)"
+                        *ngIf="item.name !== 'Kuscheln'"
+            >
+              {{item.symbol}}
+              <br>
+              {{item.name}}
+            </app-button>
+
+            <app-button (click)="playing(item)"
+                        *ngIf="item.name === 'Kuscheln' && simulation.pet.trustLvl >= 40"
+            >
+              {{item.symbol}}
+              <br>
+              {{item.name}}
+            </app-button>
+
+          </div>
+
+          <app-button (click)="walking()">
+            🐕 <br> Gassi gehen
+          </app-button>
+        </ng-container>
+
+        <ng-container class="cat-games" *ngIf="simulation.pet.type === 'cat'">
+          <div *ngFor="let item of catGames">
+
+            <app-button (click)="playing(item)"
+                        *ngIf="item.name !== 'Streicheln'"
+            >
+              {{item.symbol}}
+              <br>
+              {{item.name}}
+            </app-button>
+
+            <app-button (click)="playing(item)"
+                        *ngIf="item.name === 'Streicheln' && simulation.pet.trustLvl >= 40"
+            >
+              {{item.symbol}}
+              <br>
+              {{item.name}}
+            </app-button>
+
+          </div>
+
+        </ng-container>
+
+      </div>
+
+
+      <app-button (click)="toggleGames()" [class.activated]="statesService.states.showGames">
+        <span *ngIf="simulation.pet.type === 'dog'">🐶</span>
+        <span *ngIf="simulation.pet.type === 'cat'">🐱</span>
+        <br> Beschäftigen
+      </app-button>
+
+    </ng-container>
+
+    <app-button (click)="toggleSleeping()">
+
+      <span *ngIf="!simulation.pet.sleeping">
+      💤 <br> Schlafen legen
+      </span>
+
+      <span *ngIf="simulation.pet.sleeping">
+      ⏰ <br> Aufwecken
+      </span>
+
+    </app-button>
+
+  </div>
+
+</div>

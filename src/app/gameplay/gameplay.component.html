@@ -2,10 +2,15 @@
 
   <app-age></app-age>
 
+  <!-- Todo remove -->
+  <div>
+    <h1>Emoji-Tests: 🥛</h1>
+  </div>
+
   <app-bars></app-bars>
 
   <app-display></app-display>
 
-  <app-dog-button-row *ngIf="simulation.pet.type === 'dog'" class="row"></app-dog-button-row>
+  <app-button-row *ngIf="simulation.pet != null" class="row"></app-button-row>
 
 </div>

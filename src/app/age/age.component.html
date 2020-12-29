@@ -1,7 +1,7 @@
 <div class="box">
 
   <div class="age" *ngIf="statesService.states.started">
-    <h2>Dein
+    <h2>Dein<span *ngIf="simulation.pet.type === 'cat'">e</span>
       {{getPetName()}}
       ist
       {{formatAge()}}

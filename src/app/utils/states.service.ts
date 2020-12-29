@@ -1,4 +1,5 @@
 import {Injectable} from '@angular/core';
+import {SimulationService} from './simulation.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,8 @@ export class StatesService {
     started: false,
     showFoods: false,
     showGames: false,
-    sound: true,
+    // Todo true
+    sound: false,
     playing: false,
     eating: false,
     drinking: false,
@@ -18,6 +20,7 @@ export class StatesService {
     wiping: false,
     userCanClick: true,
     showPills: false,
+    cleaningCatToilet: false,
   };
 
   showBox = !this.states.started;
@@ -32,7 +35,36 @@ export class StatesService {
   frolicNumber: number;
   ringing = false;
 
-  constructor() {
+  constructor(private simulation: SimulationService) {
+  }
+
+  createViewClasses(): string {
+
+    if (this.simulation.pet.droppedPee > 0 || this.simulation.pet.droppedPoo > 0
+      || this.simulation.pet.fun <= 30 || this.simulation.pet.illnessLvl >= 30) {
+      return 'sad';
+    }
+
+    if (
+      this.simulation.pet.hunger < 70
+      && this.simulation.pet.thirst < 70
+      && this.simulation.pet.droppedPoo === 0
+      && this.simulation.pet.droppedPee === 0
+      && this.simulation.pet.fatigueLvl <= 70) {
+      return 'normal';
+
+    } else if (this.simulation.pet.hunger >= 70 || this.simulation.pet.thirst >= 70) {
+      return 'hungry-thirsty';
+
+    } else if (
+      this.simulation.pet.hunger < 70
+      && this.simulation.pet.thirst < 70
+      && this.simulation.pet.droppedPoo === 0
+      && this.simulation.pet.droppedPee === 0
+      && this.simulation.pet.fatigueLvl > 70) {
+      return 'tired';
+
+    }
   }
 }
 
@@ -48,4 +80,5 @@ export interface States {
   wiping: boolean;
   userCanClick: boolean;
   showPills: boolean;
+  cleaningCatToilet: boolean;
 }

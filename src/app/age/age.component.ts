@@ -20,7 +20,9 @@ export class AgeComponent implements OnInit {
 
   getPetName(): string {
     if (this.simulation.pet.type === 'dog') {
-      return 'Hund';
+      return 'Buddy';
+    } else {
+      return 'Kitty';
     }
   }
 

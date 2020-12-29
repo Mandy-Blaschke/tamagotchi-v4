@@ -10,11 +10,7 @@
 ### Katze
 
 - Interaktionen:
-  - Wollknäuel
-  - Streicheln
   - Katzenklo reinigen
-  - Angel
-  - Aufziehmaus
   
 
 - Futter:

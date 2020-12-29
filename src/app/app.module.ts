@@ -9,7 +9,6 @@ import { GameplayComponent } from './gameplay/gameplay.component';
 import { BarsComponent } from './gameplay/bars/bars.component';
 import { DisplayComponent } from './gameplay/display/display.component';
 import { DogDisplayComponent } from './gameplay/display/dog-display/dog-display.component';
-import { DogButtonRowComponent } from './gameplay/display/dog-button-row/dog-button-row.component';
 import { AgeComponent } from './age/age.component';
 import { GraveComponent } from './grave/grave.component';
 import { DogComponent } from './gameplay/display/dog-display/dog/dog.component';
@@ -24,6 +23,17 @@ import { CuddlingComponent } from './gameplay/display/dog-display/cuddling/cuddl
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { PillsComponent } from './gameplay/display/dog-display/pills/pills.component';
+import { ButtonRowComponent } from './gameplay/display/button-row/button-row.component';
+import { CatDisplayComponent } from './gameplay/display/cat-display/cat-display.component';
+import { CatComponent } from './gameplay/display/cat-display/cat/cat.component';
+import { DrinkingCatComponent } from './gameplay/display/cat-display/drinking-cat/drinking-cat.component';
+import { EatingCatComponent } from './gameplay/display/cat-display/eating-cat/eating-cat.component';
+import { RodComponent } from './gameplay/display/cat-display/rod/rod.component';
+import { WoolComponent } from './gameplay/display/cat-display/wool/wool.component';
+import { MouseComponent } from './gameplay/display/cat-display/mouse/mouse.component';
+import { StrokingComponent } from './gameplay/display/cat-display/stroking/stroking.component';
+import { CleaningComponent } from './gameplay/display/cat-display/cleaning/cleaning.component';
+import { ClockComponent } from './gameplay/display/clock/clock.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +45,6 @@ import { PillsComponent } from './gameplay/display/dog-display/pills/pills.compo
     BarsComponent,
     DisplayComponent,
     DogDisplayComponent,
-    DogButtonRowComponent,
     AgeComponent,
     GraveComponent,
     DogComponent,
@@ -48,6 +57,17 @@ import { PillsComponent } from './gameplay/display/dog-display/pills/pills.compo
     BroomComponent,
     CuddlingComponent,
     PillsComponent,
+    ButtonRowComponent,
+    CatDisplayComponent,
+    CatComponent,
+    DrinkingCatComponent,
+    EatingCatComponent,
+    RodComponent,
+    WoolComponent,
+    MouseComponent,
+    StrokingComponent,
+    CleaningComponent,
+    ClockComponent,
   ],
   imports: [
     BrowserModule,

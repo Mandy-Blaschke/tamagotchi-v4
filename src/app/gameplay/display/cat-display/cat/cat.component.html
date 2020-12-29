@@ -1,0 +1,21 @@
+<div class="cat" *ngIf="!statesService.ringing">
+
+  <div class="head"
+       [class.normal]="statesService.createViewClasses() === 'normal'"
+       [class.tired]="statesService.createViewClasses() === 'tired'"
+       [class.hungry-thirsty]="statesService.createViewClasses() === 'hungry-thirsty'"
+       [class.sad]="statesService.createViewClasses() === 'sad'"
+       [class.exited]="statesService.states.showGames || statesService.states.showFoods"
+       [class.exited-tongue]="statesService.states.showFoods"
+       [class.sleeping]="simulation.pet.sleeping"
+  >
+  </div>
+
+  <div class="kitty-koerper"></div>
+  <div class="tail"
+       [class.waggle]="statesService.states.showGames || statesService.states.showFoods"
+       [class.dropped]="simulation.pet.sleeping"
+  >
+  </div>
+
+</div>

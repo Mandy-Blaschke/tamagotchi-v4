@@ -12,27 +12,25 @@ import {PetType} from '../utils/pet';
 })
 export class GiftboxComponent implements OnInit {
 
+
   constructor(public statesService: StatesService, public simulation: SimulationService, public sound: SoundService) {
   }
 
   ngOnInit(): void {
   }
 
-  async openBox(num: number): Promise<void> {
+  async openBox(): Promise<void> {
+    const num = Math.floor(Math.random() * 2);
     this.statesService.states.started = true;
     this.statesService.showBox = false;
 
     let type: PetType;
 
-    if (num === 1) {
+    if (num === 0) {
       type = 'dog';
       this.sound.play(halloHund);
-
-    } else if (num === 3) {
+    } else {
       type = 'cat';
-
-    } else if (num === 2) {
-      type = 'bunny';
     }
 
     this.simulation.adoptPet(type);

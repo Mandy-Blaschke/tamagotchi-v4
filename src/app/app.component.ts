@@ -7,16 +7,19 @@ import {SimulationService} from './utils/simulation.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
 
   constructor(public statesService: StatesService, public simulation: SimulationService) {
   }
 
   ngOnInit(): void {
+    // TODO remove comment
+    /*
     this.simulation.load();
     if (this.simulation.pet != null) {
       this.statesService.states.started = true;
       this.statesService.showBox = false;
-    }
+    }  */
   }
+
 }

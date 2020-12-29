@@ -27,7 +27,8 @@ export class SimulationService {
       simulateTimeInterval(this.pet);
       this.pet.lastSimulate += this.pet.timeInterval;
     }
-    this.save();
+    // Todo remove
+   // this.save();
   }
 
   toggleSpeed(): void {

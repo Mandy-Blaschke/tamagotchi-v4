@@ -8,16 +8,21 @@ import {dogGames} from '../../../utils/games/dog-games';
 import {SoundService} from '../../../utils/sound.service';
 import {essenHund, fegen, parkHund, schnarchenHund, schwanzwedelnHund, trinkenHund, wecker, wimmernHund} from '../sounds';
 import {sleep} from '../../../utils/utils';
+import {catFoods} from '../../../utils/foods/cat-foods';
+import {catGames} from '../../../utils/games/cat-games';
 
 @Component({
-  selector: 'app-dog-button-row',
-  templateUrl: './dog-button-row.component.html',
-  styleUrls: ['./dog-button-row.component.scss']
+  selector: 'app-button-row',
+  templateUrl: './button-row.component.html',
+  styleUrls: ['./button-row.component.scss']
 })
-export class DogButtonRowComponent implements OnInit {
+export class ButtonRowComponent implements OnInit {
 
   dogFoods: Food[] = dogFoods;
   dogGames: Game[] = dogGames;
+
+  catFoods: Food[] = catFoods;
+  catGames: Game[] = catGames;
 
   constructor(public statesService: StatesService, public simulation: SimulationService, private soundService: SoundService) {
   }
@@ -267,4 +272,5 @@ export class DogButtonRowComponent implements OnInit {
     this.statesService.imageNumber = 4;
     await sleep(1000);
   }
+
 }

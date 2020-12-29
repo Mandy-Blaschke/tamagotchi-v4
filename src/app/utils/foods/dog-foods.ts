@@ -37,8 +37,8 @@ export const dogFoods: Food[] = [
   },
   {
     name: 'Obst',
-    effectHunger: -3,
-    effectThirst: -2,
+    effectHunger: -15,
+    effectThirst: -5,
     symbol: '🍎',
     effectPooLvl: 4,
     effectPeeLvl: 1,
@@ -48,8 +48,8 @@ export const dogFoods: Food[] = [
   },
   {
     name: 'Gemüse',
-    effectHunger: -4,
-    effectThirst: -1,
+    effectHunger: -20,
+    effectThirst: -5,
     symbol: '🥦',
     effectPooLvl: -2,
     effectPeeLvl: 1,

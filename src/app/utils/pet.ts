@@ -1,6 +1,6 @@
 import {Food, Game} from './interfaces';
 
-export type PetType = 'dog' | 'cat' | 'bunny';
+export type PetType = 'dog' | 'cat';
 
 export interface Pet {
   max: number;
@@ -89,8 +89,14 @@ export function simulateTimeInterval(pet: Pet): void {
     pet.life -= 6;
   }
 
-  if (Math.random() <= 0.25) {
+  if (Math.random() <= 0.005) {
     pet.illnessLvl += 40;
+  }
+
+  if (pet.type === 'cat') {
+    if (Math.random() <= 0.01) {
+      pet.sleeping = true;
+    }
   }
 
   if (pet.peeLvl >= 50 && Math.random() < 0.3) {

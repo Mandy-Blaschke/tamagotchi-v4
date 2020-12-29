@@ -1,7 +1,7 @@
 <div class="box">
   <img src="assets/bilder/anderes/geschenk-box-gelb.webp" alt="hier soll das Geschenk hin">
 
-  <app-button (click)="openBox(1)" *ngIf="statesService.showBox && !statesService.states.started">
+  <app-button (click)="openBox()" *ngIf="statesService.showBox && !statesService.states.started">
     🎁 <br> Päckchen öffnen
   </app-button>
 

@@ -1,0 +1,73 @@
+@use "src/app/common-styles";
+@use "src/app/utils/images/cat-images";
+
+.cat {
+  position: relative;
+  top: 10px;
+
+
+  .head {
+    @include common-styles.background;
+    width: 210px;
+    height: 210px;
+    top: -24px;
+    left: 200px;
+    z-index: 5;
+
+    &.normal {
+      background-image: cat-images.$cat-face-normal;
+      animation: normal-move infinite ease 9s;
+    }
+
+    &.hungry-thirsty {
+      background-image: cat-images.$cat-face-hungry-thirsty;
+    }
+
+    &.sad {
+      background-image: cat-images.$cat-face-sad;
+    }
+
+    &.tired {
+      background-image: cat-images.$cat-face-tired;
+    }
+
+    &.sleeping {
+      background-image: cat-images.$cat-face-sleeping;
+    }
+  }
+
+  .kitty-koerper {
+    @include common-styles.background;
+    top: 116px;
+    left: 197px;
+    width: 200px;
+    height: 200px;
+    z-index: 2;
+    background-image: cat-images.$cat-body;
+  }
+
+  .tail {
+    @include common-styles.background;
+    background-image: cat-images.$cat-tail-normal;
+    width: 150px;
+    height: 150px;
+    top: 54px;
+    left: 110px;
+    z-index: 1;
+    animation: moving-tail ease-out infinite 1800ms;
+
+    &.waggle {
+      animation: waggle infinite ease-in-out 150ms;
+    }
+
+    &.dropped {
+      @include common-styles.background;
+      background-image: cat-images.$cat-tail-lying;
+      width: 140px;
+      height: 140px;
+      top: 165px;
+      z-index: 1;
+      animation: none;
+    }
+  }
+}
