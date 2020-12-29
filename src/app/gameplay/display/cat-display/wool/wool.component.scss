@@ -4,6 +4,8 @@
 
 
 .box {
+  width: 280px;
+  height: 190px;
 
   .tail {
     @include common-styles.background;
@@ -13,16 +15,22 @@
     top: 15px;
     left: 70px;
     z-index: 1;
+    animation: tail-moving linear infinite 1800ms;
   }
 
-  .cat {
-    @include common-styles.background;
-    background-image: cat-images.$cat-plaing-wool;
-    width: 130px;
-    height: 130px;
-    top: 65px;
-    left: 80px;
-    z-index: 3;
+  .move-cat {
+    transform-origin: bottom center;
+    animation: move-cat linear infinite 1500ms;
+
+    .cat {
+      @include common-styles.background;
+      background-image: cat-images.$cat-plaing-wool;
+      width: 130px;
+      height: 130px;
+      top: 65px;
+      left: 80px;
+      z-index: 3;
+    }
   }
 
   .wool {
@@ -32,5 +40,51 @@
     height: 100px;
     bottom: 35px;
     left: 50px;
+    animation: wool linear infinite 2s;
+    transform: translateX(380px) rotate(180deg);
+  }
+}
+
+@keyframes tail-moving {
+  0% {
+    transform-origin: center;
+  }
+  25% {
+    transform-origin: center;
+    transform: rotate(3deg);
+  }
+  50% {
+    transform-origin: center;
+    transform: rotate(0deg);
+  }
+  75% {
+    transform-origin: center;
+    transform: rotate(-3deg);
+  }
+  100% {
+    transform-origin: center;
+  }
+}
+
+
+@keyframes wool {
+  0% {
+    transform-origin: center;
+  }
+  50% {
+    transform-origin: center;
+    transform: rotate(0deg);
+  }
+  100% {
+    transform-origin: center;
+  }
+}
+
+@keyframes move-cat {
+  25% {
+    transform: rotateZ(1deg);
+  }
+  75% {
+    transform: rotateZ(-1deg);
   }
 }
