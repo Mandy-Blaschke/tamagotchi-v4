@@ -233,6 +233,11 @@ export class ButtonRowComponent implements OnInit {
 
     // Todo Time, Sound
     if (game.name === 'Angel') {
+      await sleep(5000);
+    }
+
+    // Todo Time, Sound
+    if (game.name === 'Aufziehmaus') {
       await sleep(50000000);
     }
 
