@@ -9,12 +9,12 @@
 >
 </app-cat>
 
-<app-drinking-cat
+<app-water
   *ngIf="statesService.states.drinking"
 >
-</app-drinking-cat>
+</app-water>
 
-<app-eating-cat
+<app-eating
   *ngIf="statesService.states.eating
              && simulation.pet.life > 0
              && !statesService.showBox
@@ -23,7 +23,7 @@
              && !statesService.states.cleaningCatToilet
              && !statesService.states.showPills"
 >
-</app-eating-cat>
+</app-eating>
 
 <app-rod
   *ngIf="statesService.states.playing

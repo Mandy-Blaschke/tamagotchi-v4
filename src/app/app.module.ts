@@ -12,8 +12,6 @@ import { DogDisplayComponent } from './gameplay/display/dog-display/dog-display.
 import { AgeComponent } from './age/age.component';
 import { GraveComponent } from './grave/grave.component';
 import { DogComponent } from './gameplay/display/dog-display/dog/dog.component';
-import { DrinkingComponent } from './gameplay/display/dog-display/drinking/drinking.component';
-import { EatingComponent } from './gameplay/display/dog-display/eating/eating.component';
 import { FrolicComponent } from './gameplay/display/dog-display/frolic/frolic.component';
 import { FootballComponent } from './gameplay/display/dog-display/football/football.component';
 import { TennisballComponent } from './gameplay/display/dog-display/tennisball/tennisball.component';
@@ -26,14 +24,14 @@ import { PillsComponent } from './gameplay/display/dog-display/pills/pills.compo
 import { ButtonRowComponent } from './gameplay/display/button-row/button-row.component';
 import { CatDisplayComponent } from './gameplay/display/cat-display/cat-display.component';
 import { CatComponent } from './gameplay/display/cat-display/cat/cat.component';
-import { DrinkingCatComponent } from './gameplay/display/cat-display/drinking-cat/drinking-cat.component';
-import { EatingCatComponent } from './gameplay/display/cat-display/eating-cat/eating-cat.component';
 import { RodComponent } from './gameplay/display/cat-display/rod/rod.component';
 import { WoolComponent } from './gameplay/display/cat-display/wool/wool.component';
 import { MouseComponent } from './gameplay/display/cat-display/mouse/mouse.component';
 import { StrokingComponent } from './gameplay/display/cat-display/stroking/stroking.component';
 import { CleaningComponent } from './gameplay/display/cat-display/cleaning/cleaning.component';
 import { ClockComponent } from './gameplay/display/clock/clock.component';
+import { WaterComponent } from './gameplay/display/water/water.component';
+import {EatingComponent} from './gameplay/display/eating/eating.component';
 
 @NgModule({
   declarations: [
@@ -48,8 +46,6 @@ import { ClockComponent } from './gameplay/display/clock/clock.component';
     AgeComponent,
     GraveComponent,
     DogComponent,
-    DrinkingComponent,
-    EatingComponent,
     FrolicComponent,
     FootballComponent,
     TennisballComponent,
@@ -60,14 +56,14 @@ import { ClockComponent } from './gameplay/display/clock/clock.component';
     ButtonRowComponent,
     CatDisplayComponent,
     CatComponent,
-    DrinkingCatComponent,
-    EatingCatComponent,
     RodComponent,
     WoolComponent,
     MouseComponent,
     StrokingComponent,
     CleaningComponent,
     ClockComponent,
+    WaterComponent,
+    EatingComponent,
   ],
   imports: [
     BrowserModule,

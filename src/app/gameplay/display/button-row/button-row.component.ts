@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {goForWalk, goToDoctor, petsDrinking, petsEating, petsPlaying, wipePee, wipePiles} from '../../../utils/pet';
+import {goForWalk, goToDoctor, Pet, petsDrinking, petsEating, petsPlaying, wipePee, wipePiles} from '../../../utils/pet';
 import {StatesService} from '../../../utils/states.service';
 import {SimulationService} from '../../../utils/simulation.service';
 import {Food, Game} from '../../../utils/interfaces';
@@ -8,7 +8,7 @@ import {dogGames} from '../../../utils/games/dog-games';
 import {SoundService} from '../../../utils/sound.service';
 import {
   essenHund,
-  fegen, jammern2Katze, parkHund,
+  fegen, fegen2, jammern2Katze, parkHund,
   schnarchenHund, schnarchenKatze,
   schwanzwedelnHund, trinkenHund, wasserKatze,
   wecker, wimmernHund,
@@ -64,30 +64,39 @@ export class ButtonRowComponent implements OnInit {
     this.statesService.states.userCanClick = true;
   }
 
-  async cleaningPee(): Promise<void> {
+  async cleaningPee(pet: Pet): Promise<void> {
     this.hideFoodsAndGames();
     this.statesService.wipingPee = true;
     this.statesService.backgroundImageSrc = 'url(/assets/bilder/anderes/pipi.webp)';
-    await this.wiping();
+    await this.wiping(pet);
     wipePee(this.simulation.pet);
     this.statesService.wipingPee = false;
   }
 
-  async cleaningPoo(): Promise<void> {
+  async cleaningPoo(pet: Pet): Promise<void> {
     this.hideFoodsAndGames();
     this.statesService.wipingPoo = true;
     this.statesService.backgroundImageSrc = 'url(/assets/bilder/anderes/poo.webp)';
-    await this.wiping();
+    await this.wiping(pet);
     wipePiles(this.simulation.pet);
     this.statesService.wipingPoo = false;
   }
 
-  async wiping(): Promise<void> {
+  async wiping(pet: Pet): Promise<void> {
     this.statesService.states.userCanClick = false;
     this.statesService.states.wiping = true;
-    this.soundService.play(fegen);
-    await sleep(3000);
-    fegen.pause();
+    if (pet.type === 'dog') {
+      this.soundService.play(fegen2);
+      await sleep(3000);
+      fegen2.pause();
+
+    } else {
+
+      // Todo Bilder, Zeit bearbeiten
+      this.soundService.play(fegen);
+      await sleep(3000);
+      fegen2.pause();
+    }
     this.statesService.states.wiping = false;
     this.statesService.states.userCanClick = true;
   }
@@ -143,19 +152,23 @@ export class ButtonRowComponent implements OnInit {
     this.statesService.backgroundImageSrc = 'url(/assets/bilder/wasser/wasser';
     await petsDrinking(this.simulation.pet);
 
-    for (let i = 0; i < 5; i++) {
-      this.statesService.imageNumber = i;
-      if (this.simulation.pet.type === 'dog') {
+    if (this.simulation.pet.type === 'dog') {
+      for (let i = 0; i < 5; i++) {
+        this.statesService.imageNumber = i;
         this.soundService.play(trinkenHund);
-      } else {
-        this.soundService.play(wasserKatze);
+        await sleep(1000);
+        trinkenHund.pause();
       }
-      await sleep(1000);
-      trinkenHund.pause();
-      wasserKatze.pause();
-
-      // TODO Katze Sound trimmen
     }
+
+    if (this.simulation.pet.type === 'cat') {
+      this.soundService.play(wasserKatze);
+      for (let i = 0; i < 5; i++) {
+        this.statesService.imageNumber = i;
+        await sleep(1000);
+      }
+    }
+    wasserKatze.pause();
 
     this.statesService.states.drinking = false;
     this.statesService.states.userCanClick = true;
@@ -283,7 +296,35 @@ export class ButtonRowComponent implements OnInit {
   }
 
   async getCatFoods(food: Food): Promise<void> {
-    // Todo
+    // Todo Bilder bearbeiten
+
+    if (food.name === 'Fisch') {
+      this.statesService.backgroundImageSrc = 'url(/assets/bilder/fisch/fisch';
+      await this.feedingImages();
+    }
+
+    if (food.name === 'Katzenmilch') {
+      this.statesService.backgroundImageSrc = 'url(/assets/bilder/milch/milch';
+      await this.feedingImages();
+    }
+
+    if (food.name === 'Nassfutter') {
+      this.statesService.backgroundImageSrc = 'url(/assets/bilder/nassfutter-katze/nassfutter-katze';
+      await this.feedingImages();
+    }
+
+    if (food.name === 'Trockenfutter') {
+      this.statesService.backgroundImageSrc = 'url(/assets/bilder/trockenfutter-katze/trockenfutter-katze';
+      for (let i = 0; i < 5; i++) {
+        this.statesService.imageNumber = i;
+        await sleep(1000);
+      }
+    }
+
+    if (food.name === 'Leckerli') {
+      this.statesService.backgroundImageSrc = 'url(/assets/bilder/leckerli-katze/leckerli-katze';
+      await this.feedingImages();
+    }
   }
 
   async playing(game: Game): Promise<void> {

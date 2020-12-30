@@ -26,9 +26,7 @@ export class GiftboxComponent implements OnInit {
 
     let type: PetType;
 
-    // Todo remove
-    // if (num === 0) {
-    if (num > 1) {
+    if (num === 0) {
       type = 'dog';
       this.sound.play(halloHund);
     } else {

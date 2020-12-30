@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {StatesService} from '../../../../utils/states.service';
+import {StatesService} from '../../../utils/states.service';
 
 @Component({
   selector: 'app-eating',

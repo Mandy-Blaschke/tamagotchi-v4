@@ -1,5 +1,5 @@
 import {Food} from '../interfaces';
-import {essenKatze, trockenfutter, wasserKatze} from '../../gameplay/display/sounds';
+import {essenKatze, trockenfutter, trockenfutter2, wasserKatze} from '../../gameplay/display/sounds';
 
 export const catFoods: Food[] = [
   {
@@ -47,28 +47,6 @@ export const catFoods: Food[] = [
     sound: trockenfutter,
   },
   {
-    name: 'Obst',
-    effectHunger: -15,
-    effectThirst: -5,
-    symbol: '🍎',
-    effectPooLvl: 4,
-    effectPeeLvl: 1,
-    effectIllness: -2,
-    effectTrust: 1,
-    sound: null,
-  },
-  {
-    name: 'Gemüse',
-    effectHunger: -20,
-    effectThirst: -5,
-    symbol: '🥦',
-    effectPooLvl: -2,
-    effectPeeLvl: 1,
-    effectIllness: -3,
-    effectTrust: 2,
-    sound: null,
-  },
-  {
     name: 'Leckerli',
     effectHunger: -1,
     effectThirst: 1,
@@ -77,6 +55,6 @@ export const catFoods: Food[] = [
     effectPeeLvl: 0,
     effectIllness: 2,
     effectTrust: 5,
-    sound: null,
+    sound: trockenfutter2,
   }
 ];

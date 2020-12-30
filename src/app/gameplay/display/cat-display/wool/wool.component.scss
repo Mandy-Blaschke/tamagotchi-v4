@@ -28,6 +28,7 @@
       top: 80px;
       left: 85px;
       z-index: 3;
+      animation: head linear infinite 2300ms;
     }
 
     .body {
@@ -73,6 +74,15 @@
     animation: wool linear infinite 2s;
     transform: translateX(380px) rotate(180deg);
     z-index: 5;
+  }
+}
+
+@keyframes head {
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
   }
 }
 
