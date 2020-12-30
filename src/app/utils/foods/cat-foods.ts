@@ -1,4 +1,5 @@
 import {Food} from '../interfaces';
+import {essenKatze, trockenfutter, wasserKatze} from '../../gameplay/display/sounds';
 
 export const catFoods: Food[] = [
   {
@@ -10,7 +11,7 @@ export const catFoods: Food[] = [
     effectPeeLvl: 15,
     effectIllness: 0,
     effectTrust: 5,
-    sound: null,
+    sound: wasserKatze,
   },
   {
     name: 'Fisch',
@@ -21,7 +22,7 @@ export const catFoods: Food[] = [
     effectPeeLvl: 0,
     effectIllness: 0,
     effectTrust: 0,
-    sound: null,
+    sound: essenKatze,
   },
   {
     name: 'Nassfutter',
@@ -32,7 +33,7 @@ export const catFoods: Food[] = [
     effectPeeLvl: 3,
     effectIllness: 2,
     effectTrust: 3,
-    sound: null,
+    sound: essenKatze,
   },
   {
     name: 'Trockenfutter',
@@ -43,7 +44,7 @@ export const catFoods: Food[] = [
     effectPeeLvl: 0,
     effectIllness: 3,
     effectTrust: 2,
-    sound: null,
+    sound: trockenfutter,
   },
   {
     name: 'Obst',

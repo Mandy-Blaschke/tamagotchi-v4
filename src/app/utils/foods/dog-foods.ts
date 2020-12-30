@@ -1,4 +1,4 @@
-import {essenHund, trockenfutterHund} from '../../gameplay/display/sounds';
+import {essenHund, trockenfutter} from '../../gameplay/display/sounds';
 import {Food} from '../interfaces';
 
 export const dogFoods: Food[] = [
@@ -33,7 +33,7 @@ export const dogFoods: Food[] = [
     effectPeeLvl: 0,
     effectIllness: 3,
     effectTrust: 2,
-    sound: trockenfutterHund,
+    sound: trockenfutter,
   },
   {
     name: 'Obst',

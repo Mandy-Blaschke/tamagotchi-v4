@@ -10,7 +10,7 @@ import {
   essenHund,
   fegen, jammern2Katze, parkHund,
   schnarchenHund, schnarchenKatze,
-  schwanzwedelnHund, trinkenHund,
+  schwanzwedelnHund, trinkenHund, wasserKatze,
   wecker, wimmernHund,
 } from '../sounds';
 import {sleep} from '../../../utils/utils';
@@ -26,7 +26,6 @@ export class ButtonRowComponent implements OnInit {
 
   dogFoods: Food[] = dogFoods;
   dogGames: Game[] = dogGames;
-
   catFoods: Food[] = catFoods;
   catGames: Game[] = catGames;
 
@@ -144,15 +143,18 @@ export class ButtonRowComponent implements OnInit {
     this.statesService.backgroundImageSrc = 'url(/assets/bilder/wasser/wasser';
     await petsDrinking(this.simulation.pet);
 
-    if (this.simulation.pet.type === 'dog') {
-      for (let i = 0; i < 5; i++) {
-        this.statesService.imageNumber = i;
+    for (let i = 0; i < 5; i++) {
+      this.statesService.imageNumber = i;
+      if (this.simulation.pet.type === 'dog') {
         this.soundService.play(trinkenHund);
-        await sleep(1000);
-        trinkenHund.pause();
+      } else {
+        this.soundService.play(wasserKatze);
       }
+      await sleep(1000);
+      trinkenHund.pause();
+      wasserKatze.pause();
 
-      // TODO Katze trinken
+      // TODO Katze Sound trimmen
     }
 
     this.statesService.states.drinking = false;
@@ -169,37 +171,10 @@ export class ButtonRowComponent implements OnInit {
       await food.sound.play();
     }
 
-    if (food.name === 'Knochen') {
-      this.statesService.backgroundImageSrc = 'url(/assets/bilder/knochen/bone';
-      await this.feedingImages();
-    }
-
-    if (food.name === 'Nassfutter') {
-      this.statesService.backgroundImageSrc = 'url(/assets/bilder/nassfutter/hund-nassfutter';
-      await this.feedingImages();
-    }
-
-    if (food.name === 'Trockenfutter') {
-      this.statesService.backgroundImageSrc = 'url(/assets/bilder/trockenfutter/hund-trockenfutter';
-      for (let i = 0; i < 5; i++) {
-        this.statesService.imageNumber = i;
-        await sleep(1000);
-      }
-    }
-
-    if (food.name === 'Obst') {
-      this.statesService.backgroundImageSrc = 'url(/assets/bilder/apfel/apfel';
-      await this.feedingImages();
-    }
-
-    if (food.name === 'Gemüse') {
-      this.statesService.backgroundImageSrc = 'url(/assets/bilder/brokkoli/brokkoli';
-      await this.feedingImages();
-    }
-
-    if (food.name === 'Leckerli') {
-      this.statesService.backgroundImageSrc = 'url(/assets/bilder/leckerli/hund-lecker';
-      await this.feedingImages();
+    if (this.simulation.pet.type === 'dog') {
+      await this.getDogFoods(food);
+    } else {
+      await this.getCatFoods(food);
     }
 
     food.sound.pause();
@@ -272,6 +247,45 @@ export class ButtonRowComponent implements OnInit {
     }
   }
 
+  async getDogFoods(food: Food): Promise<void> {
+    if (food.name === 'Knochen') {
+      this.statesService.backgroundImageSrc = 'url(/assets/bilder/knochen/bone';
+      await this.feedingImages();
+    }
+
+    if (food.name === 'Nassfutter') {
+      this.statesService.backgroundImageSrc = 'url(/assets/bilder/nassfutter/hund-nassfutter';
+      await this.feedingImages();
+    }
+
+    if (food.name === 'Trockenfutter') {
+      this.statesService.backgroundImageSrc = 'url(/assets/bilder/trockenfutter/hund-trockenfutter';
+      for (let i = 0; i < 5; i++) {
+        this.statesService.imageNumber = i;
+        await sleep(1000);
+      }
+    }
+
+    if (food.name === 'Obst') {
+      this.statesService.backgroundImageSrc = 'url(/assets/bilder/apfel/apfel';
+      await this.feedingImages();
+    }
+
+    if (food.name === 'Gemüse') {
+      this.statesService.backgroundImageSrc = 'url(/assets/bilder/brokkoli/brokkoli';
+      await this.feedingImages();
+    }
+
+    if (food.name === 'Leckerli') {
+      this.statesService.backgroundImageSrc = 'url(/assets/bilder/leckerli/hund-lecker';
+      await this.feedingImages();
+    }
+  }
+
+  async getCatFoods(food: Food): Promise<void> {
+    // Todo
+  }
+
   async playing(game: Game): Promise<void> {
     this.statesService.states.showGames = false;
     this.statesService.playingGame = game.name;
@@ -338,5 +352,7 @@ export class ButtonRowComponent implements OnInit {
     this.statesService.imageNumber = 4;
     await sleep(1000);
   }
+
+  // Todo dog/ cat service?
 
 }
