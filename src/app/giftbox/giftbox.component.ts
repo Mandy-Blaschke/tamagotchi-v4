@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {StatesService} from '../utils/states.service';
 import {SimulationService} from '../utils/simulation.service';
 import {SoundService} from '../utils/sound.service';
-import {halloHund} from '../gameplay/display/sounds';
+import {halloHund, halloKatze} from '../gameplay/display/sounds';
 import {PetType} from '../utils/pet';
 
 @Component({
@@ -33,6 +33,7 @@ export class GiftboxComponent implements OnInit {
       this.sound.play(halloHund);
     } else {
       type = 'cat';
+      this.sound.play(halloKatze);
     }
 
     this.simulation.adoptPet(type);

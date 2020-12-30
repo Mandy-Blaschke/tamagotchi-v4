@@ -1,4 +1,5 @@
 import {Game} from '../interfaces';
+import {schnurrenKatze, spielen2Katze, spielen3Katze, spielenKatze} from '../../gameplay/display/sounds';
 
 export const catGames: Game[] = [
   {
@@ -10,7 +11,7 @@ export const catGames: Game[] = [
     symbol: '🐁',
     trustEffect: 2,
     illnessEffect: -3,
-    sound: null,
+    sound: spielenKatze,
   },
   {
     name: 'Angel',
@@ -21,7 +22,7 @@ export const catGames: Game[] = [
     symbol: '🎣',
     trustEffect: 1,
     illnessEffect: -2,
-    sound: null,
+    sound: spielen3Katze,
   },
   {
     name: 'Wollknäuel',
@@ -32,7 +33,7 @@ export const catGames: Game[] = [
     symbol: '🧶',
     trustEffect: 3,
     illnessEffect: -2,
-    sound: null,
+    sound: spielen2Katze,
   },
   {
     name: 'Streicheln',
@@ -43,6 +44,6 @@ export const catGames: Game[] = [
     symbol: '🤗',
     trustEffect: 5,
     illnessEffect: -1,
-    sound: null,
+    sound: schnurrenKatze,
   }
 ];

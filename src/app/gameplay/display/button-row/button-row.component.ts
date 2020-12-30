@@ -6,7 +6,13 @@ import {Food, Game} from '../../../utils/interfaces';
 import {dogFoods} from '../../../utils/foods/dog-foods';
 import {dogGames} from '../../../utils/games/dog-games';
 import {SoundService} from '../../../utils/sound.service';
-import {essenHund, fegen, parkHund, schnarchenHund, schwanzwedelnHund, trinkenHund, wecker, wimmernHund} from '../sounds';
+import {
+  essenHund,
+  fegen, jammern2Katze, parkHund,
+  schnarchenHund, schnarchenKatze,
+  schwanzwedelnHund, trinkenHund,
+  wecker, wimmernHund,
+} from '../sounds';
 import {sleep} from '../../../utils/utils';
 import {catFoods} from '../../../utils/foods/cat-foods';
 import {catGames} from '../../../utils/games/cat-games';
@@ -42,7 +48,11 @@ export class ButtonRowComponent implements OnInit {
     this.simulation.pet.sleeping = false;
     this.statesService.backgroundImageSrc = 'url(/assets/bilder/pille/pille';
     await goToDoctor(this.simulation.pet);
-    this.soundService.play(essenHund);
+
+    // Todo Essen Katze
+    if (this.simulation.pet.type === 'dog') {
+      this.soundService.play(essenHund);
+    }
 
     for (let i = 0; i < 5; i++) {
       this.statesService.imageNumber = i;
@@ -50,6 +60,7 @@ export class ButtonRowComponent implements OnInit {
     }
 
     essenHund.pause();
+
     this.statesService.states.showPills = false;
     this.statesService.states.userCanClick = true;
   }
@@ -85,7 +96,7 @@ export class ButtonRowComponent implements OnInit {
   async toggleFoods(): Promise<void> {
     this.statesService.states.showGames = false;
     this.statesService.states.showFoods = this.statesService.states.showFoods === false;
-    if (this.statesService.states.showFoods) {
+    if (this.statesService.states.showFoods && this.simulation.pet.type === 'dog') {
       await this.tailWaggling();
     }
   }
@@ -93,7 +104,8 @@ export class ButtonRowComponent implements OnInit {
   async toggleGames(): Promise<void> {
     this.statesService.states.showFoods = false;
     this.statesService.states.showGames = this.statesService.states.showGames === false;
-    if (this.statesService.states.showGames) {
+
+    if (this.statesService.states.showGames && this.simulation.pet.type === 'dog') {
       await this.tailWaggling();
     }
   }
@@ -104,8 +116,15 @@ export class ButtonRowComponent implements OnInit {
 
     if (!this.simulation.pet.sleeping) {
       this.simulation.pet.sleeping = true;
-      this.soundService.play(schnarchenHund);
-      await sleep(3000);
+
+      if (this.simulation.pet.type === 'dog') {
+        this.soundService.play(schnarchenHund);
+        await sleep(3000);
+      } else {
+        this.soundService.play(schnarchenKatze);
+        await sleep(3000);
+      }
+
     } else {
       this.statesService.ringing = true;
       this.soundService.play(wecker);
@@ -125,11 +144,15 @@ export class ButtonRowComponent implements OnInit {
     this.statesService.backgroundImageSrc = 'url(/assets/bilder/wasser/wasser';
     await petsDrinking(this.simulation.pet);
 
-    for (let i = 0; i < 5; i++) {
-      this.statesService.imageNumber = i;
-      this.soundService.play(trinkenHund);
-      await sleep(1000);
-      trinkenHund.pause();
+    if (this.simulation.pet.type === 'dog') {
+      for (let i = 0; i < 5; i++) {
+        this.statesService.imageNumber = i;
+        this.soundService.play(trinkenHund);
+        await sleep(1000);
+        trinkenHund.pause();
+      }
+
+      // TODO Katze trinken
     }
 
     this.statesService.states.drinking = false;
@@ -184,13 +207,7 @@ export class ButtonRowComponent implements OnInit {
     this.statesService.states.userCanClick = true;
   }
 
-  async playing(game: Game): Promise<void> {
-    this.statesService.states.showGames = false;
-    this.statesService.playingGame = game.name;
-    this.statesService.states.userCanClick = false;
-    this.statesService.states.playing = true;
-    await petsPlaying(this.simulation.pet, game);
-
+  async getDogGame(game: Game): Promise<void> {
     if (game.name === 'Herumtollen') {
       this.statesService.backgroundImageSrc = 'url(/assets/bilder/anderes/park.webp';
       await sleep(1000);
@@ -225,30 +242,64 @@ export class ButtonRowComponent implements OnInit {
         await sleep(2000);
       }
     }
+  }
 
-    // Todo Time, Sound
-    if (game.name === 'Wollknäuel') {
-      await sleep(5000);
+  async getCatGame(game: Game): Promise<void> {
+    if (this.simulation.pet.type === 'cat') {
+      if (game.name === 'Wollknäuel') {
+        this.soundService.play(game.sound);
+        await sleep(5000);
+        game.sound.pause();
+      }
+
+      if (game.name === 'Angel') {
+        this.soundService.play(game.sound);
+        await sleep(5000);
+        game.sound.pause();
+      }
+
+      if (game.name === 'Aufziehmaus') {
+        this.soundService.play(game.sound);
+        await sleep(5000);
+        game.sound.pause();
+      }
+
+      if (game.name === 'Streicheln') {
+        this.soundService.play(game.sound);
+        await sleep(5000);
+        game.sound.pause();
+      }
+    }
+  }
+
+  async playing(game: Game): Promise<void> {
+    this.statesService.states.showGames = false;
+    this.statesService.playingGame = game.name;
+    this.statesService.states.userCanClick = false;
+    this.statesService.states.playing = true;
+    await petsPlaying(this.simulation.pet, game);
+
+    if (this.simulation.pet.type === 'dog') {
+      await this.getDogGame(game);
+      this.statesService.states.playing = false;
+    } else {
+      await this.getCatGame(game);
+      this.statesService.states.playing = false;
     }
 
-    // Todo Time, Sound
-    if (game.name === 'Angel') {
-      await sleep(5000);
-    }
-
-    // Todo Time, Sound
-    if (game.name === 'Aufziehmaus') {
-      await sleep(50000000);
-    }
-
-    this.statesService.states.playing = false;
-    this.statesService.states.userCanClick = true;
 
     if (this.simulation.pet.hunger > 70 || this.simulation.pet.thirst > 70) {
-      this.soundService.play(wimmernHund);
-      await sleep(3000);
-      wimmernHund.pause();
+      if (this.simulation.pet.type === 'dog') {
+        this.soundService.play(wimmernHund);
+        await sleep(3000);
+        wimmernHund.pause();
+      } else {
+        this.soundService.play(jammern2Katze);
+        await sleep(3000);
+        jammern2Katze.pause();
+      }
     }
+    this.statesService.states.userCanClick = true;
   }
 
   async walking(): Promise<void> {
