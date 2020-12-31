@@ -5,23 +5,9 @@
   -- > +1/h
 
 
-## weitere Tiere
+## weitere Tiere?
 
-### Katze
-
-- Interaktionen:
-  - Katzenklo reinigen
-  
-
-- Futter:
-  - Nass- und Trockenfutter
-  - Leckerli
-  - Fisch
-  - Katzenmilch
-  - Wasser
-
-### Hase?
-
-### Giraffe?
-
-### Bär?
+- Hase
+- Giraffe
+- Bär
+- Pinguin
