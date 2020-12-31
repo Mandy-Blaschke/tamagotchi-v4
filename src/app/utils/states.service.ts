@@ -63,7 +63,6 @@ export class StatesService {
       && this.simulation.pet.fatigueLvl > 70
       && this.simulation.pet.sleeping === false) {
       return 'tired';
-
     }
   }
 }

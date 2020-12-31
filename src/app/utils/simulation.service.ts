@@ -7,10 +7,12 @@ import {createPet, Pet, PetType, simulateTimeInterval} from './pet';
 // @ts-ignore
 export class SimulationService {
 
-  interval = 1000;
+  speedInterval = 1000;
+  normalInterval = 3600000;
   pet: Pet;
 
-  constructor() {}
+  constructor() {
+  }
 
   adoptPet(type: PetType): void {
     this.pet = createPet(type);
@@ -19,7 +21,7 @@ export class SimulationService {
     setInterval(() => this.checkSimulation(), 1000);
   }
 
-  // Lebenszyklus / Gameloop
+  // Lebenszyklus
   private checkSimulation(): void {
     const now = new Date().getTime();
 
@@ -28,15 +30,15 @@ export class SimulationService {
       this.pet.lastSimulate += this.pet.timeInterval;
     }
     // Todo remove
-   // this.save();
+    // this.save();
   }
 
   toggleSpeed(): void {
     this.pet.lastSimulate = new Date().getTime();
-    if (this.pet.timeInterval === 1000) {
-      this.pet.timeInterval = 3600000;
+    if (this.pet.timeInterval === this.speedInterval) {
+      this.pet.timeInterval = this.normalInterval;
     } else {
-      this.pet.timeInterval = 1000;
+      this.pet.timeInterval = this.speedInterval;
     }
   }
 

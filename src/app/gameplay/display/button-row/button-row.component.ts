@@ -36,7 +36,6 @@ export class ButtonRowComponent implements OnInit {
   }
 
   // Cleaning functions
-
   async cleaningPee(): Promise<void> {
     this.hideFoodsAndGames();
     this.statesService.wipingPee = true;
@@ -82,8 +81,8 @@ export class ButtonRowComponent implements OnInit {
     this.statesService.states.userCanClick = true;
   }
 
-  // Eating functions
 
+  // Eating functions
   async water(): Promise<void> {
     this.hideFoodsAndGames();
     this.statesService.states.userCanClick = false;
@@ -219,8 +218,8 @@ export class ButtonRowComponent implements OnInit {
     await sleep(1000);
   }
 
-  // Games functions
 
+  // Games functions
   async toggleGames(): Promise<void> {
     this.statesService.states.showFoods = false;
     this.statesService.states.showGames = this.statesService.states.showGames === false;
