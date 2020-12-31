@@ -67,10 +67,7 @@
 
       .inactive {
         filter: grayscale(10);
-
-        &:last-child {
-          animation: blink 1500ms linear infinite;
-        }
+        animation: blink 1500ms linear infinite;
       }
     }
   }

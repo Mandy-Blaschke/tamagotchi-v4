@@ -42,7 +42,7 @@ export function createPet(type: PetType): Pet {
     lastSimulate: new Date().getTime(),
     type,
     age: 0,
-    actionPoints: 3,
+    actionPoints: 5,
   };
 }
 

@@ -13,13 +13,10 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // TODO remove comment
-    /*
     this.simulation.load();
     if (this.simulation.pet != null) {
       this.statesService.states.started = true;
       this.statesService.showBox = false;
-    }  */
+    }
   }
-
 }
