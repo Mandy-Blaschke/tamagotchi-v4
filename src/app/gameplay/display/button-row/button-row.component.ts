@@ -35,11 +35,6 @@ export class ButtonRowComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  hideFoodsAndGames(): void {
-    this.statesService.states.showFoods = false;
-    this.statesService.states.showGames = false;
-  }
-
   async doctor(): Promise<void> {
     this.hideFoodsAndGames();
     this.statesService.states.userCanClick = false;
@@ -84,16 +79,6 @@ export class ButtonRowComponent implements OnInit {
     this.statesService.wipingPoo = false;
   }
 
-  async wiping(): Promise<void> {
-    this.statesService.states.userCanClick = false;
-    this.statesService.states.wiping = true;
-    this.soundService.play(fegen);
-    await sleep(4000);
-    fegen.pause();
-    this.statesService.states.wiping = false;
-    this.statesService.states.userCanClick = true;
-  }
-
   async cleanToilet(): Promise<void> {
     this.hideFoodsAndGames();
     this.statesService.states.userCanClick = false;
@@ -111,59 +96,13 @@ export class ButtonRowComponent implements OnInit {
     this.statesService.states.userCanClick = true;
   }
 
-  async toggleFoods(): Promise<void> {
-    this.statesService.states.showGames = false;
-    this.statesService.states.showFoods = this.statesService.states.showFoods === false;
+  async wiping(): Promise<void> {
     this.statesService.states.userCanClick = false;
-    await this.exitedPet(this.simulation.pet);
-  }
-
-  async toggleGames(): Promise<void> {
-    this.statesService.states.showFoods = false;
-    this.statesService.states.showGames = this.statesService.states.showGames === false;
-    this.statesService.states.userCanClick = false;
-    await this.exitedPet(this.simulation.pet);
-  }
-
-  async exitedPet(pet: Pet): Promise<void> {
-    if (this.statesService.states.showGames || this.statesService.states.showFoods) {
-      if (pet.type === 'dog') {
-        this.soundService.play(schwanzwedelnHund);
-        await sleep(2500);
-        schwanzwedelnHund.pause();
-      } else {
-        this.soundService.play(jammern2Katze);
-        await sleep(3000);
-        jammern2Katze.pause();
-      }
-    }
-
-    this.statesService.states.userCanClick = true;
-  }
-
-  async toggleSleeping(): Promise<void> {
-    this.statesService.states.userCanClick = false;
-    this.hideFoodsAndGames();
-
-    if (!this.simulation.pet.sleeping) {
-      this.simulation.pet.sleeping = true;
-
-      if (this.simulation.pet.type === 'dog') {
-        this.soundService.play(schnarchenHund);
-        await sleep(3000);
-      } else {
-        this.soundService.play(schnarchenKatze);
-        await sleep(3000);
-      }
-
-    } else {
-      this.statesService.ringing = true;
-      this.soundService.play(wecker);
-      await sleep(2000);
-      this.statesService.ringing = false;
-      this.simulation.pet.sleeping = false;
-    }
-
+    this.statesService.states.wiping = true;
+    this.soundService.play(fegen);
+    await sleep(4000);
+    fegen.pause();
+    this.statesService.states.wiping = false;
     this.statesService.states.userCanClick = true;
   }
 
@@ -197,6 +136,13 @@ export class ButtonRowComponent implements OnInit {
     this.statesService.states.userCanClick = true;
   }
 
+  async toggleFoods(): Promise<void> {
+    this.statesService.states.showGames = false;
+    this.statesService.states.showFoods = this.statesService.states.showFoods === false;
+    this.statesService.states.userCanClick = false;
+    await this.exitedPet(this.simulation.pet);
+  }
+
   async feeding(food: Food): Promise<void> {
     this.statesService.states.userCanClick = false;
     this.statesService.states.eating = true;
@@ -216,71 +162,6 @@ export class ButtonRowComponent implements OnInit {
     food.sound.pause();
     this.statesService.states.eating = false;
     this.statesService.states.userCanClick = true;
-  }
-
-  async getDogGame(game: Game): Promise<void> {
-    if (game.name === 'Herumtollen') {
-      this.statesService.backgroundImageSrc = 'url(/assets/bilder/anderes/park.webp';
-      await sleep(1000);
-
-      const positions = [0, 1, 2, 3];
-      positions.sort(() => Math.random() > 0.5 ? -1 : 1);
-
-      for (let i = 0; i < 4; i++) {
-        this.soundService.play(game.sound);
-        this.statesService.frolicNumber = positions[i];
-        await sleep(1600);
-      }
-    }
-
-    if (game.name === 'Ballspielen') {
-      this.soundService.play(game.sound);
-      this.statesService.backgroundImageSrc = 'url(/assets/bilder/anderes/fussball.webp';
-      await sleep(5000);
-      game.sound.pause();
-    }
-
-    if (game.name === 'Apportieren') {
-      this.soundService.play(game.sound);
-      this.statesService.backgroundImageSrc = 'url(/assets/bilder/anderes/tennisball.webp';
-      await sleep(5000);
-      game.sound.pause();
-    }
-
-    if (game.name === 'Kuscheln') {
-      for (let i = 0; i < 3; i++) {
-        this.soundService.play(game.sound);
-        await sleep(2000);
-      }
-    }
-  }
-
-  async getCatGame(game: Game): Promise<void> {
-    if (this.simulation.pet.type === 'cat') {
-      if (game.name === 'Wollknäuel') {
-        this.soundService.play(game.sound);
-        await sleep(5000);
-        game.sound.pause();
-      }
-
-      if (game.name === 'Angel') {
-        this.soundService.play(game.sound);
-        await sleep(5000);
-        game.sound.pause();
-      }
-
-      if (game.name === 'Aufziehmaus') {
-        this.soundService.play(game.sound);
-        await sleep(5000);
-        game.sound.pause();
-      }
-
-      if (game.name === 'Streicheln') {
-        this.soundService.play(game.sound);
-        await sleep(5000);
-        game.sound.pause();
-      }
-    }
   }
 
   async getDogFoods(food: Food): Promise<void> {
@@ -349,6 +230,89 @@ export class ButtonRowComponent implements OnInit {
     }
   }
 
+  async feedingImages(): Promise<void> {
+    this.statesService.imageNumber = 0;
+    await sleep(500);
+    this.statesService.imageNumber = 1;
+    await sleep(1000);
+    this.statesService.imageNumber = 3;
+    await sleep(1000);
+    this.statesService.imageNumber = 4;
+    await sleep(1000);
+  }
+
+  async toggleGames(): Promise<void> {
+    this.statesService.states.showFoods = false;
+    this.statesService.states.showGames = this.statesService.states.showGames === false;
+    this.statesService.states.userCanClick = false;
+    await this.exitedPet(this.simulation.pet);
+  }
+
+  async getDogGame(game: Game): Promise<void> {
+    if (game.name === 'Herumtollen') {
+      this.statesService.backgroundImageSrc = 'url(/assets/bilder/anderes/park.webp';
+      await sleep(1000);
+
+      const positions = [0, 1, 2, 3];
+      positions.sort(() => Math.random() > 0.5 ? -1 : 1);
+
+      for (let i = 0; i < 4; i++) {
+        this.soundService.play(game.sound);
+        this.statesService.frolicNumber = positions[i];
+        await sleep(1600);
+      }
+    }
+
+    if (game.name === 'Ballspielen') {
+      this.soundService.play(game.sound);
+      this.statesService.backgroundImageSrc = 'url(/assets/bilder/anderes/fussball.webp';
+      await sleep(5000);
+      game.sound.pause();
+    }
+
+    if (game.name === 'Apportieren') {
+      this.soundService.play(game.sound);
+      this.statesService.backgroundImageSrc = 'url(/assets/bilder/anderes/tennisball.webp';
+      await sleep(5000);
+      game.sound.pause();
+    }
+
+    if (game.name === 'Kuscheln') {
+      for (let i = 0; i < 3; i++) {
+        this.soundService.play(game.sound);
+        await sleep(2000);
+      }
+    }
+  }
+
+  async getCatGame(game: Game): Promise<void> {
+    if (this.simulation.pet.type === 'cat') {
+      if (game.name === 'Wollknäuel') {
+        this.soundService.play(game.sound);
+        await sleep(5000);
+        game.sound.pause();
+      }
+
+      if (game.name === 'Angel') {
+        this.soundService.play(game.sound);
+        await sleep(5000);
+        game.sound.pause();
+      }
+
+      if (game.name === 'Aufziehmaus') {
+        this.soundService.play(game.sound);
+        await sleep(5000);
+        game.sound.pause();
+      }
+
+      if (game.name === 'Streicheln') {
+        this.soundService.play(game.sound);
+        await sleep(5000);
+        game.sound.pause();
+      }
+    }
+  }
+
   async playing(game: Game): Promise<void> {
     this.statesService.states.showGames = false;
     this.statesService.playingGame = game.name;
@@ -379,6 +343,22 @@ export class ButtonRowComponent implements OnInit {
     this.statesService.states.userCanClick = true;
   }
 
+  async exitedPet(pet: Pet): Promise<void> {
+    if (this.statesService.states.showGames || this.statesService.states.showFoods) {
+      if (pet.type === 'dog') {
+        this.soundService.play(schwanzwedelnHund);
+        await sleep(2500);
+        schwanzwedelnHund.pause();
+      } else {
+        this.soundService.play(jammern2Katze);
+        await sleep(3000);
+        jammern2Katze.pause();
+      }
+    }
+
+    this.statesService.states.userCanClick = true;
+  }
+
   async walking(): Promise<void> {
     this.hideFoodsAndGames();
     this.statesService.states.userCanClick = false;
@@ -397,20 +377,35 @@ export class ButtonRowComponent implements OnInit {
     this.statesService.states.userCanClick = true;
   }
 
-  async tailWaggling(): Promise<void> {
+  async toggleSleeping(): Promise<void> {
+    this.statesService.states.userCanClick = false;
+    this.hideFoodsAndGames();
+
+    if (!this.simulation.pet.sleeping) {
+      this.simulation.pet.sleeping = true;
+
+      if (this.simulation.pet.type === 'dog') {
+        this.soundService.play(schnarchenHund);
+        await sleep(3000);
+      } else {
+        this.soundService.play(schnarchenKatze);
+        await sleep(3000);
+      }
+
+    } else {
+      this.statesService.ringing = true;
+      this.soundService.play(wecker);
+      await sleep(2000);
+      this.statesService.ringing = false;
+      this.simulation.pet.sleeping = false;
+    }
+
+    this.statesService.states.userCanClick = true;
   }
 
-  async feedingImages(): Promise<void> {
-    this.statesService.imageNumber = 0;
-    await sleep(500);
-    this.statesService.imageNumber = 1;
-    await sleep(1000);
-    this.statesService.imageNumber = 3;
-    await sleep(1000);
-    this.statesService.imageNumber = 4;
-    await sleep(1000);
+  hideFoodsAndGames(): void {
+    this.statesService.states.showFoods = false;
+    this.statesService.states.showGames = false;
   }
-
-  // Todo dog/ cat service?
 
 }
