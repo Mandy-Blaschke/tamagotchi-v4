@@ -11,3 +11,4 @@
 - Giraffe
 - Bär
 - Pinguin
+- Koala
