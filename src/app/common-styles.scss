@@ -1,4 +1,5 @@
 @use "src/app/utils/images/dog-images";
+@use "src/app/utils/images/cat-images";
 
 @mixin box-row {
   display: flex;
@@ -60,6 +61,39 @@
   bottom: 105px;
   right: 105px;
   z-index: 1;
+}
+
+@mixin cat {
+  position: relative;
+  top: 10px;
+}
+
+@mixin cat-head {
+  width: 210px;
+  height: 210px;
+  top: -24px;
+  left: 200px;
+  z-index: 5;
+  animation: normal-move infinite ease 9s;
+}
+
+@mixin cat-body {
+  top: 83px;
+  left: 88px;
+  width: 430px;
+  height: 250px;
+  z-index: 2;
+  background-image: cat-images.$cat-body;
+}
+
+@mixin cat-tail {
+  background-image: cat-images.$cat-tail-normal;
+  width: 150px;
+  height: 150px;
+  top: 45px;
+  left: 130px;
+  z-index: 1;
+  animation: tail-moving linear infinite 1800ms;
 }
 
 $white: whitesmoke;

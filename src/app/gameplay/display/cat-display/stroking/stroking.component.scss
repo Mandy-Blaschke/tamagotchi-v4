@@ -2,59 +2,48 @@
 @use "src/app/utils/images/cat-images";
 
 .cat {
-  position: relative;
-  top: 10px;
+  @include common-styles.cat;
 
 
   .head {
     @include common-styles.background;
-    width: 210px;
-    height: 210px;
-    top: -24px;
-    left: 200px;
-    z-index: 5;
-    animation: normal-move infinite ease 9s;
+    @include common-styles.cat-head;
 
     &.normal {
       background-image: cat-images.$cat-face-sleeping;
-      animation: normal-move infinite ease 9s;
-    }
-
-    &.hungry-thirsty {
-      background-image: cat-images.$cat-face-hungry-thirsty;
-    }
-
-    &.sad {
-      background-image: cat-images.$cat-face-sad;
-    }
-
-    &.tired {
-      background-image: cat-images.$cat-face-tired;
-    }
-
-    &.sleeping {
-      background-image: cat-images.$cat-face-sleeping;
+      animation: cat-head-stroking infinite ease 5s;
     }
   }
 
   .kitty-koerper {
     @include common-styles.background;
-    top: 83px;
-    left: 88px;
-    width: 430px;
-    height: 250px;
-    z-index: 2;
-    background-image: cat-images.$cat-body;
+    @include common-styles.cat-body;
   }
 
   .tail {
     @include common-styles.background;
-    background-image: cat-images.$cat-tail-normal;
-    width: 150px;
-    height: 150px;
-    top: 45px;
-    left: 130px;
-    z-index: 1;
-    animation: tail-moving linear infinite 1800ms;
+    @include common-styles.cat-tail;
+  }
+}
+
+
+@keyframes cat-head-stroking {
+  0% {
+    transform-origin: center;
+  }
+  25% {
+    transform-origin: center;
+    transform: rotate(3deg);
+  }
+  50% {
+    transform-origin: center;
+    transform: rotate(0deg);
+  }
+  75% {
+    transform-origin: center;
+    transform: rotate(-3deg);
+  }
+  100% {
+    transform-origin: center;
   }
 }

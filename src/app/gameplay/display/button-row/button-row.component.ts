@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {goForWalk, goToDoctor, petsDrinking, petsEating, petsPlaying, wipePee, wipePiles} from '../../../utils/pet';
+import {goForWalk, goToDoctor, Pet, petsDrinking, petsEating, petsPlaying, wipePee, wipePiles} from '../../../utils/pet';
 import {StatesService} from '../../../utils/states.service';
 import {SimulationService} from '../../../utils/simulation.service';
 import {Food, Game} from '../../../utils/interfaces';
@@ -60,6 +60,7 @@ export class ButtonRowComponent implements OnInit {
     }
 
     essenHund.pause();
+    essenKatze.pause();
 
     this.statesService.states.showPills = false;
     this.statesService.states.userCanClick = true;
@@ -113,18 +114,31 @@ export class ButtonRowComponent implements OnInit {
   async toggleFoods(): Promise<void> {
     this.statesService.states.showGames = false;
     this.statesService.states.showFoods = this.statesService.states.showFoods === false;
-    if (this.statesService.states.showFoods && this.simulation.pet.type === 'dog') {
-      await this.tailWaggling();
-    }
+    this.statesService.states.userCanClick = false;
+    await this.exitedPet(this.simulation.pet);
   }
 
   async toggleGames(): Promise<void> {
     this.statesService.states.showFoods = false;
     this.statesService.states.showGames = this.statesService.states.showGames === false;
+    this.statesService.states.userCanClick = false;
+    await this.exitedPet(this.simulation.pet);
+  }
 
-    if (this.statesService.states.showGames && this.simulation.pet.type === 'dog') {
-      await this.tailWaggling();
+  async exitedPet(pet: Pet): Promise<void> {
+    if (this.statesService.states.showGames || this.statesService.states.showFoods) {
+      if (pet.type === 'dog') {
+        this.soundService.play(schwanzwedelnHund);
+        await sleep(2500);
+        schwanzwedelnHund.pause();
+      } else {
+        this.soundService.play(jammern2Katze);
+        await sleep(3000);
+        jammern2Katze.pause();
+      }
     }
+
+    this.statesService.states.userCanClick = true;
   }
 
   async toggleSleeping(): Promise<void> {
@@ -384,11 +398,6 @@ export class ButtonRowComponent implements OnInit {
   }
 
   async tailWaggling(): Promise<void> {
-    this.statesService.states.userCanClick = false;
-    this.soundService.play(schwanzwedelnHund);
-    await sleep(2500);
-    schwanzwedelnHund.pause();
-    this.statesService.states.userCanClick = true;
   }
 
   async feedingImages(): Promise<void> {

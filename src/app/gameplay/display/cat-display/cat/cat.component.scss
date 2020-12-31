@@ -2,18 +2,12 @@
 @use "src/app/utils/images/cat-images";
 
 .cat {
-  position: relative;
-  top: 10px;
+  @include common-styles.cat;
 
 
   .head {
     @include common-styles.background;
-    width: 210px;
-    height: 210px;
-    top: -24px;
-    left: 200px;
-    z-index: 5;
-    animation: normal-move infinite ease 9s;
+    @include common-styles.cat-head;
 
     &.normal {
       background-image: cat-images.$cat-face-normal;
@@ -35,27 +29,20 @@
     &.sleeping {
       background-image: cat-images.$cat-face-sleeping;
     }
+
+    &.exited {
+      background-image: cat-images.$cat-face-exited;
+    }
   }
 
   .kitty-koerper {
     @include common-styles.background;
-    top: 83px;
-    left: 88px;
-    width: 430px;
-    height: 250px;
-    z-index: 2;
-    background-image: cat-images.$cat-body;
+    @include common-styles.cat-body;
   }
 
   .tail {
     @include common-styles.background;
-    background-image: cat-images.$cat-tail-normal;
-    width: 150px;
-    height: 150px;
-    top: 45px;
-    left: 130px;
-    z-index: 1;
-    animation: tail-moving linear infinite 1800ms;
+    @include common-styles.cat-tail;
 
     &.dropped {
       @include common-styles.background;
