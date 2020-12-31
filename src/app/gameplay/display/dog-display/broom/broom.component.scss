@@ -10,7 +10,8 @@
     top: 15px;
     left: 0;
     z-index: 5;
-    animation: wiping 3s ease-in-out;
+    animation: wiping 2.5s ease-in-out infinite;
+    animation-delay: 500ms;
   }
 
   .pee, .poo {

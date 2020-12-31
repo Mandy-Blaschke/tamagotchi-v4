@@ -1,0 +1,7 @@
+@use "src/app/common-styles";
+
+.toilet {
+  @include common-styles.background;
+  width: 600px;
+  height: 300px;
+}

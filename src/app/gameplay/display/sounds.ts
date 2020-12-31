@@ -14,7 +14,7 @@ export const trockenfutter = new Audio('assets/sounds/essen-trockenfutter.mp3');
 export const trockenfutter2 = new Audio('assets/sounds/trockenfutter2.mp3');
 export const wecker = new Audio('assets/sounds/wecker.mp3');
 export const fegen = new Audio('assets/sounds/fegen.mp3');
-export const fegen2 = new Audio('assets/sounds/fegen2.mp3');
+export const fegen2 = new Audio('assets/sounds/fegen3.mp3');
 
 export const halloKatze = new Audio('assets/sounds/halloKatze.mp3');
 export const jammernKatze = new Audio('assets/sounds/jammernKatze.mp3');

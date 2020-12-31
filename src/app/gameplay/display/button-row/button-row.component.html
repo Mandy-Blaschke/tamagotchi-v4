@@ -4,11 +4,11 @@
 
     <ng-container class="dog-cleaning" *ngIf="simulation.pet.type === 'dog'">
 
-      <app-button (click)="cleaningPee(simulation.pet)" *ngIf="simulation.pet.droppedPee > 0">
+      <app-button (click)="cleaningPee()" *ngIf="simulation.pet.droppedPee > 0">
         💧 <br> Pipi <br> aufwischen
       </app-button>
 
-      <app-button (click)="cleaningPoo(simulation.pet)" *ngIf="simulation.pet.droppedPoo > 0">
+      <app-button (click)="cleaningPoo()" *ngIf="simulation.pet.droppedPoo > 0">
         🧹 <br> Häufchen <br> wegputzen
       </app-button>
 
@@ -16,7 +16,7 @@
 
     <ng-container class="cat-cleaning" *ngIf="simulation.pet.type === 'cat'">
 
-      <app-button (click)="cleaningPee(simulation.pet); cleaningPoo(simulation.pet)"
+      <app-button (click)="cleanToilet()"
                   *ngIf="simulation.pet.droppedPoo >= 0 || simulation.pet.droppedPee >= 0"
       >
         🚽 <br> Katzenklo säubern

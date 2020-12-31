@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {goForWalk, goToDoctor, Pet, petsDrinking, petsEating, petsPlaying, wipePee, wipePiles} from '../../../utils/pet';
+import {goForWalk, goToDoctor, petsDrinking, petsEating, petsPlaying, wipePee, wipePiles} from '../../../utils/pet';
 import {StatesService} from '../../../utils/states.service';
 import {SimulationService} from '../../../utils/simulation.service';
 import {Food, Game} from '../../../utils/interfaces';
@@ -64,40 +64,47 @@ export class ButtonRowComponent implements OnInit {
     this.statesService.states.userCanClick = true;
   }
 
-  async cleaningPee(pet: Pet): Promise<void> {
+  async cleaningPee(): Promise<void> {
     this.hideFoodsAndGames();
     this.statesService.wipingPee = true;
     this.statesService.backgroundImageSrc = 'url(/assets/bilder/anderes/pipi.webp)';
-    await this.wiping(pet);
+    await this.wiping();
     wipePee(this.simulation.pet);
     this.statesService.wipingPee = false;
   }
 
-  async cleaningPoo(pet: Pet): Promise<void> {
+  async cleaningPoo(): Promise<void> {
     this.hideFoodsAndGames();
     this.statesService.wipingPoo = true;
     this.statesService.backgroundImageSrc = 'url(/assets/bilder/anderes/poo.webp)';
-    await this.wiping(pet);
+    await this.wiping();
     wipePiles(this.simulation.pet);
     this.statesService.wipingPoo = false;
   }
 
-  async wiping(pet: Pet): Promise<void> {
+  async wiping(): Promise<void> {
     this.statesService.states.userCanClick = false;
     this.statesService.states.wiping = true;
-    if (pet.type === 'dog') {
+    this.soundService.play(fegen);
+    await sleep(4000);
+    fegen.pause();
+    this.statesService.states.wiping = false;
+    this.statesService.states.userCanClick = true;
+  }
+
+  async cleanToilet(): Promise<void> {
+    this.statesService.states.userCanClick = false;
+    this.statesService.states.cleaningCatToilet = true;
+    this.statesService.backgroundImageSrc = 'url(/assets/bilder/katzenklo/katzenklo';
+    for (let i = 0; i < 8; i++) {
       this.soundService.play(fegen2);
-      await sleep(3000);
-      fegen2.pause();
-
-    } else {
-
-      // Todo Bilder, Zeit bearbeiten
-      this.soundService.play(fegen);
-      await sleep(3000);
+      this.statesService.imageNumber = i;
+      await sleep(1000);
       fegen2.pause();
     }
-    this.statesService.states.wiping = false;
+    this.simulation.pet.droppedPee = 0;
+    this.simulation.pet.droppedPoo = 0;
+    this.statesService.states.cleaningCatToilet = false;
     this.statesService.states.userCanClick = true;
   }
 
