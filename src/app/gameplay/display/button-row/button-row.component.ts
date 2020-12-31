@@ -93,6 +93,7 @@ export class ButtonRowComponent implements OnInit {
   }
 
   async cleanToilet(): Promise<void> {
+    this.hideFoodsAndGames();
     this.statesService.states.userCanClick = false;
     this.statesService.states.cleaningCatToilet = true;
     this.statesService.backgroundImageSrc = 'url(/assets/bilder/katzenklo/katzenklo';
@@ -102,8 +103,8 @@ export class ButtonRowComponent implements OnInit {
       await sleep(1000);
       fegen2.pause();
     }
-    this.simulation.pet.droppedPee = 0;
-    this.simulation.pet.droppedPoo = 0;
+    wipePiles(this.simulation.pet);
+    wipePee(this.simulation.pet);
     this.statesService.states.cleaningCatToilet = false;
     this.statesService.states.userCanClick = true;
   }

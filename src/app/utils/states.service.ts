@@ -61,7 +61,8 @@ export class StatesService {
       && this.simulation.pet.thirst < 70
       && this.simulation.pet.droppedPoo === 0
       && this.simulation.pet.droppedPee === 0
-      && this.simulation.pet.fatigueLvl > 70) {
+      && this.simulation.pet.fatigueLvl > 70
+      && this.simulation.pet.sleeping === false) {
       return 'tired';
 
     }

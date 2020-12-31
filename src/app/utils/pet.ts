@@ -35,8 +35,8 @@ export function createPet(type: PetType): Pet {
     sleeping: false,
     peeLvl: 0,
     pooLvl: 0,
-    droppedPee: 3,
-    droppedPoo: 3,
+    droppedPee: 0,
+    droppedPoo: 0,
     timeInterval: 3600000,
     lastSimulate: new Date().getTime(),
     type,
@@ -63,7 +63,7 @@ export function simulateTimeInterval(pet: Pet): void {
   pet.peeLvl += peeIncrease;
   pet.pooLvl += pooIncrease;
 
-  if (pet.fatigueLvl > 20) {
+  if (pet.fatigueLvl > 20 && pet.type === 'dog' || pet.fatigueLvl > 10 && pet.type === 'cat') {
     pet.sleeping = true;
   } else if (pet.fatigueLvl <= 0) {
     pet.sleeping = false;

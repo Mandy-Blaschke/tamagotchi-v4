@@ -17,7 +17,7 @@
     <ng-container class="cat-cleaning" *ngIf="simulation.pet.type === 'cat'">
 
       <app-button (click)="cleanToilet()"
-                  *ngIf="simulation.pet.droppedPoo >= 0 || simulation.pet.droppedPee >= 0"
+                  *ngIf="simulation.pet.droppedPoo > 0 || simulation.pet.droppedPee > 0"
       >
         🚽 <br> Katzenklo säubern
       </app-button>
