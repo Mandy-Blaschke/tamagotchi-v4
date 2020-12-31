@@ -52,4 +52,32 @@
     flex-wrap: wrap;
     justify-content: center;
   }
+
+  .action-points {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+
+    @media (max-width: 425px) {
+      flex-direction: column;
+    }
+
+    .points {
+      display: flex;
+
+      .inactive {
+        filter: grayscale(10);
+
+        &:last-child {
+          animation: blink 1500ms linear infinite;
+        }
+      }
+    }
+  }
+}
+
+@keyframes blink {
+  50% {
+    filter: hue-rotate(45deg);
+  }
 }

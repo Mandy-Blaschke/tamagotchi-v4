@@ -85,6 +85,7 @@ export class ButtonRowComponent implements OnInit {
 
   // Eating functions
   async water(): Promise<void> {
+    this.simulation.pet.actionPoints--;
     this.hideFoodsAndGames();
     this.statesService.states.userCanClick = false;
     this.statesService.states.drinking = true;
@@ -127,6 +128,7 @@ export class ButtonRowComponent implements OnInit {
   }
 
   async feeding(food: Food): Promise<void> {
+    this.simulation.pet.actionPoints--;
     this.statesService.states.userCanClick = false;
     this.statesService.states.eating = true;
     await petsEating(this.simulation.pet, food);
@@ -238,6 +240,37 @@ export class ButtonRowComponent implements OnInit {
     this.statesService.progressType = undefined;
   }
 
+  async playing(game: Game): Promise<void> {
+    this.simulation.pet.actionPoints--;
+    this.statesService.states.showGames = false;
+    this.statesService.playingGame = game.name;
+    this.statesService.states.userCanClick = false;
+    this.statesService.states.playing = true;
+    await petsPlaying(this.simulation.pet, game);
+
+    if (this.simulation.pet.type === 'dog') {
+      await this.getDogGame(game);
+      this.statesService.states.playing = false;
+    } else {
+      await this.getCatGame(game);
+      this.statesService.states.playing = false;
+    }
+
+
+    if (this.simulation.pet.hunger > 70 || this.simulation.pet.thirst > 70) {
+      if (this.simulation.pet.type === 'dog') {
+        this.soundService.play(wimmernHund);
+        await sleep(3000);
+        wimmernHund.pause();
+      } else {
+        this.soundService.play(jammern2Katze);
+        await sleep(3000);
+        jammern2Katze.pause();
+      }
+    }
+    this.statesService.states.userCanClick = true;
+  }
+
   async getDogGame(game: Game): Promise<void> {
     if (game.name === 'Herumtollen') {
       this.statesService.backgroundImageSrc = 'url(/assets/bilder/anderes/park.webp';
@@ -303,33 +336,22 @@ export class ButtonRowComponent implements OnInit {
     }
   }
 
-  async playing(game: Game): Promise<void> {
-    this.statesService.states.showGames = false;
-    this.statesService.playingGame = game.name;
+  async walking(): Promise<void> {
+    this.simulation.pet.actionPoints--;
+    this.hideFoodsAndGames();
     this.statesService.states.userCanClick = false;
-    this.statesService.states.playing = true;
-    await petsPlaying(this.simulation.pet, game);
+    this.statesService.states.walking = true;
+    this.simulation.pet.sleeping = false;
+    this.statesService.backgroundImageSrc = 'url(/assets/bilder/gassi/pfote';
+    goForWalk(this.simulation.pet);
+    this.soundService.play(parkHund);
 
-    if (this.simulation.pet.type === 'dog') {
-      await this.getDogGame(game);
-      this.statesService.states.playing = false;
-    } else {
-      await this.getCatGame(game);
-      this.statesService.states.playing = false;
+    for (let i = 0; i < 5; i++) {
+      this.statesService.imageNumber = i;
+      await sleep(1000);
+
     }
-
-
-    if (this.simulation.pet.hunger > 70 || this.simulation.pet.thirst > 70) {
-      if (this.simulation.pet.type === 'dog') {
-        this.soundService.play(wimmernHund);
-        await sleep(3000);
-        wimmernHund.pause();
-      } else {
-        this.soundService.play(jammern2Katze);
-        await sleep(3000);
-        jammern2Katze.pause();
-      }
-    }
+    this.statesService.states.walking = false;
     this.statesService.states.userCanClick = true;
   }
 
@@ -373,24 +395,6 @@ export class ButtonRowComponent implements OnInit {
         jammern2Katze.pause();
       }
     }
-  }
-
-  async walking(): Promise<void> {
-    this.hideFoodsAndGames();
-    this.statesService.states.userCanClick = false;
-    this.statesService.states.walking = true;
-    this.simulation.pet.sleeping = false;
-    this.statesService.backgroundImageSrc = 'url(/assets/bilder/gassi/pfote';
-    goForWalk(this.simulation.pet);
-    this.soundService.play(parkHund);
-
-    for (let i = 0; i < 5; i++) {
-      this.statesService.imageNumber = i;
-      await sleep(1000);
-
-    }
-    this.statesService.states.walking = false;
-    this.statesService.states.userCanClick = true;
   }
 
   async toggleSleeping(): Promise<void> {
