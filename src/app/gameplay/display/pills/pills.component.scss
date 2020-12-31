@@ -1,5 +1,5 @@
-@use "src/app/utils/images/other-images";
-@use "src/app/common-styles";
+@use "../../../utils/images/other-images";
+@use "../../../common-styles";
 
 .box {
 
@@ -10,3 +10,4 @@
     background-size: contain;
   }
 }
+

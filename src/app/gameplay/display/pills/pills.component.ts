@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {SimulationService} from '../../../../utils/simulation.service';
-import {StatesService} from '../../../../utils/states.service';
+import {SimulationService} from '../../../utils/simulation.service';
+import {StatesService} from '../../../utils/states.service';
 
 @Component({
   selector: 'app-pills',

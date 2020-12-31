@@ -20,7 +20,7 @@ import { BroomComponent } from './gameplay/display/dog-display/broom/broom.compo
 import { CuddlingComponent } from './gameplay/display/dog-display/cuddling/cuddling.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import { PillsComponent } from './gameplay/display/dog-display/pills/pills.component';
+import { PillsComponent } from './gameplay/display/pills/pills.component';
 import { ButtonRowComponent } from './gameplay/display/button-row/button-row.component';
 import { CatDisplayComponent } from './gameplay/display/cat-display/cat-display.component';
 import { CatComponent } from './gameplay/display/cat-display/cat/cat.component';
