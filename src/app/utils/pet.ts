@@ -44,7 +44,6 @@ export function createPet(type: PetType): Pet {
   };
 }
 
-
 export function simulateTimeInterval(pet: Pet): void {
   const hungerIncrease = pet.sleeping ? 6 : 2;
   const thirstIncrease = pet.sleeping ? 6 : 4;
@@ -175,8 +174,8 @@ export function wipePiles(pet: Pet): void {
 
 export function goToDoctor(pet: Pet): void {
   pet.illnessLvl = 0;
-  pet.trustLvl -= 60;
   pet.life = 120;
+  pet.trustLvl -= 60;
 }
 
 // noinspection DuplicatedCode

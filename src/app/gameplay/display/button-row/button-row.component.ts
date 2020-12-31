@@ -35,31 +35,7 @@ export class ButtonRowComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  async doctor(): Promise<void> {
-    this.hideFoodsAndGames();
-    this.statesService.states.userCanClick = false;
-    this.statesService.states.showPills = true;
-    this.simulation.pet.sleeping = false;
-    this.statesService.backgroundImageSrc = 'url(/assets/bilder/pille/pille';
-    await goToDoctor(this.simulation.pet);
-
-    if (this.simulation.pet.type === 'dog') {
-      this.soundService.play(essenHund);
-    } else {
-      this.soundService.play(essenKatze);
-    }
-
-    for (let i = 0; i < 5; i++) {
-      this.statesService.imageNumber = i;
-      await sleep(1000);
-    }
-
-    essenHund.pause();
-    essenKatze.pause();
-
-    this.statesService.states.showPills = false;
-    this.statesService.states.userCanClick = true;
-  }
+  // Cleaning functions
 
   async cleaningPee(): Promise<void> {
     this.hideFoodsAndGames();
@@ -105,6 +81,8 @@ export class ButtonRowComponent implements OnInit {
     this.statesService.states.wiping = false;
     this.statesService.states.userCanClick = true;
   }
+
+  // Eating functions
 
   async water(): Promise<void> {
     this.hideFoodsAndGames();
@@ -241,6 +219,8 @@ export class ButtonRowComponent implements OnInit {
     await sleep(1000);
   }
 
+  // Games functions
+
   async toggleGames(): Promise<void> {
     this.statesService.states.showFoods = false;
     this.statesService.states.showGames = this.statesService.states.showGames === false;
@@ -340,6 +320,34 @@ export class ButtonRowComponent implements OnInit {
         jammern2Katze.pause();
       }
     }
+    this.statesService.states.userCanClick = true;
+  }
+
+
+  // Other
+  async doctor(): Promise<void> {
+    this.hideFoodsAndGames();
+    this.statesService.states.userCanClick = false;
+    this.statesService.states.showPills = true;
+    this.simulation.pet.sleeping = false;
+    this.statesService.backgroundImageSrc = 'url(/assets/bilder/pille/pille';
+    await goToDoctor(this.simulation.pet);
+
+    if (this.simulation.pet.type === 'dog') {
+      this.soundService.play(essenHund);
+    } else {
+      this.soundService.play(essenKatze);
+    }
+
+    for (let i = 0; i < 5; i++) {
+      this.statesService.imageNumber = i;
+      await sleep(1000);
+    }
+
+    essenHund.pause();
+    essenKatze.pause();
+
+    this.statesService.states.showPills = false;
     this.statesService.states.userCanClick = true;
   }
 
