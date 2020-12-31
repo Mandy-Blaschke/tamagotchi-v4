@@ -1,8 +1,8 @@
 <div class="box">
 
-  <div class="row cleaning">
+  <div class="row">
 
-    <ng-container class="dog-cleaning" *ngIf="simulation.pet.type === 'dog'">
+    <ng-container *ngIf="simulation.pet.type === 'dog'">
 
       <app-button (click)="cleaningPee()" *ngIf="simulation.pet.droppedPee > 0">
         💧 <br> Pipi <br> aufwischen
@@ -14,7 +14,7 @@
 
     </ng-container>
 
-    <ng-container class="cat-cleaning" *ngIf="simulation.pet.type === 'cat'">
+    <ng-container *ngIf="simulation.pet.type === 'cat'">
 
       <app-button (click)="cleanToilet()"
                   *ngIf="simulation.pet.droppedPoo > 0 || simulation.pet.droppedPee > 0"
@@ -39,7 +39,7 @@
         💧 <br> Wasser
       </app-button>
 
-      <ng-container class="dog-foods" *ngIf="simulation.pet.type === 'dog'">
+      <ng-container *ngIf="simulation.pet.type === 'dog'">
         <div *ngFor="let item of dogFoods">
 
           <app-button (click)="feeding(item)">
@@ -51,7 +51,7 @@
         </div>
       </ng-container>
 
-      <ng-container  class="cat-foods" *ngIf="simulation.pet.type === 'cat'">
+      <ng-container *ngIf="simulation.pet.type === 'cat'">
         <div *ngFor="let item of catFoods">
 
           <app-button (click)="feeding(item)">
@@ -65,14 +65,14 @@
 
     </div>
 
-    <ng-container class="not-sleeping" *ngIf="!simulation.pet.sleeping">
+    <ng-container *ngIf="!simulation.pet.sleeping">
       <app-button (click)="toggleFoods()" [class.activated]="statesService.states.showFoods">
         🍴 <br> Füttern
       </app-button>
 
       <div class="playing row" *ngIf="statesService.states.showGames">
 
-        <ng-container class="dog-games" *ngIf="simulation.pet.type === 'dog'">
+        <ng-container *ngIf="simulation.pet.type === 'dog'">
           <div *ngFor="let item of dogGames">
 
             <app-button (click)="playing(item)"
@@ -98,7 +98,7 @@
           </app-button>
         </ng-container>
 
-        <ng-container class="cat-games" *ngIf="simulation.pet.type === 'cat'">
+        <ng-container *ngIf="simulation.pet.type === 'cat'">
           <div *ngFor="let item of catGames">
 
             <app-button (click)="playing(item)"
