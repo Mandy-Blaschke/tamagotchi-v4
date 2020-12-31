@@ -1,13 +1,29 @@
 @use "src/app/common-styles";
 
 .box {
-  @include common-styles.box-column;
+  @include common-styles.box-row;
   margin: 25px;
 
-  img {
-    animation: moving ease-in infinite 1.5s;
-    animation-delay: 1.5s;
-    margin: 15px;
+  .column {
+    @include common-styles.box-column;
+    margin: 25px;
+
+    img {
+      animation: moving ease-in infinite 1.5s;
+      margin: 15px;
+
+      &.second {
+        animation-delay: 0.5s;
+      }
+    }
+
+    .buttons {
+      display: flex;
+    }
+
+    .cat-box {
+      filter: hue-rotate(30deg);
+    }
   }
 }
 

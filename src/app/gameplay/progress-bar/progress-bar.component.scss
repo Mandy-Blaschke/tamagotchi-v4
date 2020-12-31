@@ -101,11 +101,11 @@
     z-index: 2;
     transition: width 300ms ease-in;
     background: linear-gradient(45deg, common-styles.$display-dark-green 55%, common-styles.$display-light-green);
-    animation: test 3s ease-out;
+    animation: beam 3s ease-out;
   }
 }
 
-@keyframes test {
+@keyframes beam {
   0% {
     width: 0;
   }

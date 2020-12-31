@@ -21,7 +21,7 @@ export class ProgressBarComponent implements OnInit {
     'Speichel wird produziert...',
     'Kühlschrank wird geleert...',
     'Lagerbestände werden geprüft...',
-    'Leckerreinmodul wird aktiviert...',
+    'Leckereienmodul wird aktiviert...',
     'Suche Essbares...',
     'Gaumen wird justiert...',
     'Mageninhalt wird komprimiert...',

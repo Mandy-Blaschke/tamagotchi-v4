@@ -1,8 +1,37 @@
 <div class="box">
-  <img src="assets/bilder/anderes/geschenk-box-gelb.webp" alt="hier soll das Geschenk hin">
 
-  <app-button (click)="openBox()" *ngIf="statesService.showBox && !statesService.states.started">
-    🎁 <br> Päckchen öffnen
-  </app-button>
+  <div class="column">
+    <img src="assets/bilder/anderes/geschenk-box-gelb.webp" alt="Geschenk">
+
+    <div class="buttons">
+
+      <app-button (click)="listen(1)">
+        👂 <br> Lauschen
+      </app-button>
+
+      <app-button (click)="openBox(1)" *ngIf="statesService.showBox && !statesService.states.started">
+        🎁 <br> Päckchen öffnen
+      </app-button>
+
+    </div>
+
+  </div>
+
+  <div class="column">
+    <img src="assets/bilder/anderes/geschenk-box-gelb.webp" alt="Geschenk" class="second cat-box">
+
+    <div class="buttons">
+
+      <app-button  (click)="listen(2)">
+        👂 <br> Lauschen
+      </app-button>
+
+      <app-button (click)="openBox(2)" *ngIf="statesService.showBox && !statesService.states.started">
+        <span class="cat-box">🎁</span> <br> Päckchen öffnen
+      </app-button>
+
+    </div>
+
+  </div>
 
 </div>
