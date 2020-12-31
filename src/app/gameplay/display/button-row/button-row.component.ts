@@ -7,7 +7,7 @@ import {dogFoods} from '../../../utils/foods/dog-foods';
 import {dogGames} from '../../../utils/games/dog-games';
 import {SoundService} from '../../../utils/sound.service';
 import {
-  essenHund,
+  essenHund, essenKatze,
   fegen, fegen2, jammern2Katze, parkHund,
   schnarchenHund, schnarchenKatze,
   schwanzwedelnHund, trinkenHund, wasserKatze,
@@ -48,9 +48,10 @@ export class ButtonRowComponent implements OnInit {
     this.statesService.backgroundImageSrc = 'url(/assets/bilder/pille/pille';
     await goToDoctor(this.simulation.pet);
 
-    // Todo Essen Katze
     if (this.simulation.pet.type === 'dog') {
       this.soundService.play(essenHund);
+    } else {
+      this.soundService.play(essenKatze);
     }
 
     for (let i = 0; i < 5; i++) {
@@ -304,7 +305,6 @@ export class ButtonRowComponent implements OnInit {
   }
 
   async getCatFoods(food: Food): Promise<void> {
-    // Todo Bilder bearbeiten
 
     if (food.name === 'Fisch') {
       this.statesService.backgroundImageSrc = 'url(/assets/bilder/fisch/fisch';

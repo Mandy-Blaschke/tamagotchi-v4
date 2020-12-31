@@ -32,6 +32,7 @@ import { CleaningComponent } from './gameplay/display/cat-display/cleaning/clean
 import { ClockComponent } from './gameplay/display/clock/clock.component';
 import { WaterComponent } from './gameplay/display/water/water.component';
 import {EatingComponent} from './gameplay/display/eating/eating.component';
+import { HeartsComponent } from './gameplay/display/hearts/hearts.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import {EatingComponent} from './gameplay/display/eating/eating.component';
     ClockComponent,
     WaterComponent,
     EatingComponent,
+    HeartsComponent,
   ],
   imports: [
     BrowserModule,

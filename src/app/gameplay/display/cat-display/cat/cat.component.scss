@@ -13,6 +13,7 @@
     top: -24px;
     left: 200px;
     z-index: 5;
+    animation: normal-move infinite ease 9s;
 
     &.normal {
       background-image: cat-images.$cat-face-normal;
@@ -71,6 +72,28 @@
 }
 
 @keyframes tail-moving {
+  0% {
+    transform-origin: center;
+  }
+  25% {
+    transform-origin: center;
+    transform: rotate(2.5deg);
+  }
+  50% {
+    transform-origin: center;
+    transform: rotate(0deg);
+  }
+  75% {
+    transform-origin: center;
+    transform: rotate(-2.5deg);
+  }
+  100% {
+    transform-origin: center;
+  }
+}
+
+
+@keyframes normal-move {
   0% {
     transform-origin: center;
   }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {StatesService} from '../../../../utils/states.service';
+import {SimulationService} from '../../../../utils/simulation.service';
 
 @Component({
   selector: 'app-stroking',
@@ -7,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StrokingComponent implements OnInit {
 
-  constructor() { }
+  constructor(public statesService: StatesService, public simulation: SimulationService) { }
 
   ngOnInit(): void {
   }

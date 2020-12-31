@@ -48,44 +48,23 @@
 
     .ear-left {
       @include common-styles.background;
-      top: 0;
-      left: -45px;
-      width: 80px;
-      height: 120px;
-      z-index: 6;
-      background-image: dog-images.$dog-ear-left;
+      @include common-styles.dog-ear-left;
     }
 
     .ear-right {
       @include common-styles.background;
-      top: 0;
-      right: -45px;
-      width: 80px;
-      height: 120px;
-      z-index: 6;
-      background-image: dog-images.$dog-ear-right;
+      @include common-styles.dog-ear-right;
     }
   }
 
   .buddy-koerper {
     @include common-styles.background;
-    top: 80px;
-    left: 170px;
-    width: 250px;
-    height: 250px;
-    z-index: 2;
-    background-image: dog-images.$dog-body;
+    @include common-styles.dog-body;
   }
 
   .tail {
     @include common-styles.background;
-    background-image: dog-images.$dog-tail-normal;
-    width: 140px;
-    height: 140px;
-    top: 84px;
-    bottom: 105px;
-    right: 105px;
-    z-index: 1;
+    @include common-styles.dog-tail;
     animation: moving-tail ease-out infinite 1800ms;
 
     &.waggle-exited {

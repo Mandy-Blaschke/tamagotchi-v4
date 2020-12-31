@@ -11,8 +11,7 @@ export class StatesService {
     started: false,
     showFoods: false,
     showGames: false,
-    // Todo true
-    sound: false,
+    sound: true,
     playing: false,
     eating: false,
     drinking: false,
