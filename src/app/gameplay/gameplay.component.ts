@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {SimulationService} from '../utils/simulation.service';
+import {StatesService} from '../utils/states.service';
 
 @Component({
   selector: 'app-gameplay',
@@ -8,7 +9,7 @@ import {SimulationService} from '../utils/simulation.service';
 })
 export class GameplayComponent implements OnInit {
 
-  constructor(public simulation: SimulationService) {
+  constructor(public simulation: SimulationService, public statesService: StatesService) {
   }
 
   ngOnInit(): void {

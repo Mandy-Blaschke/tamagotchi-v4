@@ -2,7 +2,7 @@
 
 .box {
   @include common-styles.box-column;
-  width: 637px;
+  max-width: 637px;
 
   .row {
     @include common-styles.row;

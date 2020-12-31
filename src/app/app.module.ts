@@ -33,6 +33,7 @@ import { ClockComponent } from './gameplay/display/clock/clock.component';
 import { WaterComponent } from './gameplay/display/water/water.component';
 import {EatingComponent} from './gameplay/display/eating/eating.component';
 import { HeartsComponent } from './gameplay/display/hearts/hearts.component';
+import { ProgressBarComponent } from './gameplay/progress-bar/progress-bar.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +67,7 @@ import { HeartsComponent } from './gameplay/display/hearts/hearts.component';
     WaterComponent,
     EatingComponent,
     HeartsComponent,
+    ProgressBarComponent,
   ],
   imports: [
     BrowserModule,

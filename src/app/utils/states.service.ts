@@ -34,6 +34,9 @@ export class StatesService {
   frolicNumber: number;
   ringing = false;
 
+  progress = false;
+  progressType: 'food' | 'game';
+
   constructor(private simulation: SimulationService) {
   }
 

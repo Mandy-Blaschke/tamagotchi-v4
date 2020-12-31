@@ -48,6 +48,7 @@ button {
 
 :host {
   &.activated {
+
     button {
       background-image: linear-gradient(common-styles.$yellow-green-light 55%, common-styles.$yellow-green-dark);
     }

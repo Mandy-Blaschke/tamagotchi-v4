@@ -1,4 +1,4 @@
-<div class="box">
+<div class="box" *ngIf="!statesService.progress">
 
   <div class="row">
 
@@ -14,6 +14,7 @@
 
     </ng-container>
 
+
     <ng-container *ngIf="simulation.pet.type === 'cat'">
 
       <app-button (click)="cleanToilet()"
@@ -24,50 +25,65 @@
 
     </ng-container>
 
+
     <app-button (click)="doctor()" *ngIf="simulation.pet.illnessLvl >= 70 && simulation.pet.trustLvl >= 60">
       👩‍⚕️ <br> Zum Arzt <br> gehen
     </app-button>
 
   </div>
 
-
   <div class="row">
 
-    <div class="feeding row" *ngIf="statesService.states.showFoods">
+    <ng-container *ngIf="!simulation.pet.sleeping">
 
-      <app-button (click)="water()">
-        💧 <br> Wasser
+      <app-button (click)="toggleFoods()"
+                  *ngIf="!statesService.states.showGames"
+                  [class.activated]="statesService.states.showFoods"
+      >
+        🍴 <br> Füttern
       </app-button>
 
-      <ng-container *ngIf="simulation.pet.type === 'dog'">
-        <div *ngFor="let item of dogFoods">
 
-          <app-button (click)="feeding(item)">
-            {{item.symbol}}
-            <br>
-            {{item.name}}
-          </app-button>
+      <div class="feeding row" *ngIf="statesService.states.showFoods">
 
-        </div>
-      </ng-container>
+        <app-button (click)="water()">
+          💧 <br> Wasser
+        </app-button>
 
-      <ng-container *ngIf="simulation.pet.type === 'cat'">
-        <div *ngFor="let item of catFoods">
+        <ng-container *ngIf="simulation.pet.type === 'dog'">
+          <div *ngFor="let item of dogFoods">
 
-          <app-button (click)="feeding(item)">
-            {{item.symbol}}
-            <br>
-            {{item.name}}
-          </app-button>
+            <app-button (click)="feeding(item)">
+              {{item.symbol}}
+              <br>
+              {{item.name}}
+            </app-button>
 
-        </div>
-      </ng-container>
+          </div>
+        </ng-container>
 
-    </div>
+        <ng-container *ngIf="simulation.pet.type === 'cat'">
+          <div *ngFor="let item of catFoods">
 
-    <ng-container *ngIf="!simulation.pet.sleeping">
-      <app-button (click)="toggleFoods()" [class.activated]="statesService.states.showFoods">
-        🍴 <br> Füttern
+            <app-button (click)="feeding(item)">
+              {{item.symbol}}
+              <br>
+              {{item.name}}
+            </app-button>
+
+          </div>
+        </ng-container>
+
+      </div>
+
+
+      <app-button (click)="toggleGames()"
+                  *ngIf="!statesService.states.showFoods"
+                  [class.activated]="statesService.states.showGames"
+      >
+        <span *ngIf="simulation.pet.type === 'dog'">🐶</span>
+        <span *ngIf="simulation.pet.type === 'cat'">🐱</span>
+        <br> Beschäftigen
       </app-button>
 
       <div class="playing row" *ngIf="statesService.states.showGames">
@@ -84,7 +100,8 @@
             </app-button>
 
             <app-button (click)="playing(item)"
-                        *ngIf="item.name === 'Kuscheln' && simulation.pet.trustLvl >= 40"
+                        *ngIf="item.name === 'Kuscheln'
+                        && simulation.pet.trustLvl >= 40"
             >
               {{item.symbol}}
               <br>
@@ -110,7 +127,8 @@
             </app-button>
 
             <app-button (click)="playing(item)"
-                        *ngIf="item.name === 'Streicheln' && simulation.pet.trustLvl >= 40"
+                        *ngIf="item.name === 'Streicheln'
+                        && simulation.pet.trustLvl >= 40"
             >
               {{item.symbol}}
               <br>
@@ -123,16 +141,11 @@
 
       </div>
 
-
-      <app-button (click)="toggleGames()" [class.activated]="statesService.states.showGames">
-        <span *ngIf="simulation.pet.type === 'dog'">🐶</span>
-        <span *ngIf="simulation.pet.type === 'cat'">🐱</span>
-        <br> Beschäftigen
-      </app-button>
-
     </ng-container>
 
-    <app-button (click)="toggleSleeping()">
+    <app-button (click)="toggleSleeping()"
+                *ngIf="!statesService.states.showFoods && !statesService.states.showGames"
+    >
 
       <span *ngIf="!simulation.pet.sleeping">
       💤 <br> Schlafen legen

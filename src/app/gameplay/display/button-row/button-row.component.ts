@@ -17,6 +17,7 @@ import {sleep} from '../../../utils/utils';
 import {catFoods} from '../../../utils/foods/cat-foods';
 import {catGames} from '../../../utils/games/cat-games';
 
+// noinspection DuplicatedCode
 @Component({
   selector: 'app-button-row',
   templateUrl: './button-row.component.html',
@@ -115,9 +116,14 @@ export class ButtonRowComponent implements OnInit {
 
   async toggleFoods(): Promise<void> {
     this.statesService.states.showGames = false;
+    this.statesService.progress = true;
+    this.statesService.progressType = 'food';
     this.statesService.states.showFoods = this.statesService.states.showFoods === false;
     this.statesService.states.userCanClick = false;
     await this.exitedPet(this.simulation.pet);
+    this.statesService.states.userCanClick = true;
+    this.statesService.progress = false;
+    this.statesService.progressType = undefined;
   }
 
   async feeding(food: Food): Promise<void> {
@@ -222,9 +228,14 @@ export class ButtonRowComponent implements OnInit {
   // Games functions
   async toggleGames(): Promise<void> {
     this.statesService.states.showFoods = false;
+    this.statesService.progress = true;
+    this.statesService.progressType = 'game';
     this.statesService.states.showGames = this.statesService.states.showGames === false;
     this.statesService.states.userCanClick = false;
     await this.exitedPet(this.simulation.pet);
+    this.statesService.states.userCanClick = true;
+    this.statesService.progress = false;
+    this.statesService.progressType = undefined;
   }
 
   async getDogGame(game: Game): Promise<void> {
@@ -354,7 +365,7 @@ export class ButtonRowComponent implements OnInit {
     if (this.statesService.states.showGames || this.statesService.states.showFoods) {
       if (pet.type === 'dog') {
         this.soundService.play(schwanzwedelnHund);
-        await sleep(2500);
+        await sleep(3000);
         schwanzwedelnHund.pause();
       } else {
         this.soundService.play(jammern2Katze);
@@ -362,8 +373,6 @@ export class ButtonRowComponent implements OnInit {
         jammern2Katze.pause();
       }
     }
-
-    this.statesService.states.userCanClick = true;
   }
 
   async walking(): Promise<void> {
