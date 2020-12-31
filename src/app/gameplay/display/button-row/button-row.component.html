@@ -40,6 +40,12 @@
                   *ngIf="!statesService.states.showGames"
                   [class.activated]="statesService.states.showFoods"
       >
+        <span *ngIf="statesService.states.showFoods"
+              class="toggle"
+        >
+          ❌
+        </span>
+
         🍴 <br> Füttern
       </app-button>
 
@@ -81,6 +87,12 @@
                   *ngIf="!statesService.states.showFoods"
                   [class.activated]="statesService.states.showGames"
       >
+        <span *ngIf="statesService.states.showGames"
+              class="toggle"
+        >
+          ❌
+        </span>
+
         <span *ngIf="simulation.pet.type === 'dog'">🐶</span>
         <span *ngIf="simulation.pet.type === 'cat'">🐱</span>
         <br> Beschäftigen
