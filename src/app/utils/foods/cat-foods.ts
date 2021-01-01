@@ -15,13 +15,13 @@ export const catFoods: Food[] = [
   },
   {
     name: 'Fisch',
-    effectHunger: -2,
-    effectThirst: 2,
+    effectHunger: -5,
+    effectThirst: 5,
     symbol: '🐟',
     effectPooLvl: 1,
     effectPeeLvl: 0,
-    effectIllness: 0,
-    effectTrust: 0,
+    effectIllness: 1,
+    effectTrust: 2,
     sound: essenKatze,
   },
   {
