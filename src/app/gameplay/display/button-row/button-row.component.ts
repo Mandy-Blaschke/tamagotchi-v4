@@ -330,7 +330,7 @@ export class ButtonRowComponent implements OnInit {
 
       if (game.name === 'Streicheln') {
         this.soundService.play(game.sound);
-        await sleep(5000);
+        await sleep(50000000);
         game.sound.pause();
       }
     }
