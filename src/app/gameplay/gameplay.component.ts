@@ -27,4 +27,5 @@ export class GameplayComponent implements OnInit {
     }
     return result;
   }
+
 }

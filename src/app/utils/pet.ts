@@ -48,7 +48,9 @@ export function createPet(type: PetType): Pet {
 
 export function simulateTimeInterval(pet: Pet): void {
 
-  pet.actionPoints++;
+  if (pet.actionPoints < 5) {
+    pet.actionPoints++;
+  }
 
   const hungerIncrease = pet.sleeping ? 6 : 2;
   const thirstIncrease = pet.sleeping ? 6 : 4;
