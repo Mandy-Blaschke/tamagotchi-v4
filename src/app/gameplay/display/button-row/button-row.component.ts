@@ -39,24 +39,29 @@ export class ButtonRowComponent implements OnInit {
 
   // Cleaning functions
   async cleaningPee(): Promise<void> {
+    this.statesService.states.activeAnimation = true;
     this.hideFoodsAndGames();
     this.statesService.wipingPee = true;
     this.statesService.backgroundImageSrc = 'url(/assets/bilder/anderes/pipi.webp)';
     await this.wiping();
     wipePee(this.simulation.pet);
     this.statesService.wipingPee = false;
+    this.statesService.states.activeAnimation = false;
   }
 
   async cleaningPoo(): Promise<void> {
+    this.statesService.states.activeAnimation = true;
     this.hideFoodsAndGames();
     this.statesService.wipingPoo = true;
     this.statesService.backgroundImageSrc = 'url(/assets/bilder/anderes/poo.webp)';
     await this.wiping();
     wipePiles(this.simulation.pet);
     this.statesService.wipingPoo = false;
+    this.statesService.states.activeAnimation = false;
   }
 
   async cleanToilet(): Promise<void> {
+    this.statesService.states.activeAnimation = true;
     this.hideFoodsAndGames();
     this.statesService.states.userCanClick = false;
     this.statesService.states.cleaningCatToilet = true;
@@ -71,6 +76,7 @@ export class ButtonRowComponent implements OnInit {
     wipePee(this.simulation.pet);
     this.statesService.states.cleaningCatToilet = false;
     this.statesService.states.userCanClick = true;
+    this.statesService.states.activeAnimation = false;
   }
 
   async wiping(): Promise<void> {
@@ -84,6 +90,7 @@ export class ButtonRowComponent implements OnInit {
   }
 
   async petCleaning(): Promise<void> {
+    this.statesService.states.activeAnimation = true;
     this.simulation.pet.actionPoints--;
     this.statesService.states.userCanClick = false;
     this.statesService.states.washing = true;
@@ -99,11 +106,13 @@ export class ButtonRowComponent implements OnInit {
 
     this.statesService.states.washing = false;
     this.statesService.states.userCanClick = true;
+    this.statesService.states.activeAnimation = false;
   }
 
 
   // Eating functions
   async water(): Promise<void> {
+    this.statesService.states.activeAnimation = true;
     this.simulation.pet.actionPoints--;
     this.hideFoodsAndGames();
     this.statesService.states.userCanClick = false;
@@ -132,6 +141,7 @@ export class ButtonRowComponent implements OnInit {
 
     this.statesService.states.drinking = false;
     this.statesService.states.userCanClick = true;
+    this.statesService.states.activeAnimation = false;
   }
 
   async toggleFoods(): Promise<void> {
@@ -147,6 +157,7 @@ export class ButtonRowComponent implements OnInit {
   }
 
   async feeding(food: Food): Promise<void> {
+    this.statesService.states.activeAnimation = true;
     this.simulation.pet.actionPoints--;
     this.statesService.states.userCanClick = false;
     this.statesService.states.eating = true;
@@ -166,6 +177,7 @@ export class ButtonRowComponent implements OnInit {
     food.sound.pause();
     this.statesService.states.eating = false;
     this.statesService.states.userCanClick = true;
+    this.statesService.states.activeAnimation = false;
   }
 
   async getDogFoods(food: Food): Promise<void> {
@@ -260,6 +272,7 @@ export class ButtonRowComponent implements OnInit {
   }
 
   async playing(game: Game): Promise<void> {
+    this.statesService.states.activeAnimation = true;
     this.simulation.pet.actionPoints--;
     this.statesService.states.showGames = false;
     this.statesService.playingGame = game.name;
@@ -288,6 +301,7 @@ export class ButtonRowComponent implements OnInit {
       }
     }
     this.statesService.states.userCanClick = true;
+    this.statesService.states.activeAnimation = false;
   }
 
   async getDogGame(game: Game): Promise<void> {
@@ -356,6 +370,7 @@ export class ButtonRowComponent implements OnInit {
   }
 
   async walking(): Promise<void> {
+    this.statesService.states.activeAnimation = true;
     this.simulation.pet.actionPoints--;
     this.hideFoodsAndGames();
     this.statesService.states.userCanClick = false;
@@ -372,11 +387,13 @@ export class ButtonRowComponent implements OnInit {
     }
     this.statesService.states.walking = false;
     this.statesService.states.userCanClick = true;
+    this.statesService.states.activeAnimation = false;
   }
 
 
   // Other
   async doctor(): Promise<void> {
+    this.statesService.states.activeAnimation = true;
     this.hideFoodsAndGames();
     this.statesService.states.userCanClick = false;
     this.statesService.states.showPills = true;
@@ -400,9 +417,11 @@ export class ButtonRowComponent implements OnInit {
 
     this.statesService.states.showPills = false;
     this.statesService.states.userCanClick = true;
+    this.statesService.states.activeAnimation = false;
   }
 
   async exitedPet(pet: Pet): Promise<void> {
+    this.statesService.states.activeAnimation = true;
     if (this.statesService.states.showGames || this.statesService.states.showFoods) {
       if (pet.type === 'dog') {
         this.soundService.play(schwanzwedelnHund);
@@ -414,6 +433,8 @@ export class ButtonRowComponent implements OnInit {
         jammern2Katze.pause();
       }
     }
+
+    this.statesService.states.activeAnimation = false;
   }
 
   async toggleSleeping(): Promise<void> {
@@ -424,19 +445,23 @@ export class ButtonRowComponent implements OnInit {
       this.simulation.pet.sleeping = true;
 
       if (this.simulation.pet.type === 'dog') {
+        this.statesService.states.activeAnimation = true;
         this.soundService.play(schnarchenHund);
         await sleep(3000);
       } else {
         this.soundService.play(schnarchenKatze);
         await sleep(3000);
       }
+      this.statesService.states.activeAnimation = false;
 
     } else {
+      this.statesService.states.activeAnimation = true;
       this.statesService.ringing = true;
       this.soundService.play(wecker);
       await sleep(2000);
       this.statesService.ringing = false;
       this.simulation.pet.sleeping = false;
+      this.statesService.states.activeAnimation = false;
     }
 
     this.statesService.states.userCanClick = true;

@@ -26,6 +26,6 @@
 
   <app-progress-bar *ngIf="statesService.progress"></app-progress-bar>
 
-  <app-button-row *ngIf="simulation.pet != null" class="row"></app-button-row>
+  <app-button-row *ngIf="simulation.pet != null && !statesService.states.activeAnimation" class="row"></app-button-row>
 
 </div>

@@ -8,6 +8,7 @@ import {SimulationService} from './simulation.service';
 export class StatesService {
 
   states: States = {
+    activeAnimation: false,
     started: false,
     showFoods: false,
     showGames: false,
@@ -72,6 +73,7 @@ export class StatesService {
 }
 
 export interface States {
+  activeAnimation: boolean;
   started: boolean;
   showFoods: boolean;
   showGames: boolean;

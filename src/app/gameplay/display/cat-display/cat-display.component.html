@@ -6,12 +6,22 @@
              && !statesService.states.eating
              && !statesService.states.playing
              && !statesService.states.cleaningCatToilet
+             && !statesService.states.walking
              && !statesService.states.showPills"
 >
 </app-cat>
 
 <app-water
-  *ngIf="statesService.states.drinking"
+  *ngIf="statesService.states.drinking
+             && simulation.pet.life > 0
+             && !statesService.showBox
+             && !statesService.states.washing
+             && !statesService.states.drinking
+             && !statesService.states.eating
+             && !statesService.states.playing
+             && !statesService.states.cleaningCatToilet
+             && !statesService.states.walking
+             && !statesService.states.showPills"
 >
 </app-water>
 
@@ -23,6 +33,7 @@
              && !statesService.states.drinking
              && !statesService.states.playing
              && !statesService.states.cleaningCatToilet
+             && !statesService.states.walking
              && !statesService.states.showPills"
 >
 </app-eating>
@@ -91,7 +102,8 @@
              && !statesService.states.eating
              && !statesService.states.drinking
              && !statesService.states.showPills
-             && !statesService.states.playing"
+             && !statesService.states.playing
+             && !statesService.states.walking"
 >
 </app-cleaning>
 
@@ -110,8 +122,8 @@
 
 <app-washing
   *ngIf="statesService.states.washing
-             && !statesService.states.showPills
              && simulation.pet.life > 0
+             && !statesService.states.showPills
              && !statesService.showBox
              && !statesService.states.drinking
              && !statesService.states.eating
