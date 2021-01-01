@@ -3,7 +3,7 @@
 - Erstellung im Rahmen meines Selbststudiums
 - erste PWA
 - Speicherung des Spielstandes im LocalStorage
-- sämtliche Bilder selbst erstellt mit Affinity Photo
+- sämtliche Bilder selbst erstellt mit Affinity Photo 
 
 
 - virtuelles Haustier, um das man sich kümmern muss, 
@@ -14,7 +14,8 @@ sonst stirbt es
   - Spielen
   - Füttern
   - Tränken
-  - Gassi gehen
+  - Gassi gehen/ Toilette reinigen
+  - Baden
   - Schlafen legen / Aufwecken
 
 

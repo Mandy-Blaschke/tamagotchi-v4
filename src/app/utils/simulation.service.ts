@@ -41,13 +41,12 @@ export class SimulationService {
     }
   }
 
-  // TODO remove comments
 
   private save(): void {
-    // localStorage.setItem('animal', JSON.stringify(this.pet));
+    localStorage.setItem('animal', JSON.stringify(this.pet));
   }
 
-  /*
+
   load(): void {
     const animalData = localStorage.getItem('animal');
     if (animalData != null) {
@@ -56,7 +55,6 @@ export class SimulationService {
       setInterval(() => this.checkSimulation(), 1000);
     }
   }
-   */
 
   clear(): void {
     localStorage.removeItem('animal');

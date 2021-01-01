@@ -57,7 +57,7 @@ export const dogFoods: Food[] = [
     symbol: '🥦',
     effectPooLvl: -2,
     effectPeeLvl: 1,
-    effectIllness: -3,
+    effectIllness: -5,
     effectTrust: 2,
     pollutionEffect: 2,
     sound: essenHund,
