@@ -21,7 +21,6 @@ sonst stirbt es
 
 - Funktionen, die noch kommen:
   - weitere Tiere
-  - random Auswahl des Tieres
   - Interaktionen entsprechend dem Tier
 
 
