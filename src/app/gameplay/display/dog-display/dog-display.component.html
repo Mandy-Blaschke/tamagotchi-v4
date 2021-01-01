@@ -12,7 +12,15 @@
 </app-dog>
 
 <app-water
-  *ngIf="statesService.states.drinking"
+  *ngIf="statesService.states.drinking
+             && simulation.pet.life > 0
+             && !statesService.showBox
+             && !statesService.states.eating
+             && !statesService.states.playing
+             && !statesService.states.wiping
+             && !statesService.states.showPills
+             && !statesService.states.washing
+             && !statesService.states.walking"
 >
 </app-water>
 
