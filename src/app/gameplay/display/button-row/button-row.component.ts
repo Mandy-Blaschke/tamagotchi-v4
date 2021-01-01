@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {goForWalk, goToDoctor, Pet, petsDrinking, petsEating, petsPlaying, wipePee, wipePiles} from '../../../utils/pet';
+import {goForWalk, goToDoctor, Pet, petsDrinking, petsEating, petsPlaying, washingPet, wipePee, wipePiles} from '../../../utils/pet';
 import {StatesService} from '../../../utils/states.service';
 import {SimulationService} from '../../../utils/simulation.service';
 import {Food, Game} from '../../../utils/interfaces';
@@ -7,6 +7,7 @@ import {dogFoods} from '../../../utils/foods/dog-foods';
 import {dogGames} from '../../../utils/games/dog-games';
 import {SoundService} from '../../../utils/sound.service';
 import {
+  bubble,
   essenHund, essenKatze,
   fegen, fegen2, jammern2Katze, parkHund,
   schnarchenHund, schnarchenKatze,
@@ -79,6 +80,24 @@ export class ButtonRowComponent implements OnInit {
     await sleep(4000);
     fegen.pause();
     this.statesService.states.wiping = false;
+    this.statesService.states.userCanClick = true;
+  }
+
+  async petCleaning(): Promise<void> {
+    this.simulation.pet.actionPoints--;
+    this.statesService.states.userCanClick = false;
+    this.statesService.states.washing = true;
+    this.simulation.pet.sleeping = false;
+    washingPet(this.simulation.pet);
+
+    for (let i = 0; i < 4; i++) {
+      this.soundService.play(bubble);
+      await sleep(500);
+      this.soundService.play(bubble);
+      await sleep(1500 + i);
+    }
+
+    this.statesService.states.washing = false;
     this.statesService.states.userCanClick = true;
   }
 

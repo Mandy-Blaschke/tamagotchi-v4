@@ -1,11 +1,12 @@
 <app-cat
   *ngIf="simulation.pet.life > 0
-                && !statesService.showBox
-                && !statesService.states.drinking
-                && !statesService.states.eating
-                && !statesService.states.playing
-                && !statesService.states.cleaningCatToilet
-                && !statesService.states.showPills"
+             && !statesService.showBox
+             && !statesService.states.washing
+             && !statesService.states.drinking
+             && !statesService.states.eating
+             && !statesService.states.playing
+             && !statesService.states.cleaningCatToilet
+             && !statesService.states.showPills"
 >
 </app-cat>
 
@@ -18,6 +19,7 @@
   *ngIf="statesService.states.eating
              && simulation.pet.life > 0
              && !statesService.showBox
+             && !statesService.states.washing
              && !statesService.states.drinking
              && !statesService.states.playing
              && !statesService.states.cleaningCatToilet
@@ -30,6 +32,7 @@
              && statesService.playingGame === 'Angel'
              && simulation.pet.life > 0
              && !statesService.showBox
+             && !statesService.states.washing
              && !statesService.states.drinking
              && !statesService.states.eating
              && !statesService.states.cleaningCatToilet
@@ -43,6 +46,7 @@
              && statesService.playingGame === 'Wollknäuel'
              && simulation.pet.life > 0
              && !statesService.showBox
+             && !statesService.states.washing
              && !statesService.states.eating
              && !statesService.states.drinking
              && !statesService.states.cleaningCatToilet
@@ -56,6 +60,7 @@
              && statesService.playingGame === 'Aufziehmaus'
              && simulation.pet.life > 0
              && !statesService.showBox
+             && !statesService.states.washing
              && !statesService.states.eating
              && !statesService.states.drinking
              && !statesService.states.cleaningCatToilet
@@ -69,6 +74,7 @@
              && statesService.playingGame === 'Streicheln'
              && simulation.pet.life > 0
              && !statesService.showBox
+             && !statesService.states.washing
              && !statesService.states.eating
              && !statesService.states.drinking
              && !statesService.states.cleaningCatToilet
@@ -81,6 +87,7 @@
   *ngIf="statesService.states.cleaningCatToilet
              && simulation.pet.life > 0
              && !statesService.showBox
+             && !statesService.states.washing
              && !statesService.states.eating
              && !statesService.states.drinking
              && !statesService.states.showPills
@@ -92,6 +99,7 @@
   *ngIf="statesService.states.showPills
              && simulation.pet.life > 0
              && !statesService.showBox
+             && !statesService.states.washing
              && !statesService.states.drinking
              && !statesService.states.eating
              && !statesService.states.playing
@@ -99,3 +107,16 @@
              && !statesService.states.walking"
 >
 </app-pills>
+
+<app-washing
+  *ngIf="statesService.states.washing
+             && !statesService.states.showPills
+             && simulation.pet.life > 0
+             && !statesService.showBox
+             && !statesService.states.drinking
+             && !statesService.states.eating
+             && !statesService.states.playing
+             && !statesService.states.wiping
+             && !statesService.states.walking"
+>
+</app-washing>

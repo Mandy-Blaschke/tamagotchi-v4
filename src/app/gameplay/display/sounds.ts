@@ -15,6 +15,7 @@ export const trockenfutter2 = new Audio('assets/sounds/trockenfutter2.mp3');
 export const wecker = new Audio('assets/sounds/wecker.mp3');
 export const fegen = new Audio('assets/sounds/fegen.mp3');
 export const fegen2 = new Audio('assets/sounds/fegen3.mp3');
+export const bubble = new Audio('assets/sounds/bubble-pop.mp3');
 
 export const halloKatze = new Audio('assets/sounds/halloKatze.mp3');
 export const jammern2Katze = new Audio('assets/sounds/jammern2Katze.mp3');
@@ -31,7 +32,7 @@ export const schnarchenKatze = new Audio('assets/sounds/schnarchenKatze.mp3');
 export const allSounds: HTMLAudioElement[] = [
   essenHund, trockenfutter, japsenHund, schnarchenHund, spielenHund,
   trinkenHund, bellen1Hund, halloHund, schwanzwedelnHund, wimmernHund, parkHund, quietschenHund,
-  fegen, wecker, fegen2,
+  fegen, wecker, fegen2, bubble,
   halloKatze, mauzenKatze, schnurrenKatze, spielenKatze, essenKatze,
   spielen2Katze, wasserKatze, schnarchenKatze, spielen3Katze, jammern2Katze
 ];

@@ -20,6 +20,7 @@ export class StatesService {
     userCanClick: true,
     showPills: false,
     cleaningCatToilet: false,
+    washing: false,
   };
 
   showBox = !this.states.started;
@@ -83,4 +84,5 @@ export interface States {
   userCanClick: boolean;
   showPills: boolean;
   cleaningCatToilet: boolean;
+  washing: boolean;
 }

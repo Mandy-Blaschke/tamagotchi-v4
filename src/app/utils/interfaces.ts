@@ -7,6 +7,7 @@ export interface Food {
   effectPeeLvl: number;
   effectIllness: number;
   effectTrust: number;
+  pollutionEffect: number;
   sound: HTMLAudioElement;
 }
 
@@ -19,6 +20,7 @@ export interface Game {
   fatigueEffect: number;
   trustEffect: number;
   illnessEffect: number;
+  pollutionEffect: number;
   symbol: string;
   sound: HTMLAudioElement;
 }

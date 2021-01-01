@@ -11,6 +11,7 @@ export const catGames: Game[] = [
     symbol: '🐁',
     trustEffect: 2,
     illnessEffect: -3,
+    pollutionEffect: 2,
     sound: spielenKatze,
   },
   {
@@ -22,6 +23,7 @@ export const catGames: Game[] = [
     symbol: '🎣',
     trustEffect: 1,
     illnessEffect: -2,
+    pollutionEffect: 1,
     sound: spielen3Katze,
   },
   {
@@ -33,6 +35,7 @@ export const catGames: Game[] = [
     symbol: '🧶',
     trustEffect: 3,
     illnessEffect: -2,
+    pollutionEffect: 2,
     sound: spielen2Katze,
   },
   {
@@ -44,6 +47,7 @@ export const catGames: Game[] = [
     symbol: '🤗',
     trustEffect: 5,
     illnessEffect: -1,
+    pollutionEffect: 0,
     sound: schnurrenKatze,
   }
 ];

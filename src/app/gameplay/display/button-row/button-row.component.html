@@ -25,6 +25,12 @@
 
     </ng-container>
 
+    <app-button (click)="petCleaning()"
+      *ngIf="simulation.pet.pollutionLvl > 50"
+    >
+      🛁 <br> Baden
+    </app-button>
+
 
     <app-button (click)="doctor()" *ngIf="simulation.pet.illnessLvl >= 70 && simulation.pet.trustLvl >= 60">
       👩‍⚕️ <br> Zum Arzt <br> gehen

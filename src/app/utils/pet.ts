@@ -16,6 +16,7 @@ export interface Pet {
   pooLvl: number;
   droppedPee: number;
   droppedPoo: number;
+  pollutionLvl: number;
   timeInterval: number;
   lastSimulate: number;
   type: PetType;
@@ -38,6 +39,7 @@ export function createPet(type: PetType): Pet {
     pooLvl: 0,
     droppedPee: 0,
     droppedPoo: 0,
+    pollutionLvl: 80,
     timeInterval: 3600000,
     lastSimulate: new Date().getTime(),
     type,
@@ -142,6 +144,7 @@ export function petsEating(pet: Pet, food: Food): void {
   pet.pooLvl += food.effectPooLvl;
   pet.peeLvl += food.effectPeeLvl;
   pet.trustLvl += food.effectTrust;
+  pet.pollutionLvl += food.pollutionEffect;
 
   repairValuesInterval(pet);
 }
@@ -152,6 +155,7 @@ export function petsPlaying(pet, game: Game): void {
   pet.thirst += game.thirstEffect;
   pet.fatigueLvl += game.fatigueEffect;
   pet.trustLvl += game.trustEffect;
+  pet.pollutionLvl += game.pollutionEffect;
 
   if (pet.illnessLvl > 65) {
     pet.illnessLvl -= game.illnessEffect;
@@ -185,6 +189,10 @@ export function goToDoctor(pet: Pet): void {
   pet.trustLvl -= 60;
 }
 
+export function washingPet(pet: Pet): void {
+  pet.pollutionLvl = 0;
+}
+
 // noinspection DuplicatedCode
 export function repairValuesInterval(pet: Pet): void {
   pet.hunger = Math.min(pet.hunger, pet.max);
@@ -213,4 +221,7 @@ export function repairValuesInterval(pet: Pet): void {
 
   pet.fatigueLvl = Math.min(pet.fatigueLvl, pet.max);
   pet.fatigueLvl = Math.max(pet.fatigueLvl, 0);
+
+  pet.pollutionLvl = Math.min(pet.pollutionLvl, pet.max);
+  pet.pollutionLvl = Math.max(pet.pollutionLvl, 0);
 }

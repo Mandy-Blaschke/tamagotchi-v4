@@ -1,12 +1,13 @@
 <app-dog
   *ngIf="simulation.pet.life > 0
-                && !statesService.showBox
-                && !statesService.states.drinking
-                && !statesService.states.eating
-                && !statesService.states.playing
-                && !statesService.states.wiping
-                && !statesService.states.showPills
-                && !statesService.states.walking"
+             && !statesService.showBox
+             && !statesService.states.drinking
+             && !statesService.states.eating
+             && !statesService.states.playing
+             && !statesService.states.wiping
+             && !statesService.states.showPills
+             && !statesService.states.washing
+             && !statesService.states.walking"
 >
 </app-dog>
 
@@ -18,6 +19,7 @@
 <app-eating
   *ngIf="statesService.states.eating
              && simulation.pet.life > 0
+             && !statesService.states.washing
              && !statesService.showBox
              && !statesService.states.drinking
              && !statesService.states.playing
@@ -31,6 +33,7 @@
   *ngIf="statesService.states.playing
              && statesService.playingGame === 'Herumtollen'
              && simulation.pet.life > 0
+             && !statesService.states.washing
              && !statesService.showBox
              && !statesService.states.drinking
              && !statesService.states.eating
@@ -44,6 +47,7 @@
   *ngIf="statesService.states.playing
              && statesService.playingGame === 'Ballspielen'
              && simulation.pet.life > 0
+             && !statesService.states.washing
              && !statesService.showBox
              && !statesService.states.eating
              && !statesService.states.drinking
@@ -57,6 +61,7 @@
   *ngIf="statesService.states.playing
              && statesService.playingGame === 'Apportieren'
              && simulation.pet.life > 0
+             && !statesService.states.washing
              && !statesService.showBox
              && !statesService.states.eating
              && !statesService.states.drinking
@@ -70,6 +75,7 @@
   *ngIf="statesService.states.playing
              && statesService.playingGame === 'Kuscheln'
              && simulation.pet.life > 0
+             && !statesService.states.washing
              && !statesService.showBox
              && !statesService.states.eating
              && !statesService.states.drinking
@@ -82,6 +88,7 @@
 <app-walking
   *ngIf="statesService.states.walking
              && simulation.pet.life > 0
+             && !statesService.states.washing
              && !statesService.showBox
              && !statesService.states.eating
              && !statesService.states.drinking
@@ -94,6 +101,7 @@
 <app-broom
   *ngIf="statesService.states.wiping
              && simulation.pet.life > 0
+             && !statesService.states.washing
              && !statesService.showBox
              && !statesService.states.drinking
              && !statesService.states.eating
@@ -106,6 +114,7 @@
 <app-pills
   *ngIf="statesService.states.showPills
              && simulation.pet.life > 0
+             && !statesService.states.washing
              && !statesService.showBox
              && !statesService.states.drinking
              && !statesService.states.eating
@@ -114,3 +123,16 @@
              && !statesService.states.walking"
 >
 </app-pills>
+
+<app-washing
+  *ngIf="statesService.states.washing
+             && !statesService.states.showPills
+             && simulation.pet.life > 0
+             && !statesService.showBox
+             && !statesService.states.drinking
+             && !statesService.states.eating
+             && !statesService.states.playing
+             && !statesService.states.wiping
+             && !statesService.states.walking"
+>
+</app-washing>

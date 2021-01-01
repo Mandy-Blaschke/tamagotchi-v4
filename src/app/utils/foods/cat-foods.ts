@@ -11,6 +11,7 @@ export const catFoods: Food[] = [
     effectPeeLvl: 15,
     effectIllness: 0,
     effectTrust: 5,
+    pollutionEffect: 1,
     sound: wasserKatze,
   },
   {
@@ -22,6 +23,7 @@ export const catFoods: Food[] = [
     effectPeeLvl: 0,
     effectIllness: 1,
     effectTrust: 2,
+    pollutionEffect: 2,
     sound: essenKatze,
   },
   {
@@ -33,6 +35,7 @@ export const catFoods: Food[] = [
     effectPeeLvl: 3,
     effectIllness: 2,
     effectTrust: 3,
+    pollutionEffect: 5,
     sound: essenKatze,
   },
   {
@@ -44,6 +47,7 @@ export const catFoods: Food[] = [
     effectPeeLvl: 0,
     effectIllness: 3,
     effectTrust: 2,
+    pollutionEffect: 1,
     sound: trockenfutter,
   },
   {
@@ -55,6 +59,7 @@ export const catFoods: Food[] = [
     effectPeeLvl: 0,
     effectIllness: 2,
     effectTrust: 5,
+    pollutionEffect: 0,
     sound: trockenfutter2,
   }
 ];
