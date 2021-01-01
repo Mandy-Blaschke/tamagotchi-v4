@@ -16,7 +16,7 @@ export const catFoods: Food[] = [
   {
     name: 'Fisch',
     effectHunger: -5,
-    effectThirst: 5,
+    effectThirst: 2,
     symbol: '🐟',
     effectPooLvl: 1,
     effectPeeLvl: 0,

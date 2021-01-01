@@ -73,14 +73,7 @@
 
       .inactive {
         filter: grayscale(10);
-        animation: blink 1500ms linear infinite;
       }
     }
-  }
-}
-
-@keyframes blink {
-  50% {
-    filter: hue-rotate(45deg);
   }
 }
