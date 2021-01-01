@@ -65,6 +65,12 @@
     .points {
       display: flex;
 
+      img {
+        width: 20px;
+        height: 35px;
+        margin: 0 5px;
+      }
+
       .inactive {
         filter: grayscale(10);
         animation: blink 1500ms linear infinite;

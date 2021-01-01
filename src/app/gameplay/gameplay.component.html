@@ -13,7 +13,9 @@
 
     <div class="points">
       <div *ngFor="let point of createActionsPointsArray()">
-        <span *ngIf="point === true">⚡</span>
+        <span *ngIf="point === true">
+          <img src="assets/bilder/anderes/blitz.webp" alt="blitz">
+        </span>
         <span *ngIf="point === false" class="inactive">⚡</span>
       </div>
     </div>
