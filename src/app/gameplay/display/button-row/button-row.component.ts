@@ -439,32 +439,30 @@ export class ButtonRowComponent implements OnInit {
 
   async toggleSleeping(): Promise<void> {
     this.statesService.states.userCanClick = false;
+    this.statesService.states.activeAnimation = true;
     this.hideFoodsAndGames();
 
     if (!this.simulation.pet.sleeping) {
       this.simulation.pet.sleeping = true;
 
       if (this.simulation.pet.type === 'dog') {
-        this.statesService.states.activeAnimation = true;
         this.soundService.play(schnarchenHund);
         await sleep(3000);
       } else {
         this.soundService.play(schnarchenKatze);
         await sleep(3000);
       }
-      this.statesService.states.activeAnimation = false;
 
     } else {
-      this.statesService.states.activeAnimation = true;
       this.statesService.ringing = true;
       this.soundService.play(wecker);
       await sleep(2000);
       this.statesService.ringing = false;
       this.simulation.pet.sleeping = false;
-      this.statesService.states.activeAnimation = false;
     }
 
     this.statesService.states.userCanClick = true;
+    this.statesService.states.activeAnimation = false;
   }
 
   hideFoodsAndGames(): void {
