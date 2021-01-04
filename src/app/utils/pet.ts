@@ -187,6 +187,7 @@ export function goToDoctor(pet: Pet): void {
   pet.illnessLvl = 0;
   pet.life = 120;
   pet.trustLvl -= 60;
+  pet.fun -= 30;
 }
 
 export function washingPet(pet: Pet): void {
