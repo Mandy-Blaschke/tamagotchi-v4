@@ -126,8 +126,8 @@ export class ButtonRowComponent implements OnInit {
         this.statesService.imageNumber = i;
         this.soundService.play(trinkenHund);
         await sleep(1000);
-        trinkenHund.pause();
       }
+      trinkenHund.pause();
     }
 
     if (this.simulation.pet.type === 'cat') {
@@ -136,8 +136,8 @@ export class ButtonRowComponent implements OnInit {
         this.statesService.imageNumber = i;
         await sleep(1000);
       }
+      wasserKatze.pause();
     }
-    wasserKatze.pause();
 
     this.statesService.states.drinking = false;
     this.statesService.states.userCanClick = true;
