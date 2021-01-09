@@ -15,17 +15,4 @@ export class GameplayComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  createActionsPointsArray(): boolean[] {
-    const max = 5;
-    const result = [];
-    for (let i = 1; i <= max; i++) {
-      if (i <= this.simulation.pet.actionPoints) {
-        result.push(true);
-      } else {
-        result.push(false);
-      }
-    }
-    return result;
-  }
-
 }

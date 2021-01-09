@@ -21,7 +21,6 @@ export interface Pet {
   lastSimulate: number;
   type: PetType;
   age: number;
-  actionPoints: number;
 }
 
 export function createPet(type: PetType): Pet {
@@ -44,15 +43,10 @@ export function createPet(type: PetType): Pet {
     lastSimulate: new Date().getTime(),
     type,
     age: 0,
-    actionPoints: 5,
   };
 }
 
 export function simulateTimeInterval(pet: Pet): void {
-
-  if (pet.actionPoints < 5) {
-    pet.actionPoints++;
-  }
 
   const hungerIncrease = pet.sleeping ? 6 : 2;
   const thirstIncrease = pet.sleeping ? 6 : 4;

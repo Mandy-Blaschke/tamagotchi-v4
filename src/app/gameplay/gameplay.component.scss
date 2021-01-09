@@ -52,28 +52,4 @@
     flex-wrap: wrap;
     justify-content: center;
   }
-
-  .action-points {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
-
-    @media (max-width: 425px) {
-      flex-direction: column;
-    }
-
-    .points {
-      display: flex;
-
-      img {
-        width: 20px;
-        height: 35px;
-        margin: 0 5px;
-      }
-
-      .inactive {
-        filter: grayscale(10);
-      }
-    }
-  }
 }

@@ -6,24 +6,6 @@
 
   <app-display></app-display>
 
-  <div class="action-points"
-       *ngIf="statesService.states.started"
-  >
-    <h2>Deine Aktionspunkte:&nbsp;</h2>
-
-    <div class="points">
-      <div *ngFor="let point of createActionsPointsArray()">
-        <span *ngIf="point === true">
-          <img src="assets/bilder/anderes/blitz.webp" alt="blitz">
-        </span>
-        <span *ngIf="point === false" class="inactive">
-          <img src="assets/bilder/anderes/blitz.webp" alt="blitz">
-        </span>
-      </div>
-    </div>
-
-  </div>
-
   <app-progress-bar *ngIf="statesService.progress"></app-progress-bar>
 
   <app-button-row *ngIf="simulation.pet != null && !statesService.states.activeAnimation" class="row"></app-button-row>

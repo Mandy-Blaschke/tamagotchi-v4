@@ -47,7 +47,7 @@
   <div class="row">
 
     <ng-container
-      *ngIf="!simulation.pet.sleeping && simulation.pet.actionPoints > 0"
+      *ngIf="!simulation.pet.sleeping"
     >
 
       <app-button (click)="toggleFoods()"
